@@ -1,44 +1,41 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
 function TopBar(props) {
   return(
-    <View style={styles.topBar}>
-      <View style={styles.topBarStack}>
+      <View style={styles.topBar}>
         <EntypoIcon
           name="chevron-thin-right"
-          style={styles.icon}
+          style={styles.rightArrow}
         ></EntypoIcon>
+        <Text style={styles.date}>Today</Text>
         <EntypoIcon
           name="chevron-thin-left"
-          style={styles.icon2}
+          style={styles.leftArrow}
         ></EntypoIcon>
       </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
   topBar: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    height: 63,
-    width: 332
-  },
-  topBarStack: {
     width: 332,
-    height: 63
+    height: 63,
   },
-  icon: {
+  date:{
+    textAlign : "center",
+    fontSize: 30,
+    marginTop: 20,
+  },
+  rightArrow: {
     top: 8,
     left: 292,
     position: "absolute",
     color: "rgba(128,128,128,1)",
     fontSize: 40
   },
-  icon2: {
+  leftArrow: {
     top: 8,
     left: 0,
     position: "absolute",
