@@ -10,7 +10,7 @@ function App(props) {
       <TopBar style={styles.topBar}/>
       <DrinksList/>
       <View style={styles.addBeverageButton}>
-       <FeatherIcon name="plus-circle" style={styles.plusIcon}></FeatherIcon>
+        <FeatherIcon name="plus-circle" style={styles.plusIcon}></FeatherIcon>
       </View>
     </View>
   );

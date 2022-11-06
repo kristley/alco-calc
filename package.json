@@ -9,7 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@expo/webpack-config": "^0.16.19",
+    "16": "^0.0.2",
+    "@expo/webpack-config": "^0.17.0",
     "expo": "~46.0.16",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
