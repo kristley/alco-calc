@@ -1,45 +1,61 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import TopBar from "./components/TopBar";
-import DrinksList from "./components/DrinksList";
-import FeatherIcon from "react-native-vector-icons/Feather";
+import React, { useState } from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from "react-navigation-drawer";
+import AppLoading from "expo-app-loading";
 
-function App(props) {
-  return (
-    <View style={styles.container}>
-      <TopBar style={styles.topBar}/>
-      <DrinksList/>
-      <View style={styles.addBeverageButton}>
-       <FeatherIcon name="plus-circle" style={styles.plusIcon}></FeatherIcon>
-      </View>
-    </View>
-  );
+import * as Font from "expo-font";
+import AddBeverageView from "./screens/AddBeverageView";
+import AlcocalcView from "./screens/AlcocalcView";
 
+const DrawerNavigation = createDrawerNavigator({
+  AlcocalcView: AlcocalcView,
+  AddBeverageView: AddBeverageView,
+});
+
+const StackNavigation = createStackNavigator(
+  {
+    DrawerNavigation: {
+      screen: DrawerNavigation
+    },
+    AddBeverageView: AddBeverageView,
+    AlcocalcView: AlcocalcView
+  },
+  {
+    headerMode: "none"
+  }
+);
+
+const AppContainer = createAppContainer(StackNavigation);
+
+function App() {
+  const [isLoadingComplete, setLoadingComplete] = useState(false);
+  if (!isLoadingComplete) {
+    return (
+      <AppLoading
+        startAsync={loadResourcesAsync}
+        onError={handleLoadingError}
+        onFinish={() => handleFinishLoading(setLoadingComplete)}
+      />
+    );
+  } else {
+    return isLoadingComplete ? <AppContainer /> : <AppLoading />;
+  }
+}
+async function loadResourcesAsync() {
+  await Promise.all([
+    Font.loadAsync({
+      "roboto-regular": require("./assets/fonts/roboto-regular.ttf")
+    })
+  ]);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ddd",
-    marginTop: 40,
-  },
-  topBar: {
-    marginTop: 40,
-    paddingTop: 20,
-    paddingHorizontal: 20,
-  },
-  plusIcon: {
-    color: "rgba(128,128,128,1)",
-    fontSize: 67,
-    marginLeft: 64
-  },
-  addBeverageButton: {
-    height: 67,
-    flexDirection: "row",
-    marginTop: 21,
-    marginLeft: 21,
-    marginRight: 21
-  }
-});
+function handleLoadingError(error) {
+  console.warn(error);
+}
+
+function handleFinishLoading(setLoadingComplete) {
+  setLoadingComplete(true);
+}
 
 export default App;
