@@ -22,7 +22,7 @@ const data = [
   {id:17, time: "10:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
 ];
 
-function DrinksList() {
+export default function DrinksList() {
 	return (
     <View style={styles.container}>
         {/* <View style={styles.tableHeaders}>
@@ -72,5 +72,3 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 });
-
-export default DrinksList;

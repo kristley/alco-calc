@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
-function TopBar(props) {
+export default function TopBar(props) {
   return(
       <View style={styles.topBar}>
         <EntypoIcon
@@ -43,5 +43,3 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
 });
-
-export default TopBar;

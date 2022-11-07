@@ -5,7 +5,7 @@ import DrinksList from "./components/DrinksList";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-function App(props) {
+export default function App(props) {
 	return (
 		<SafeAreaView style={styles.container}>
       <TopBar style={styles.topBar}/>
@@ -40,5 +40,3 @@ const styles = StyleSheet.create({
     marginRight: 21
   }
 });
-
-export default App;

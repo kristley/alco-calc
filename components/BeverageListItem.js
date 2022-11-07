@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-function BeverageListItem({item}) {
+export default function BeverageListItem({item}) {
   return (
     <TouchableOpacity style={styles.container}>
       <Text style={[styles.cell, styles.time]}>{item.time}</Text>
@@ -40,5 +40,3 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   }
 });
-
-export default BeverageListItem;
