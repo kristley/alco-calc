@@ -3,26 +3,25 @@ import { StyleSheet, View } from "react-native";
 import TopBar from "./components/TopBar";
 import DrinksList from "./components/DrinksList";
 import FeatherIcon from "react-native-vector-icons/Feather";
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 function App(props) {
-  return (
-    <View style={styles.container}>
+	return (
+		<SafeAreaView style={styles.container}>
       <TopBar style={styles.topBar}/>
       <DrinksList/>
       <View style={styles.addBeverageButton}>
         <FeatherIcon name="plus-circle" style={styles.plusIcon}></FeatherIcon>
       </View>
-    </View>
-  );
-
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ddd",
-    marginTop: 40,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#ddd",
+	},
   topBar: {
     marginTop: 40,
     paddingTop: 20,

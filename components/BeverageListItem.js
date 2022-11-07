@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-function BeverageListItem(props) {
+function BeverageListItem({item}) {
   return (
-    <TouchableOpacity style={[styles.container, props.style]}>
-      <Text style={[styles.cell, styles.time]}>{props.item.time}</Text>
-      <Text style={styles.cell}>{props.item.beverage}</Text>
-      <Text style={styles.cell}>{props.item.volume}</Text>
-      <Text style={styles.cell}>{props.item.percentage}</Text>
-      <View style={styles.cell}><View style={[styles.circular, {backgroundColor:props.item.color}]}/></View>
+    <TouchableOpacity style={styles.container}>
+      <Text style={[styles.cell, styles.time]}>{item.time}</Text>
+      <Text style={styles.cell}>{item.beverage}</Text>
+      <Text style={styles.cell}>{item.volume}</Text>
+      <Text style={styles.cell}>{item.percentage}</Text>
+      <View style={styles.cell}>
+        <View style={[styles.circular, {backgroundColor:item.color}]}/>
+      </View>
     </TouchableOpacity >
   );
 }
