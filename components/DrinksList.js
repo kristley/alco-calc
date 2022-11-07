@@ -6,7 +6,7 @@ const data = [
   {id:1, time: '19:00', beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
   {id:2, time: "20:00", beverage: "beer", volume: "0.3l", percentage: "4.7%", color: "#ee0"},
   {id:3, time: "20:30", beverage: "wine", volume: "2cl", percentage: "11.5%", color: "#400000"},
-  {id:4, time: "21:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
+  {id:4, time: "21:00", beverage: "beverage", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
   {id:5, time: "22:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
   {id:6, time: "23:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
   {id:7, time: "00:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
@@ -37,7 +37,7 @@ function DrinksList() {
         data={[...data].reverse()} 
         inverted={true}
         renderItem={({item}) => (
-          <BeverageListItem item={item} style={styles.beverageListItem}/>
+          <BeverageListItem item={item}/>
         )}
       />
     </View>
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   scrollArea: {
-    height: 524,
-    backgroundColor: "#fff",
+    height: 420,
+    // backgroundColor: "#fff",
     marginTop: 28,
     marginHorizontal: 20,
   },
@@ -70,12 +70,6 @@ const styles = StyleSheet.create({
     marginLeft: 23,
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  beverageListItem: {
-    height: 16,
-    width: 286,
-    marginTop: 24,
-    marginLeft: 19
   },
 });
 
