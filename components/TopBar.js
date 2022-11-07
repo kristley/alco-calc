@@ -6,13 +6,13 @@ export default function TopBar(props) {
   return(
       <View style={styles.topBar}>
         <EntypoIcon
-          name="chevron-thin-right"
-          style={styles.rightArrow}
+          name="chevron-thin-left"
+          style={styles.arrow}
         ></EntypoIcon>
         <Text style={styles.date}>Today</Text>
         <EntypoIcon
-          name="chevron-thin-left"
-          style={styles.leftArrow}
+          name="chevron-thin-right"
+          style={styles.arrow}
         ></EntypoIcon>
       </View>
   );
@@ -20,26 +20,22 @@ export default function TopBar(props) {
 
 const styles = StyleSheet.create({
   topBar: {
-    width: 332,
-    height: 63,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 15,
+    marginHorizontal: 20,
+    backgroundColor: "#eee",
+    borderRadius: 20,
   },
   date:{
-    textAlign : "center",
+    // textAlign : "center",
     fontSize: 30,
-    marginTop: 20,
+    
   },
-  rightArrow: {
-    top: 8,
-    left: 292,
-    position: "absolute",
+  arrow: {
     color: "rgba(128,128,128,1)",
-    fontSize: 40
-  },
-  leftArrow: {
-    top: 8,
-    left: 0,
-    position: "absolute",
-    color: "rgba(128,128,128,1)",
-    fontSize: 40
+    fontSize: 40,
+    // backgroundColor: "#55f",
   },
 });
