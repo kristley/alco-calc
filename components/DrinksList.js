@@ -22,9 +22,9 @@ const data = [
   {id:17, time: "10:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#ee0"},
 ];
 
-export default function DrinksList() {
+export default function DrinksList(props) {
 	return (
-    <View style={styles.container}>
+    <View style={[styles.container, props.style]}>
         {/* <View style={styles.tableHeaders}>
               <Text>Time</Text>
               <Text>Beverage</Text>
@@ -33,7 +33,7 @@ export default function DrinksList() {
               <Text>Color</Text>
         </View> */}
       <FlatList 
-        style={styles.scrollArea} 
+        style={styles.scrollArea}  
         data={[...data].reverse()} 
         inverted={true}
         renderItem={({item}) => (
