@@ -4,7 +4,14 @@ import { StyleSheet, View, Text } from "react-native";
 export default function PrefabItem({ item }) {
 	return (
 		<View style={[styles.container, {borderColor: item.color}]}>
-			<Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
+      <View style={styles.nameContainer}>
+        <Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
+      </View>
+      <View style={styles.volumeAndPercentagecontainer}>
+        <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>{item.percentage}</Text>
+        <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>{item.volume}</Text>
+      </View>
+     
 		</View>
 	);
 }
@@ -19,10 +26,32 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		marginVertical: 5,
 		alignItems: "center",
-		justifyContent: "center",
-		borderWidth: 1,
+		borderWidth: 2,
+    display: "flex",
+    justifyContent: "space-around"
 	},
 	beverageName: {
+    textAlign: "center",
 		color: "#121212",
 	},
+  beveragePercentage:{
+    flex: 1,
+    textAlign:"center",
+    fontSize: 12,
+  },
+  beverageVolume:{
+    flex: 1,
+    textAlign: "center",
+    fontSize: 12,
+  },
+  volumeAndPercentagecontainer:{
+    flex: 1,
+    flexDirection: "row",
+    justifyContent:"space-around",
+    alignItems: "center"
+  },
+  nameContainer: {
+    flex: 2,
+    justifyContent: "center"
+  }
 });
