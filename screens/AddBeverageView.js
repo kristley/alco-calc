@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  Button
 } from "react-native";
 import BeverageInput from "../components/addBeverageView/BeverageInput";
 import PrefabList from "../components/addBeverageView/PrefabList";
@@ -13,6 +14,7 @@ export default function AddBeverageView(props) {
       <Text style={styles.header}>Add beverage</Text>
       <BeverageInput style={styles.beverageInput}></BeverageInput>
       <PrefabList style={styles.prefabs}></PrefabList>
+      <Button title="Edit Prefab"/>
     </View>
   );
 }
@@ -20,20 +22,18 @@ export default function AddBeverageView(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 50
+    marginBottom: 50,
+    marginTop: 100
     },
   header:{
     textAlign : "center",
     fontSize: 30,
     flex: 1,
-    marginTop: 80,
-    paddingTop: 20,
-    paddingHorizontal: 20,
   },
   beverageInput:{
     flex: 1,
   },
   prefabs:{
-    flex: 1,
+    flex: 2,
   }
 });
