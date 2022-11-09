@@ -1,34 +1,42 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import React from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-function BeverageListItem(props) {
+export default function BeverageListItem({item}) {
   return (
-    <View style={[styles.container, props.style]}>
-      <Text style={styles.time}>19:00</Text>
-      <Text style={styles.beer}>Beer</Text>
-      <Text style={styles.vol}>0.5L</Text>
-      <Text style={styles.text}>4.7%</Text>
-      <View style={styles.cicular}/>
-    </View>
+    <TouchableOpacity style={styles.container}>
+      <Text style={[styles.cell, styles.time]}>{item.time}</Text>
+      <Text style={styles.cell}>{item.beverage}</Text>
+      <Text style={styles.cell}>{item.volume}</Text>
+      <Text style={styles.cell}>{item.percentage}</Text>
+      <View style={styles.cell}>
+        <View style={[styles.circular, {backgroundColor:item.color}]}/>
+      </View>
+    </TouchableOpacity >
   );
 }
-
+  
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#eee",
+    padding: 15,
+    borderRadius: 5,
+    marginVertical:5,
+    textAlign: "center",
+    alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  ellipse: {
-    width: 20,
-    height: 20
+  cell: {
+    width: '25%',
   },
-  cicular: {
+  time: {
+    color : "#888",
+    fontSize: 12,
+    width: '18%',
+  },
+  circular: {
     width: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: "rgba(128,128,128,1)"
   }
 });
-
-export default BeverageListItem;

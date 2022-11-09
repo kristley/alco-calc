@@ -10,17 +10,7 @@ function PrefabCont(props) {
       <Text style={styles.loremIpsum}>0.5L</Text>
       <Text style={styles.beer}>Beer</Text>
       <Text style={styles.text5}>4.7%</Text>
-      <Svg viewBox="0 0 15.23 15.38" style={styles.ellipse2}>
-        <Ellipse
-          stroke="rgba(230, 230, 230,1)"
-          strokeWidth={0}
-          fill="rgba(208,2,27,1)"
-          cx={8}
-          cy={8}
-          rx={8}
-          ry={8}
-        ></Ellipse>
-      </Svg>
+      <View style={styles.circle}/>
     </View>
   );
 }
@@ -47,12 +37,14 @@ const styles = StyleSheet.create({
     height: 33,
     width: 94
   },
-  ellipse2: {
+  circle: {
     top: 9,
     left: 5,
-    width: 15,
-    height: 15,
-    position: "absolute"
+    width: 16,
+    height: 16,
+    position: "absolute",
+    borderRadius: 8,
+    backgroundColor: "rgba(208,2,27,1)",
   },
   container: {
     flexDirection: "row"
@@ -67,7 +59,6 @@ const styles = StyleSheet.create({
     top: 7,
     left: 70,
     position: "absolute",
-    fontFamily: "roboto-regular",
     color: "#121212",
     fontSize: 8
   },
@@ -75,7 +66,6 @@ const styles = StyleSheet.create({
     top: 9,
     left: 27,
     position: "absolute",
-    fontFamily: "roboto-regular",
     color: "#121212",
     fontSize: 12
   },
@@ -83,7 +73,6 @@ const styles = StyleSheet.create({
     top: 20,
     left: 70,
     position: "absolute",
-    fontFamily: "roboto-regular",
     color: "#121212",
     fontSize: 8
   }

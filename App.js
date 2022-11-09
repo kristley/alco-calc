@@ -1,61 +1,36 @@
-import React, { useState } from "react";
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import AppLoading from "expo-app-loading";
-
-import * as Font from "expo-font";
+import 'react-native-gesture-handler';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import AlcoCalcView from "./screens/AlcoCalcView";
 import AddBeverageView from "./screens/AddBeverageView";
-import AlcocalcView from "./screens/AlcocalcView";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const DrawerNavigation = createDrawerNavigator({
-  AlcocalcView: AlcocalcView,
-  AddBeverageView: AddBeverageView,
+const Stack = createStackNavigator();
+
+function AppContainer() {
+	return (
+		<Stack.Navigator screenOptions={{headerShown: false}}>
+			<Stack.Screen name="AlcoCalcView" component={AlcoCalcView} />
+			<Stack.Screen name="AddBeverageView" component={AddBeverageView} />
+		</Stack.Navigator>
+	);
+}
+
+export default function App() {
+	return (
+		<SafeAreaProvider style={styles.container}>
+			<NavigationContainer>
+				<AppContainer />
+			</NavigationContainer>
+		</SafeAreaProvider>
+	);
+}
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: "#ddd",
+	},
 });
-
-const StackNavigation = createStackNavigator(
-  {
-    DrawerNavigation: {
-      screen: DrawerNavigation
-    },
-    AddBeverageView: AddBeverageView,
-    AlcocalcView: AlcocalcView
-  },
-  {
-    headerMode: "none"
-  }
-);
-
-const AppContainer = createAppContainer(StackNavigation);
-
-function App() {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
-  if (!isLoadingComplete) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
-    return isLoadingComplete ? <AppContainer /> : <AppLoading />;
-  }
-}
-async function loadResourcesAsync() {
-  await Promise.all([
-    Font.loadAsync({
-      "roboto-regular": require("./assets/fonts/roboto-regular.ttf")
-    })
-  ]);
-}
-
-function handleLoadingError(error) {
-  console.warn(error);
-}
-
-function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
-}
-
-export default App;
