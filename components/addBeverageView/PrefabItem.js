@@ -5,10 +5,8 @@ import Svg, { Ellipse } from "react-native-svg";
 export default function PrefabItem(item, props) {
   return (
     <View style={styles.container}>
-        <Text style={styles.cell}>{item.percentage}</Text>
-        <View style={styles.cell}>
-          <View style={[styles.circular, {backgroundColor:item.color}]}/>
-        </View>
+        <Text style={beverageName}>Hi</Text>
+        <Text style={beverageName}>{item.beverageName}</Text>
     </View>
   );
 }

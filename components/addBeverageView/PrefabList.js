@@ -40,11 +40,4 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10
   },
-  circular: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-  },
-  scrollArea: {
-    height: 300,}
 });
