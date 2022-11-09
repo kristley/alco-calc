@@ -1,12 +1,11 @@
 import React from "react";
-import { StyleSheet, View, TextInput} from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import { StyleSheet, View} from "react-native";
 
 
 export default function BeverageUnitInput(){
     return (
         <View style={styles.container}>
-             <View style={styles.dropDownPlaceholder}></View>
+             <View style={styles.dropDownPlaceholder}/>
         </View>
     )
 }

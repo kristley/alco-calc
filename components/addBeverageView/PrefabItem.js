@@ -1,31 +1,28 @@
-import React, { Component } from "react";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 
-export default function PrefabItem(item, props) {
-  return (
-    <View style={styles.container}>
-        <Text style={beverageName}>Hi</Text>
-        <Text style={beverageName}>{item.beverageName}</Text>
-    </View>
-  );
+export default function PrefabItem({ item }) {
+	return (
+		<View style={[styles.container, {borderColor: item.color}]}>
+			<Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    margin: 10,
-    width: 90,
-    height: 33,
-    backgroundColor: "#E6E6E6",
-    borderRadius: 15,
-    padding: 20,
-  },
-  beverageName:{
-    top: 0,
-    left: 13,
-    fontFamily: "roboto-regular",
-    color: "#121212",
-    }
+	container: {
+		textAlign: "center",
+		backgroundColor: "#E6E6E6",
+		width: 90,
+		margin: 10,
+		height: 80,
+		borderRadius: 15,
+		marginVertical: 5,
+		alignItems: "center",
+		justifyContent: "center",
+		borderWidth: 1,
+	},
+	beverageName: {
+		color: "#121212",
+	},
 });
-

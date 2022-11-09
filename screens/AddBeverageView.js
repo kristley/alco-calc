@@ -12,7 +12,7 @@ export default function AddBeverageView(props) {
     <View style={styles.container}>
       <Text style={styles.header}>Add beverage</Text>
       <BeverageInput style={styles.beverageInput}></BeverageInput>
-      <PrefabList style={styles.frefabs}></PrefabList>
+      <PrefabList style={styles.prefabs}></PrefabList>
     </View>
   );
 }

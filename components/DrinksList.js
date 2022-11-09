@@ -25,13 +25,6 @@ const data = [
 export default function DrinksList(props) {
 	return (
     <View style={[styles.container, props.style]}>
-        {/* <View style={styles.tableHeaders}>
-              <Text>Time</Text>
-              <Text>Beverage</Text>
-              <Text>Vol</Text>
-              <Text>%</Text>
-              <Text>Color</Text>
-        </View> */}
       <FlatList 
         style={styles.scrollArea}  
         data={[...data].reverse()} 

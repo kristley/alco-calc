@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, TextInput} from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
 
 
 export default function BeverageVolumeInput(){
@@ -21,7 +20,6 @@ const styles = StyleSheet.create({
   textInput:{
     top: 0,
     left: 13,
-    fontFamily: "roboto-regular",
     color: "#121212",
     height: 27,
     width: 52

@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, TextInput} from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
 import BeverageNameInput from "./BeverageNameInput";
 import BeveragePercentageInput from "./BeveragePercentageInput";
 import BeverageVolumeInput from "./BeverageVolumeInput";

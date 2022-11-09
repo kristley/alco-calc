@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
         borderRadius: 10
       },
     add2: {
-        fontFamily: "roboto-regular",
         color: "#121212",
         marginTop: 5,
         marginLeft: 24
