@@ -36,11 +36,14 @@ const styles = StyleSheet.create({
     // position: "absolute",
     bottom: 0,
     right: 0,
-    backgroundColor: "#f55",
     flex: 1,
   },
   plusIcon: {
     color: "rgba(128,128,128,1)",
-    fontSize: 67,
+    fontSize: 80,
+    // move to bottom right of screen
+    position: "absolute", 
+    bottom: 20,
+    right: 20,
   },
 })
