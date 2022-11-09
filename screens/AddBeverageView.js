@@ -36,6 +36,4 @@ const styles = StyleSheet.create({
   prefabs:{
     flex: 1,
   }
-
- 
 });
