@@ -23,7 +23,7 @@ export default function BeverageInput(){
 
 const styles = StyleSheet.create({
     container: {
-        height:200,
+        paddingBottom: 50
     },
     beverageNameInput:{
         flex: 1,
@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
         height: 44,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
-        marginTop: 20,
-        justifyContent: "left"
    },
     beverageOthersInput:{
         flex: 1,
