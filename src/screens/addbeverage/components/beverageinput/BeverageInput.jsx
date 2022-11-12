@@ -28,21 +28,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignSelf: "center",
-        maxWidth: 500
+        maxWidth: 500,
         },
     beverageNameContainer:{
         flex: 1,
         borderRadius: 15,
         flexDirection: "row",
         maxWidth: 500,
-        alignSelf: "center",
         marginHorizontal: 20,
+        justifyContent: "center"
         },
     beverageNameInput:{
         height: 35,
         flex: 1,
-        backgroundColor: "#E6E6E6",
         borderRadius: 15,
+        alignSelf: "center"
     },
     beverageOthersContainer:{
         flex: 1,
