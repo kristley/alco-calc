@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E6E6E6",
     borderRadius: 15,
     flexDirection: "row",
-    marginLeft: 31
+
   },
   nameOfBeverageRow: {
     height: 24,

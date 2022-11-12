@@ -3,19 +3,20 @@ import {
   StyleSheet,
   View,
   Text,
-  Button
+  Button,
+  SafeAreaView
 } from "react-native";
 import BeverageInput from "./components/beverageinput/BeverageInput";
 import PrefabList from "./components/prefablist/PrefabList";
 
 export default function AddBeverageView(props) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Add beverage</Text>
-      <BeverageInput style={styles.beverageInput}></BeverageInput>
+      <BeverageInput navigation={props.navigation} style={styles.beverageInput}></BeverageInput>
       <PrefabList style={styles.prefabs}></PrefabList>
-      <Button title="Edit Prefab" />
-    </View>
+      <Button title="Edit Prefab"/>
+    </SafeAreaView>
   );
 }
 
@@ -23,10 +24,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 50,
-    marginTop: 100
-  },
-  header: {
-    textAlign: "center",
+    marginTop: 100,
+    },
+  header:{
+    textAlign : "center",
     fontSize: 30,
     flex: 1,
   },
@@ -35,5 +36,6 @@ const styles = StyleSheet.create({
   },
   prefabs: {
     flex: 2,
+    justifyContent:"space-around"
   }
 });
