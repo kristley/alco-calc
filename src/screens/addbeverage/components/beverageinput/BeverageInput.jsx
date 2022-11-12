@@ -5,12 +5,16 @@ import BeveragePercentageInput from "./BeveragePercentageInput";
 import BeverageVolumeInput from "./BeverageVolumeInput";
 import AddBeverageButton from "./AddBeverageButton";
 import BeverageUnitInput from "./BeverageUnitInput";
+import DisplayMode from "react-native/Libraries/ReactNative/DisplayMode";
+import { back } from "react-native/Libraries/Animated/Easing";
 
 export default function BeverageInput({navigation}){
     return (
       <View style={styles.container}>
-        <BeverageNameInput style={styles.beverageNameInput}></BeverageNameInput>
-        <View style={styles.beverageOthersInput}>
+        <View style={styles.beverageNameContainer}>
+            <BeverageNameInput style={styles.beverageNameInput}></BeverageNameInput>
+        </View>
+        <View style={styles.beverageOthersContainer}>
             <BeveragePercentageInput style={styles.beveragePercentageInput}></BeveragePercentageInput>
             <BeverageVolumeInput style={styles.beverageVolumeInput}></BeverageVolumeInput>
             <BeverageUnitInput style={styles.beverageUnitInput}></BeverageUnitInput>
@@ -22,38 +26,45 @@ export default function BeverageInput({navigation}){
 
 const styles = StyleSheet.create({
     container: {
-        paddingBottom: 50
-    },
-    beverageNameInput: {
         flex: 1,
-        width: 314,
-        height: 44,
+        alignSelf: "center",
+        maxWidth: 500
+        },
+    beverageNameContainer:{
+        flex: 1,
+        borderRadius: 15,
+        flexDirection: "row",
+        maxWidth: 500,
+        alignSelf: "center",
+        marginHorizontal: 20,
+        },
+    beverageNameInput:{
+        height: 35,
+        flex: 1,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
     },
-    beverageOthersInput: {
+    beverageOthersContainer:{
         flex: 1,
+        borderRadius: 15,
         flexDirection: "row",
-        padding: 15,
         marginHorizontal: 20,
         justifyContent: "space-between"
     },
-    beveragePercentageInput: {
+    beveragePercentageInput:{
         width: 53,
         height: 27,
         flex: 1,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
-        justifyContent: "space-between",
-        marginRight: 20,
-    },
-    beverageVolumeInput: {
+        padding: 20
+       },
+   beverageVolumeInput:{
         width: 53,
         height: 27,
         flex: 1,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
-        justifyContent: "space-between",
 
     },
     beverageUnitInput: {
