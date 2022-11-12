@@ -8,12 +8,12 @@ export default function TopBar(props) {
       <EntypoIcon
         name="chevron-thin-left"
         style={styles.arrow}
-      ></EntypoIcon>
+      />
       <Text style={styles.date}>Today</Text>
       <EntypoIcon
         name="chevron-thin-right"
         style={styles.arrow}
-      ></EntypoIcon>
+      />
     </View>
   );
 }

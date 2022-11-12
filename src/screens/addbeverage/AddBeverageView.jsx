@@ -5,8 +5,8 @@ import {
   Text,
   Button
 } from "react-native";
-import BeverageInput from "./components/BeverageInput";
-import PrefabList from "./components/PrefabList";
+import BeverageInput from "./components/beverageinput/BeverageInput";
+import PrefabList from "./components/prefablist/PrefabList";
 
 export default function AddBeverageView(props) {
   return (
