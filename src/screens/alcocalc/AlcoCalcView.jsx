@@ -15,8 +15,6 @@ export default function AlcoCalcView({ navigation }) {
 					title="Add beverage"
 					onPress={() => navigation.navigate("AddBeverageView")}
 				/>
-				{/* <FeatherIcon name="plus-circle" style={styles.plusIcon} />
-				</Button> */}
 			</View>
 		</SafeAreaView>
 	);
