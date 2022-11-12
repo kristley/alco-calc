@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   beverageInput: {
-    flex: 1,
+    flex: 1
   },
   prefabs: {
     flex: 2,

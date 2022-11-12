@@ -10,7 +10,7 @@ export default function BeverageNameInput() {
         <TextInput
           placeholder="Name of beverage"
           style={styles.nameOfBeverage}
-        ></TextInput>
+        />
         <View style={styles.ellipse} />
       </View>
     </View>

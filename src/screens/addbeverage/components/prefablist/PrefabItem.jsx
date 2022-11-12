@@ -1,17 +1,24 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 
 export default function PrefabItem({ item }) {
+
+  const addBeverage = () => {
+    Alert.alert("button pressed");
+  }
+
   return (
-    <View style={[styles.container, { borderColor: item.color }]}>
-      <View style={styles.nameContainer}>
-        <Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
+    <TouchableOpacity onPress={addBeverage}>
+      <View style={[styles.container, { borderColor: item.color }]}>
+        <View style={styles.nameContainer}>
+          <Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
+        </View>
+        <View style={styles.volumeAndPercentagecontainer}>
+          <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>{item.percentage}</Text>
+          <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>{item.volume}</Text>
+        </View>
       </View>
-      <View style={styles.volumeAndPercentagecontainer}>
-        <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>{item.percentage}</Text>
-        <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>{item.volume}</Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
