@@ -1,22 +1,19 @@
 import { View, StyleSheet, Button } from "react-native";
 import React from "react";
-import TopBar from "../components/TopBar";
-import DrinksList from "../components/DrinksList";
-import FeatherIcon from "react-native-vector-icons/Feather";
+import TopBar from "./components/TopBar";
+import DrinkList from "./components/DrinkList";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AlcoCalcView({ navigation }) {
 	return (
 		<SafeAreaView style={styles.container}>
 			<TopBar style={styles.topBar} />
-			<DrinksList style={styles.list} />
+			<DrinkList style={styles.list} />
 			<View style={styles.addBeverageButton}>
 				<Button
 					title="Add beverage"
 					onPress={() => navigation.navigate("AddBeverageView")}
 				/>
-					{/* <FeatherIcon name="plus-circle" style={styles.plusIcon} />
-				</Button> */}
 			</View>
 		</SafeAreaView>
 	);

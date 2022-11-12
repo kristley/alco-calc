@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-export default function BeverageListItem({item}) {
+export default function DrinkListItem({ item }) {
   return (
     <TouchableOpacity style={styles.container}>
       <Text style={[styles.cell, styles.time]}>{item.time}</Text>
@@ -9,18 +9,18 @@ export default function BeverageListItem({item}) {
       <Text style={styles.cell}>{item.volume}</Text>
       <Text style={styles.cell}>{item.percentage}</Text>
       <View style={styles.cell}>
-        <View style={[styles.circular, {backgroundColor:item.color}]}/>
+        <View style={[styles.circular, { backgroundColor: item.color }]} />
       </View>
     </TouchableOpacity >
   );
 }
-  
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#eee",
     padding: 15,
     borderRadius: 5,
-    marginVertical:5,
+    marginVertical: 5,
     textAlign: "center",
     alignItems: "center",
     flexDirection: "row",
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: '25%',
   },
   time: {
-    color : "#888",
+    color: "#888",
     fontSize: 12,
     width: '18%',
   },
