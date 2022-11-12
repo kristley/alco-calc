@@ -6,17 +6,17 @@ import BeverageVolumeInput from "./BeverageVolumeInput";
 import AddBeverageButton from "./AddBeverageButton";
 import BeverageUnitInput from "./BeverageUnitInput";
 
-export default function BeverageInput() {
+export default function BeverageInput({navigation}){
     return (
-        <View style={styles.container}>
-            <BeverageNameInput style={styles.beverageNameInput}></BeverageNameInput>
-            <View style={styles.beverageOthersInput}>
-                <BeveragePercentageInput style={styles.beveragePercentageInput}></BeveragePercentageInput>
-                <BeverageVolumeInput style={styles.beverageVolumeInput}></BeverageVolumeInput>
-                <BeverageUnitInput style={styles.beverageUnitInput}></BeverageUnitInput>
-                <AddBeverageButton style={styles.addBeverageButton}></AddBeverageButton>
-            </View>
+      <View style={styles.container}>
+        <BeverageNameInput style={styles.beverageNameInput}></BeverageNameInput>
+        <View style={styles.beverageOthersInput}>
+            <BeveragePercentageInput style={styles.beveragePercentageInput}></BeveragePercentageInput>
+            <BeverageVolumeInput style={styles.beverageVolumeInput}></BeverageVolumeInput>
+            <BeverageUnitInput style={styles.beverageUnitInput}></BeverageUnitInput>
+            <AddBeverageButton style={styles.addBeverageButton} navigation={navigation}></AddBeverageButton>
         </View>
+     </View>
     )
 }
 
