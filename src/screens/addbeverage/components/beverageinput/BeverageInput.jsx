@@ -73,7 +73,5 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         justifyContent: "space-between",
         paddingLeft: 50
-
     }
-
 });

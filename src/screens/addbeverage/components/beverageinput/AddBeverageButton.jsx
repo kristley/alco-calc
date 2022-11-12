@@ -1,13 +1,14 @@
 import React from "react";
 import { Text, StyleSheet, View, TextInpu, TouchableOpacity } from "react-native";
 import Svg, { Ellipse } from "react-native-svg";
+import { addPrefab } from "../../../../api/prefabs";
 
 
 export default function AddBeverageButton(props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => props.navigation.goBack()}
+        onPress={() => addPrefab()}
         style={styles.button}
       >
         <View style={styles.rect5}>

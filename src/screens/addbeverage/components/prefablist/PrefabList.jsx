@@ -1,8 +1,12 @@
 import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
+import { getPrefabs } from "../../../../api/prefabs";
 import PrefabItem from "./PrefabItem";
 
 export default function PrefabList(props) {
+
+  let data = getPrefabs();
+
   return (
     <View style={[styles.container, props.style]}>
       <FlatList
@@ -31,12 +35,3 @@ const styles = StyleSheet.create({
   },
 });
 
-const data = [
-  { id: 1, beverage: "Beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-  { id: 2, beverage: "Beer", volume: "0.3l", percentage: "4.7%", color: "#ee0" },
-  { id: 3, beverage: "Wine", volume: "2cl", percentage: "11.5%", color: "#7a121f" },
-  { id: 4, beverage: "Shot", volume: "0.5l", percentage: "4.7%", color: "#6635CE" },
-  { id: 5, beverage: "Cider", volume: "0.5l", percentage: "4.7%", color: "#127A6E" },
-  { id: 6, beverage: "Vodka Redbull", volume: "0.5l", percentage: "4.7%", color: "#DD72D9" },
-  { id: 7, beverage: "Vodka Redbull Redbull", volume: "0.5l", percentage: "4.7%", color: "#DD72D9" },
-];
