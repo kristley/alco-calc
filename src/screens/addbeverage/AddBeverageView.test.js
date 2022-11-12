@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import AddBeverageView from './AddBeverageView';
-import App from '../App';
+import App from '../../../App';
 
 describe('', () => {
   it('has 1 child', () => {

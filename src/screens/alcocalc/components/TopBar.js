@@ -3,18 +3,18 @@ import { StyleSheet, View, Text } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
 export default function TopBar(props) {
-  return(
-      <View style={styles.topBar}>
-        <EntypoIcon
-          name="chevron-thin-left"
-          style={styles.arrow}
-        ></EntypoIcon>
-        <Text style={styles.date}>Today</Text>
-        <EntypoIcon
-          name="chevron-thin-right"
-          style={styles.arrow}
-        ></EntypoIcon>
-      </View>
+  return (
+    <View style={styles.topBar}>
+      <EntypoIcon
+        name="chevron-thin-left"
+        style={styles.arrow}
+      ></EntypoIcon>
+      <Text style={styles.date}>Today</Text>
+      <EntypoIcon
+        name="chevron-thin-right"
+        style={styles.arrow}
+      ></EntypoIcon>
+    </View>
   );
 }
 
@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     borderRadius: 20,
   },
-  date:{
+  date: {
     // textAlign : "center",
     fontSize: 30,
-    
+
   },
   arrow: {
     color: "rgba(128,128,128,1)",
