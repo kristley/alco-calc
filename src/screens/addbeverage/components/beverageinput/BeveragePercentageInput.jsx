@@ -1,10 +1,30 @@
-import React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, TextInput, Text } from "react-native";
 
-export default function BeveragePercentageInput() {
+export default function BeveragePercentageInput({ displayedDrink, setDisplayedDrink }) {
+	const [percentage, setPercentage] = useState("");
+
+	const updatePercentage = (value) => {
+		if (value.indexOf('%') > -1) {
+			value = value.split('%').join('');
+			if (value > 100) {
+				value = 100;
+			}
+			setPercentage(value + '%');
+			return;
+		}
+		setPercentage(value.slice(0, -1) + '%');
+	}
+
 	return (
 		<View style={styles.container}>
-			<TextInput placeholder="0 %" style={styles.textInput}></TextInput>
+			<TextInput
+				style={styles.textInput}
+				placeholder="0 %"
+				value={percentage}
+				onChangeText={updatePercentage}
+				maxLength={5}
+			/>
 		</View>
 	);
 }

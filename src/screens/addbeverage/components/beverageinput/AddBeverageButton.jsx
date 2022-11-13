@@ -1,6 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View, TextInpu, TouchableOpacity } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { addPrefab } from "../../../../api/prefabs";
 
 
@@ -16,14 +15,10 @@ export default function AddBeverageButton(props) {
         </View>
       </TouchableOpacity>
     </View>
-
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
   button: {
     width: 80,
     height: 27,

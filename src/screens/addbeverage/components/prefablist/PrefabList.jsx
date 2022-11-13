@@ -1,20 +1,20 @@
 import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import { getPrefabs } from "../../../../api/prefabs";
 import PrefabItem from "./PrefabItem";
 
-export default function PrefabList(props) {
+export default function PrefabList({ setDisplayedDrink }) {
 
   let data = getPrefabs();
 
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container]}>
       <FlatList
         numColumns={3}
         alignItems="center"
         data={data}
         renderItem={({ item }) => (
-          <PrefabItem item={item} />
+          <PrefabItem item={item} setDisplayedDrink={setDisplayedDrink} />
         )}
       />
     </View>
@@ -23,6 +23,7 @@ export default function PrefabList(props) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 2,
     justifyContent: "space-between",
     alignItems: "center",
     padding: 20,

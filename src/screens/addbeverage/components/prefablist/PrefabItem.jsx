@@ -1,14 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 
-export default function PrefabItem({ item }) {
-
-  const addBeverage = () => {
-    Alert.alert("button pressed");
-  }
+export default function PrefabItem({ setDisplayedDrink, item }) {
 
   return (
-    <TouchableOpacity onPress={addBeverage}>
+    <TouchableOpacity onPress={() => { setDisplayedDrink(item) }}>
       <View style={[styles.container, { borderColor: item.color }]}>
         <View style={styles.nameContainer}>
           <Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>

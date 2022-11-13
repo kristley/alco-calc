@@ -1,17 +1,33 @@
-import React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, TextInput, Alert } from "react-native";
+
+export default function BeverageNameInput({ displayedDrink, setDisplayedDrink }) {
+
+  const [name, setName] = useState("");
+
+  const updateName = (value) => {
+    setName(value);
+    const newDrink = {};
+    Object.assign(newDrink, displayedDrink);
+    newDrink.beverage = value;
+    setDisplayedDrink(newDrink);
+  }
+
+  useEffect(() => {
+    setName(displayedDrink.beverage)
+  }, [displayedDrink])
 
 
-export default function BeverageNameInput() {
   return (
     <View style={styles.beverageInputRectangle}>
       <View style={styles.nameOfBeverageRow}>
         <TextInput
           placeholder="Name of beverage"
           style={styles.nameOfBeverage}
+          value={name}
+          onChangeText={updateName}
         />
-        <View style={styles.ellipse} />
+        <View style={[styles.ellipse, { backgroundColor: displayedDrink.color }]} />
       </View>
     </View>
   )

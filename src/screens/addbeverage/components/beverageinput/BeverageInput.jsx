@@ -6,15 +6,40 @@ import BeverageVolumeInput from "./BeverageVolumeInput";
 import AddBeverageButton from "./AddBeverageButton";
 import BeverageUnitInput from "./BeverageUnitInput";
 
-export default function BeverageInput() {
+export default function BeverageInput({ displayedDrink, setDisplayedDrink }) {
     return (
         <View style={styles.container}>
-            <BeverageNameInput style={styles.beverageNameInput}></BeverageNameInput>
+
+            <BeverageNameInput
+                style={styles.beverageNameInput}
+                displayedDrink={displayedDrink}
+                setDisplayedDrink={setDisplayedDrink}
+            />
+
             <View style={styles.beverageOthersInput}>
-                <BeveragePercentageInput style={styles.beveragePercentageInput}></BeveragePercentageInput>
-                <BeverageVolumeInput style={styles.beverageVolumeInput}></BeverageVolumeInput>
-                <BeverageUnitInput style={styles.beverageUnitInput}></BeverageUnitInput>
-                <AddBeverageButton style={styles.addBeverageButton}></AddBeverageButton>
+
+                <BeveragePercentageInput
+                    style={styles.beveragePercentageInput}
+                    displayedDrink={displayedDrink}
+                    setDisplayedDrink={setDisplayedDrink}
+                />
+
+                <BeverageVolumeInput
+                    style={styles.beverageVolumeInput}
+                    displayedDrink={displayedDrink}
+                    setDisplayedDrink={setDisplayedDrink}
+                />
+
+                <BeverageUnitInput
+                    style={styles.beverageUnitInput}
+                    displayedDrink={displayedDrink}
+                    setDisplayedDrink={setDisplayedDrink}
+                />
+
+                <AddBeverageButton
+                    style={styles.addBeverageButton}
+                    displayedDrink={displayedDrink}
+                />
             </View>
         </View>
     )
