@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 50,
-    marginTop: 100
-  },
-  header: {
-    textAlign: "center",
+    marginTop: 100,
+    },
+  header:{
+    textAlign : "center",
     fontSize: 30,
     flex: 1,
   },
