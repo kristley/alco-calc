@@ -25,11 +25,16 @@ export default function AddBeverageButton({ displayedDrink, navigation }) {
         onPress={addBeverage}
         style={styles.button}
       >
-        <View style={styles.rect5}>
-          {completeDrink ?
-            <Text style={styles.add2}>Add +</Text> :
-            <Text style={styles.add2}>Add +++</Text>}
-        </View>
+        {
+          completeDrink ?
+            <View style={styles.rect5}>
+              <Text style={styles.add2}>Add +</Text>
+            </View> :
+            <View style={styles.rect6}>
+              <Text style={styles.add2}>Add +</Text>
+            </View>
+        }
+
       </TouchableOpacity>
     </View>
   )
@@ -43,12 +48,18 @@ const styles = StyleSheet.create({
   rect5: {
     width: 80,
     height: 27,
-    backgroundColor: "rgba(190,89,163,1)",
+    backgroundColor: "rgba(190,89,163, 1)",
+    borderRadius: 10
+  },
+  rect6: {
+    width: 80,
+    height: 27,
+    backgroundColor: "rgba(145, 145, 145, 1)",
     borderRadius: 10
   },
   add2: {
     color: "#121212",
     marginTop: 5,
     marginLeft: 24
-  },
+  }
 });
