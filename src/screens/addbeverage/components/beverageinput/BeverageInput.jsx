@@ -10,13 +10,15 @@ export default function BeverageInput({ displayedDrink, setDisplayedDrink, navig
     return (
         <View style={styles.container}>
 
-            <BeverageNameInput
-                style={styles.beverageNameInput}
-                displayedDrink={displayedDrink}
-                setDisplayedDrink={setDisplayedDrink}
-            />
+            <View style={styles.beverageNameContainer}>
+                <BeverageNameInput
+                    style={styles.beverageNameInput}
+                    displayedDrink={displayedDrink}
+                    setDisplayedDrink={setDisplayedDrink}
+                />
+            </View>
 
-            <View style={styles.beverageOthersInput}>
+            <View style={styles.beverageOthersContainer}>
 
                 <BeveragePercentageInput
                     style={styles.beveragePercentageInput}
