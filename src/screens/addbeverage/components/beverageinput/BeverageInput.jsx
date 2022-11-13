@@ -10,15 +10,13 @@ export default function BeverageInput({ displayedDrink, setDisplayedDrink, navig
     return (
         <View style={styles.container}>
 
-            <View style={styles.beverageNameContainer}>
-                <BeverageNameInput
-                    style={styles.beverageNameInput}
-                    displayedDrink={displayedDrink}
-                    setDisplayedDrink={setDisplayedDrink}
-                />
-            </View>
+            <BeverageNameInput
+                style={styles.beverageNameInput}
+                displayedDrink={displayedDrink}
+                setDisplayedDrink={setDisplayedDrink}
+            />
 
-            <View style={styles.beverageOthersContainer}>
+            <View style={styles.beverageOthersInput}>
 
                 <BeveragePercentageInput
                     style={styles.beveragePercentageInput}
@@ -49,28 +47,19 @@ export default function BeverageInput({ displayedDrink, setDisplayedDrink, navig
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignSelf: "center",
-        maxWidth: 500,
-    },
-    beverageNameContainer: {
-        flex: 1,
-        borderRadius: 15,
-        flexDirection: "row",
-        maxWidth: 500,
-        marginHorizontal: 20,
-        justifyContent: "center"
+        paddingBottom: 50
     },
     beverageNameInput: {
-        height: 35,
         flex: 1,
+        width: 314,
+        height: 44,
+        backgroundColor: "#E6E6E6",
         borderRadius: 15,
-        alignSelf: "center"
     },
-    beverageOthersContainer: {
+    beverageOthersInput: {
         flex: 1,
-        borderRadius: 15,
         flexDirection: "row",
+        padding: 15,
         marginHorizontal: 20,
         justifyContent: "space-between"
     },
@@ -80,7 +69,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
-        padding: 20
+        justifyContent: "space-between",
+        marginRight: 20,
     },
     beverageVolumeInput: {
         width: 53,
@@ -88,6 +78,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#E6E6E6",
         borderRadius: 15,
+        justifyContent: "space-between",
 
     },
     beverageUnitInput: {
