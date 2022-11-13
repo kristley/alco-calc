@@ -1,28 +1,46 @@
-import React from "react";
-import { Text, StyleSheet, View, TextInpu, TouchableOpacity } from "react-native";
-import Svg, { Ellipse } from "react-native-svg";
+import React, { useEffect, useState } from "react";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { addDrink2 } from "../../../../api/drinks";
+
+export default function AddBeverageButton({ displayedDrink, navigation }) {
+
+  const [completeDrink, setCompleteDrink] = useState(false);
+
+  const addBeverage = () => {
+    if (!completeDrink) {
+      return;
+    }
+    addDrink2(displayedDrink);
+    navigation.navigate("AlcoCalcView", { 'paramPropKey': 'paramPropValue' });
+  }
+
+  useEffect(() => {
+    setCompleteDrink(!Object.values(displayedDrink).some(x => x === ''));
+  }, [displayedDrink])
 
 
-export default function AddBeverageButton(props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => props.navigation.goBack()}
+        onPress={addBeverage}
         style={styles.button}
       >
-        <View style={styles.rect5}>
-          <Text style={styles.add2}>Add +</Text>
-        </View>
+        {
+          completeDrink ?
+            <View style={styles.rect5}>
+              <Text style={styles.add2}>Add +</Text>
+            </View> :
+            <View style={styles.rect6}>
+              <Text style={styles.add2}>Add +</Text>
+            </View>
+        }
+
       </TouchableOpacity>
     </View>
-
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
   button: {
     width: 80,
     height: 27,
@@ -30,12 +48,18 @@ const styles = StyleSheet.create({
   rect5: {
     width: 80,
     height: 27,
-    backgroundColor: "rgba(190,89,163,1)",
+    backgroundColor: "rgba(190,89,163, 1)",
+    borderRadius: 10
+  },
+  rect6: {
+    width: 80,
+    height: 27,
+    backgroundColor: "rgba(145, 145, 145, 1)",
     borderRadius: 10
   },
   add2: {
     color: "#121212",
     marginTop: 5,
     marginLeft: 24
-  },
+  }
 });

@@ -1,14 +1,22 @@
 import { View, StyleSheet, Button } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { getDrinks } from "../../api/drinks";
 
-export default function AlcoCalcView({ navigation }) {
+export default function AlcoCalcView({ navigation, route }) {
+
+	const [drinks, setDrinks] = useState([]);
+
+	useEffect(() => {
+		setDrinks(getDrinks("20220423"));
+	}, [route])
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<TopBar style={styles.topBar} />
-			<DrinkList style={styles.list} />
+			<DrinkList style={styles.list} drinks={drinks} />
 			<View style={styles.addBeverageButton}>
 				<Button
 					title="Add beverage"
