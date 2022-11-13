@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
-import { addPrefab } from "../../../../api/prefabs";
+import { addDrink2 } from "../../../../api/drinks";
+
+export default function AddBeverageButton({ displayedDrink, navigation }) {
+
+  const [completeDrink, setCompleteDrink] = useState(false);
+
+  const addBeverage = () => {
+    if (!completeDrink) {
+      return;
+    }
+    addDrink2(displayedDrink);
+    navigation.navigate("AlcoCalcView", { 'paramPropKey': 'paramPropValue' });
+  }
+
+  useEffect(() => {
+    setCompleteDrink(!Object.values(displayedDrink).some(x => x === ''));
+  }, [displayedDrink])
 
 
-export default function AddBeverageButton(props) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => addPrefab()}
+        onPress={addBeverage}
         style={styles.button}
       >
         <View style={styles.rect5}>
-          <Text style={styles.add2}>Add +</Text>
+          {completeDrink ?
+            <Text style={styles.add2}>Add +</Text> :
+            <Text style={styles.add2}>Add +++</Text>}
         </View>
       </TouchableOpacity>
     </View>

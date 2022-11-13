@@ -1,17 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
-import { getDrinks } from "../../../api/drinks";
+import { StyleSheet, View, FlatList } from "react-native";
 import DrinkListItem from "./DrinkListItem";
 
-export default function DrinkList(props) {
-
-  const data = getDrinks("20220428");
+export default function DrinkList({ style, drinks }) {
 
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container, style]}>
       <FlatList
         style={styles.scrollArea}
-        data={[...data].reverse()}
+        data={[...drinks].reverse()}
         inverted={true}
         renderItem={({ item }) => (
           <DrinkListItem item={item} />

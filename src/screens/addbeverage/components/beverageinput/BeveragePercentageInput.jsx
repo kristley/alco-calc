@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput, Text } from "react-native";
 
 export default function BeveragePercentageInput({ displayedDrink, setDisplayedDrink }) {
 	const [percentage, setPercentage] = useState("");
 
 	const updatePercentage = (value) => {
-		if (value.indexOf('%') > -1) {
-			value = value.split('%').join('');
-			if (value > 100) {
-				value = 100;
-			}
-			setPercentage(value + '%');
-			return;
-		}
-		setPercentage(value.slice(0, -1) + '%');
+		setPercentage(value);
+		const newDrink = {};
+		Object.assign(newDrink, displayedDrink);
+		newDrink.percentage = value;
+		setDisplayedDrink(newDrink);
 	}
+
+	useEffect(() => {
+		setPercentage(displayedDrink.percentage)
+	}, [displayedDrink])
 
 	return (
 		<View style={styles.container}>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		flexDirection: "row",
 		textAlignVertical: "center"
-		},
+	},
 	textInput: {
 		top: 0,
 		left: 13,
@@ -47,11 +47,9 @@ const styles = StyleSheet.create({
 		width: 52,
 		flex: 2
 	},
-	percentage:{
+	percentage: {
 		color: "#121212",
 		flex: 1,
 		textAlignVertical: "center",
-		top: 5
-
 	}
 });

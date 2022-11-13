@@ -3,15 +3,22 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 
 export default function PrefabItem({ setDisplayedDrink, item }) {
 
+  const updateDisplayedDrink = () => {
+    const newDrink = {};
+    Object.assign(newDrink, item);
+    delete newDrink.id;
+    setDisplayedDrink(newDrink)
+  }
+
   return (
-    <TouchableOpacity onPress={() => { setDisplayedDrink(item) }}>
+    <TouchableOpacity onPress={updateDisplayedDrink}>
       <View style={[styles.container, { borderColor: item.color }]}>
         <View style={styles.nameContainer}>
           <Text style={styles.beverageName} adjustsFontSizeToFit={true}>{item.beverage}</Text>
         </View>
         <View style={styles.volumeAndPercentagecontainer}>
-          <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>{item.percentage}</Text>
-          <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>{item.volume}</Text>
+          <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>{item.percentage + '%'}</Text>
+          <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>{item.volume + item.unit}</Text>
         </View>
       </View>
     </TouchableOpacity>

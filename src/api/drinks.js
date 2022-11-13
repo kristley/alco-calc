@@ -1,3 +1,48 @@
+//A way of getting the previous and next days recorded
+let dates = [];
+let index = 0;
+
+const data = {
+    "20220423": [
+        { time: "00:30", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
+        { time: "17:14", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "17:00", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "17:49", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "17:14", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" }
+    ],
+    "20220428": [
+        { time: "01:23", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
+        { time: "01:44", beverage: "shot", volume: "4.0", unit: "cl", percentage: "40.0", color: "#6635ce" },
+        { time: "01:45", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "03:06", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "12:30", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "12:30", beverage: "shot", volume: "4.0", unit: "l", percentage: "40.0", color: "#6635ce" },
+        { time: "12:35", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
+        { time: "12:55", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "16:35", beverage: "beer", volume: "0.3", unit: "l", percentage: "4.7", color: "#d9cf34" },
+        { time: "16:35", beverage: "shot", volume: "4.0", unit: "cl", percentage: "21.5", color: "#dd72d9" },
+        { time: "17:28", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "18:10", beverage: "beer", volume: "0.3", unit: "l", percentage: "4.7", color: "#d9cf34" },
+        { time: "18:22", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
+        { time: "19:16", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
+        { time: "23:59", beverage: "cider", volume: "0.5", unit: "l", percentage: "4.7", color: "#127a6e" }
+    ],
+    "20220501": [
+        { time: "01:08", beverage: "beer", volume: "0.3", unit: "l", percentage: "4.7", color: "#d9cf34" },
+        { time: "01:08", beverage: "beer", volume: "0.3", unit: "l", percentage: "4.7", color: "#d9cf34" },
+        { time: "01:28", beverage: "shot", volume: "4.0", unit: "cl", percentage: "40.0", color: "#6635ce" },
+        { time: "22:18", beverage: "wine", volume: "2.0", unit: "l", percentage: "11.5", color: "#7a121f" }
+    ]
+}
+
+const getIndexes = () => {
+    const keys = Object.keys(data);
+    dates = keys.sort();
+    index = dates.length - 1;
+}
+
+getIndexes();
+
 
 /**
  * Gets the list of drinks corresponding to the date, if it exists
@@ -18,12 +63,12 @@ export const getDrinks = (date) => {
  * @returns null
  */
 export const createDay = (date, drink) => {
-    if (indexes.contains(date)) {
+    if (dates.contains(date)) {
         return;
     }
 
     data[date] = [drink];
-    getIndexes()
+    getIndexes();
 }
 
 
@@ -35,11 +80,16 @@ export const createDay = (date, drink) => {
  * @returns null
  */
 export const addDrink = (date, drink) => {
-    if (!indexes.contains(date)) {
+    if (!dates.contains(date)) {
         return;
     }
 
     data[date].push(drink);
+}
+
+export const addDrink2 = (drink) => {
+    drink.time = "16:57";
+    data[20220423].push(drink);
 }
 
 
@@ -71,47 +121,3 @@ export const removeDrink = (date, drink) => {
 export const deleteDay = (date) => {
     delete data[date];
 }
-
-
-const data = {
-    "20220423": [
-        { time: "00:30", beverage: "wine", volume: "2.0dl", percentage: "11.5%", color: "#7a121f" },
-        { time: "17:14", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "17:00", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "17:49", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "17:14", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" }
-    ],
-    "20220428": [
-        { time: "01:23", beverage: "wine", volume: "2.0dl", percentage: "11.5%", color: "#7a121f" },
-        { time: "01:44", beverage: "shot", volume: "4.0cl", percentage: "40.0%", color: "#6635ce" },
-        { time: "01:45", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "03:06", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "12:30", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "12:30", beverage: "shot", volume: "4.0cl", percentage: "40.0%", color: "#6635ce" },
-        { time: "12:35", beverage: "wine", volume: "2.0dl", percentage: "11.5%", color: "#7a121f" },
-        { time: "12:55", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "16:35", beverage: "beer", volume: "0.3l", percentage: "4.7%", color: "#d9cf34" },
-        { time: "16:35", beverage: "shot", volume: "4.0cl", percentage: "21.5", color: "#dd72d9" },
-        { time: "17:28", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "18:10", beverage: "beer", volume: "0.3l", percentage: "4.7%", color: "#d9cf34" },
-        { time: "18:22", beverage: "beer", volume: "0.5l", percentage: "4.7%", color: "#E8AA32" },
-        { time: "19:16", beverage: "wine", volume: "2.0dl", percentage: "11.5%", color: "#7a121f" },
-        { time: "23:59", beverage: "cider", volume: "0.5l", percentage: "4.7%", color: "#127a6e" }
-    ],
-    "20220501": [
-        { time: "01:08", beverage: "beer", volume: "0.3l", percentage: "4.7%", color: "#d9cf34" },
-        { time: "01:08", beverage: "beer", volume: "0.3l", percentage: "4.7%", color: "#d9cf34" },
-        { time: "01:28", beverage: "shot", volume: "4.0cl", percentage: "40.0%", color: "#6635ce" },
-        { time: "22:18", beverage: "wine", volume: "2.0dl", percentage: "11.5%", color: "#7a121f" }
-    ]
-}
-
-//A way of getting the previous and next days recorded
-let indexes = [];
-
-const getIndexes = () => {
-    const keys = Object.keys(data);
-    indexes = keys.sort();
-}
-
-getIndexes();
