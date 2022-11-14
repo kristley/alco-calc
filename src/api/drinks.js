@@ -51,6 +51,12 @@ getIndexes();
  * @returns A list of drinks
  */
 export const getDrinks = (date) => {
+    fetch("http://127.0.0.1:3000/drink", {
+        method: "GET",
+    headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    }});
     return data[date];
 }
 
