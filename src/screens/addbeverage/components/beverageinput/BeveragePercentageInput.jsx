@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput, Text } from "react-native";
 
-export default function BeveragePercentageInput({ displayedDrink, setDisplayedDrink }) {
+export default function BeveragePercentageInput({ displayedDrink, setDisplayedDrink, style}) {
 	const [percentage, setPercentage] = useState("");
 
 	const updatePercentage = (value) => {
@@ -17,7 +17,7 @@ export default function BeveragePercentageInput({ displayedDrink, setDisplayedDr
 	}, [displayedDrink])
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, style]}>
 			<TextInput
 				style={styles.textInput}
 				placeholder="0"
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 		left: 13,
 		color: "#121212",
 		height: 27,
-		width: 52,
 		flex: 2
 	},
 	percentage: {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, TextInput, Alert } from "react-native";
 
-export default function BeverageNameInput({ displayedDrink, setDisplayedDrink }) {
+export default function BeverageNameInput({ displayedDrink, setDisplayedDrink , style}) {
 
   const [name, setName] = useState("");
 
@@ -19,7 +19,7 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
 
 
   return (
-    <View style={styles.beverageInputRectangle}>
+    <View style={[styles.beverageInputRectangle, style]}>
       <View style={styles.nameOfBeverageRow}>
         <TextInput
           placeholder="Name of beverage"
@@ -27,7 +27,6 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
           value={name}
           onChangeText={updateName}
         />
-        {/* <View style={[styles.ellipse, { backgroundColor: displayedDrink.color }]} /> */}
       </View>
     </View>
   )
@@ -35,7 +34,6 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
 
 const styles = StyleSheet.create({
   beverageInputRectangle: {
-    width: 280,
     height: 44,
     backgroundColor: "#E6E6E6",
     borderRadius: 15,

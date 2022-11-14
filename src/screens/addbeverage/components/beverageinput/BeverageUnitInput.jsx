@@ -5,7 +5,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 export default function BeverageUnitInput(){
 const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('cl');
   const [items, setItems] = useState([
     {label: 'cl', value: 'cl'},
     {label: 'dl', value: 'dl'},
@@ -22,6 +22,7 @@ const [open, setOpen] = useState(false);
       setItems={setItems}
       style={styles.container}
       dropDownContainerStyle={styles.container}
+      
     />
   );
 }

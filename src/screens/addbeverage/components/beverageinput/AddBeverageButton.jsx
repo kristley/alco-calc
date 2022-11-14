@@ -20,44 +20,37 @@ export default function AddBeverageButton({ displayedDrink, navigation }) {
 
 
   return (
-    <View style={styles.container}>
       <TouchableOpacity
         onPress={addBeverage}
         style={styles.button}
       >
         {
           completeDrink ?
-            <View style={styles.rect5}>
-              <Text style={styles.add2}>Add +</Text>
+            <View style={[styles.completeView, {backgroundColor: "rgba(190,89,163, 1)"}]}>
+              <Text style={styles.add}>Add +</Text>
             </View> :
-            <View style={styles.rect6}>
-              <Text style={styles.add2}>Add +</Text>
+            <View style={[styles.completeView, {backgroundColor: "rgba(145, 145, 145, 1)"}]}>
+    
+              <Text style={styles.add}>Add +</Text>
             </View>
         }
 
       </TouchableOpacity>
-    </View>
   )
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: 80,
+    width: 40,
     height: 27,
+    backgroundColor: "#f00",
   },
-  rect5: {
-    width: 80,
+  completeView: {
+    width: 40,
     height: 27,
-    backgroundColor: "rgba(190,89,163, 1)",
     borderRadius: 10
   },
-  rect6: {
-    width: 80,
-    height: 27,
-    backgroundColor: "rgba(145, 145, 145, 1)",
-    borderRadius: 10
-  },
-  add2: {
+  add: {
     color: "#121212",
     marginTop: 5,
     marginLeft: 24

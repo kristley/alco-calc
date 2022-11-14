@@ -14,7 +14,7 @@ export default function BeverageInput({
 }) {
 	return (
 		<View style={styles.container}>
-			<View style={{ flexDirection: "row" }}>
+			<View style={{ flexDirection: "row", alignItems: "center"}}>
 				<BeverageNameInput
 					style={styles.beverageNameInput}
 					displayedDrink={displayedDrink}
@@ -43,7 +43,6 @@ export default function BeverageInput({
 				/>
 
 				<AddBeverageButton
-					style={styles.addBeverageButton}
 					displayedDrink={displayedDrink}
 					navigation={navigation}
 				/>
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 	},
 	beverageNameInput: {
-		flex: 6,
+		width: 250,
 		height: 44,
 		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
@@ -71,14 +70,11 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: "row",
 		justifyContent: "space-between",
+		backgroundColor: "#00ff00",
 	},
 	beverageInput: {
-		flex: 2,
 		height: 27,
 		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
 	},
-	addBeverageButton: {
-		flex: 3,
-	}
 });
