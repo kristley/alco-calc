@@ -26,6 +26,7 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
           style={styles.nameOfBeverage}
           value={name}
           onChangeText={updateName}
+          maxLength={25}
         />
         <View style={[styles.ellipse, { backgroundColor: displayedDrink.color }]} />
       </View>
