@@ -31,7 +31,7 @@ export default function AddBeverageButton({ displayedDrink, navigation }) {
               <Text style={styles.add2}>Add +</Text>
             </View> :
             <View style={styles.rect6}>
-              <Text style={styles.add2}>Add +</Text>
+              <Text style={styles.add3}>Add +</Text>
             </View>
         }
 
@@ -54,11 +54,16 @@ const styles = StyleSheet.create({
   rect6: {
     width: 80,
     height: 27,
-    backgroundColor: "rgba(145, 145, 145, 1)",
+    backgroundColor: "rgba(190, 89, 163, 0.2)",
     borderRadius: 10
   },
   add2: {
-    color: "#121212",
+    color: "#rgba(18, 18, 18, 1)",
+    marginTop: 5,
+    marginLeft: 24
+  },
+  add3: {
+    color: "#rgba(18, 18, 18, 0.2)",
     marginTop: 5,
     marginLeft: 24
   }
