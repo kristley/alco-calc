@@ -34,7 +34,6 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink 
 const styles = StyleSheet.create({
 	container: {
 		width: 60,
-		height: 27,
 		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
 		flexDirection: "row",

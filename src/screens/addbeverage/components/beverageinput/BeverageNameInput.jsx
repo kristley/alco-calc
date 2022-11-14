@@ -27,7 +27,7 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
           value={name}
           onChangeText={updateName}
         />
-        <View style={[styles.ellipse, { backgroundColor: displayedDrink.color }]} />
+        {/* <View style={[styles.ellipse, { backgroundColor: displayedDrink.color }]} /> */}
       </View>
     </View>
   )
@@ -35,7 +35,7 @@ export default function BeverageNameInput({ displayedDrink, setDisplayedDrink })
 
 const styles = StyleSheet.create({
   beverageInputRectangle: {
-    width: 314,
+    width: 280,
     height: 44,
     backgroundColor: "#E6E6E6",
     borderRadius: 15,

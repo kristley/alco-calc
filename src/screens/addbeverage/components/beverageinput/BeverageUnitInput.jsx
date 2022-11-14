@@ -1,24 +1,36 @@
-import React from "react";
-import { StyleSheet, View} from "react-native";
+import React, {useState} from "react";
+import { StyleSheet } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 
 
 export default function BeverageUnitInput(){
-    return (
-        <View style={styles.container}>
-             <View style={styles.dropDownPlaceholder}/>
-        </View>
-    )
+const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'cl', value: 'cl'},
+    {label: 'dl', value: 'dl'},
+    {label: 'l', value: 'l'},
+  ]);
+
+  return (
+    <DropDownPicker
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setItems}
+      style={styles.container}
+      dropDownContainerStyle={styles.container}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
   container:{
-  },
-  dropDownPlaceholder: {
-    width: 55,
-    height: 27,
+    width: 70,
+    borderRadius: 15,
+    borderWidth: 0,
     backgroundColor: "#E6E6E6",
-    marginLeft: 1,
-    marginTop: 1
-  }
+  },
 });
-    
