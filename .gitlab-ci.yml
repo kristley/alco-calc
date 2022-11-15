@@ -1,9 +1,9 @@
 build project:
   stage: build
   script:
-    - npm install
-    - npm test
-    - npm build
+    - yarn install
+    - yarn test
+    - yarn build
 
 test-job1:
   stage: test
