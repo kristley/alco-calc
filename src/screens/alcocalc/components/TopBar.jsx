@@ -4,6 +4,10 @@ import ArrowButton from "./ArrowButton";
 
 export default function TopBar({ displayedDate, setDisplayedDate, today }) {
 
+  const toReadableDate = (date) => {
+    return new Date(date.substring(0, 4), date.substring(5, 6) - 1, date.substring(7, 8)).toDateString()
+  }
+
   return (
     <View style={styles.topBar}>
       <ArrowButton
@@ -18,7 +22,7 @@ export default function TopBar({ displayedDate, setDisplayedDate, today }) {
         {
           displayedDate == today ?
             "Today" :
-            displayedDate
+            toReadableDate(displayedDate)
         }
       </Text>
 
