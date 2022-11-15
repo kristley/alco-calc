@@ -1,9 +1,10 @@
 //A way of getting the previous and next days recorded
 let dates = [];
 let index = 0;
+let url = "http://localhost:3000"
 
 const data = {
-    "20220423": [
+    "20221115": [
         { time: "00:30", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
         { time: "17:14", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
         { time: "17:00", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
@@ -45,19 +46,75 @@ getIndexes();
 
 
 /**
- * Gets the list of drinks corresponding to the date, if it exists
+ * Gets the list of drinks corresponding to the date
  * 
  * @param {String} date 
- * @returns A list of drinks
+ * @returns A list of drinks, empty list if no drinks
  */
 export const getDrinks = (date) => {
-    fetch("http://127.0.0.1:3000/drink", {
+    yearString = date.slice(0, 4)
+    monthString = date.slice(4, 6)
+    dayOfMonthString = date.slice(6,8)
+    const api_url = url + "/night/" + yearString + "/" + monthString + "/" + dayOfMonthString
+    const response = fetch(api_url, {
         method: "GET",
     headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"
-    }});
+    }}).then((response) => response.json());
+    console.log(response)
+    return response;
+    //return data[date];
+}
+
+//temp function get all drinks
+export const getAllDrinks = () => {
+    const response = fetch(url + "/drink/", {
+        method: "GET",
+    headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    }}).then((response) => response.json()).then((data) => console.log(data));
+    console.log(response)
+    console.log(data[date])
     return data[date];
+}
+
+/**
+ * Creates a new day using the provided date
+ * 
+ * @param {String} date 
+ * @returns Day object
+ */
+ const createDayHelper = (date) => {
+    yearString = date.slice(0, 4)
+    monthString = date.slice(4, 6)
+    dayOfMonthString = date.slice(6,8)
+    api_url = url + "/night/" + yearString + "/" + monthString + "/" + dayOfMonthString
+    const response = fetch(api_url, {
+        method: "POST",
+    headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    }}).then((response) => response.json());
+    console.log(response)
+    return response
+}
+
+/**
+ * Adds a drink to the selected date, if the date exists.
+ * 
+ * @param {String} date 
+ * @param {Object} drink 
+ * @returns null
+ */
+export const addDrink = (date, drink) => {
+    
+    if (!dates.contains(date)) {
+        return;
+    }
+
+    data[date].push(drink);
 }
 
 
@@ -69,6 +126,7 @@ export const getDrinks = (date) => {
  * @returns null
  */
 export const createDay = (date, drink) => {
+    
     if (dates.contains(date)) {
         return;
     }
@@ -77,25 +135,10 @@ export const createDay = (date, drink) => {
     getIndexes();
 }
 
-
-/**
- * Adds a drink to the selected date, if the date exists.
- * 
- * @param {String} date 
- * @param {Object} drink 
- * @returns null
- */
-export const addDrink = (date, drink) => {
-    if (!dates.contains(date)) {
-        return;
-    }
-
-    data[date].push(drink);
-}
-
 export const addDrink2 = (drink) => {
+    
     drink.time = "16:57";
-    data[20220423].push(drink);
+    data[20221115].push(drink);
 }
 
 

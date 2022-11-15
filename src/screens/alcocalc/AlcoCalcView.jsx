@@ -10,7 +10,7 @@ export default function AlcoCalcView({ navigation, route }) {
 	const [drinks, setDrinks] = useState([]);
 
 	useEffect(() => {
-		setDrinks(getDrinks("20220423"));
+		setDrinks(getDrinks("20221115"));
 	}, [route])
 
 	return (
