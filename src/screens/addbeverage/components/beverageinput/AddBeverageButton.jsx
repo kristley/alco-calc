@@ -2,57 +2,45 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { addDrink2 } from "../../../../api/drinks";
 
-export default function AddBeverageButton({ displayedDrink, navigation }) {
+export default function AddBeverageButton({ displayedDrink, navigation, style }) {
+	const [completeDrink, setCompleteDrink] = useState(false);
 
-  const [completeDrink, setCompleteDrink] = useState(false);
+	const addBeverage = () => {
+		if (!completeDrink) {
+			return;
+		}
+		addDrink2(displayedDrink);
+		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
+	};
 
-  const addBeverage = () => {
-    if (!completeDrink) {
-      return;
-    }
-    addDrink2(displayedDrink);
-    navigation.navigate("AlcoCalcView", { 'paramPropKey': 'paramPropValue' });
-  }
+	useEffect(() => {
+		setCompleteDrink(!Object.values(displayedDrink).some((x) => x === ""));
+	}, [displayedDrink]);
 
-  useEffect(() => {
-    setCompleteDrink(!Object.values(displayedDrink).some(x => x === ''));
-  }, [displayedDrink])
-
-
-  return (
-      <TouchableOpacity
-        onPress={addBeverage}
-        style={styles.button}
-      >
-        {
-          completeDrink ?
-            <View style={[styles.completeView, {backgroundColor: "rgba(190,89,163, 1)"}]}>
-              <Text style={styles.add}>Add +</Text>
-            </View> :
-            <View style={[styles.completeView, {backgroundColor: "rgba(145, 145, 145, 1)"}]}>
-    
-              <Text style={styles.add}>Add +</Text>
-            </View>
-        }
-
-      </TouchableOpacity>
-  )
+	return (
+		<TouchableOpacity
+			onPress={addBeverage}
+			style={[style, styles.container, {...(completeDrink ? styles.completeDrink : styles.incompleteDrink)}]}
+      disabled={!completeDrink}
+		>
+			<Text style={styles.add}>Add +</Text>
+		</TouchableOpacity>
+	);
 }
 
 const styles = StyleSheet.create({
-  button: {
-    width: 40,
-    height: 27,
-    backgroundColor: "#f00",
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  completeView: {
-    width: 40,
-    height: 27,
-    borderRadius: 10
+	add: {
+		color: "#fff",
+	},
+  completeDrink: {
+    backgroundColor: "#8d1e4d",
   },
-  add: {
-    color: "#121212",
-    marginTop: 5,
-    marginLeft: 24
+  incompleteDrink: {
+    backgroundColor: "#c791a8",
   }
 });

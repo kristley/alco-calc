@@ -3,18 +3,8 @@ import { StyleSheet, View} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
-export default function BeverageColorInput({style}){
+export default function BeverageColorInput({style}) {
     return (
-        <TouchableOpacity style={[styles.container]}/>
+        <TouchableOpacity style={style}/>
     )
 }
-
-const styles = StyleSheet.create({
-    container:{
-        width: 30,
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: "#ff0000",
-        marginLeft: 20
-    }
-});

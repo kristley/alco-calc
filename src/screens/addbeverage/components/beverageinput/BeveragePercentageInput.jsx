@@ -32,22 +32,16 @@ export default function BeveragePercentageInput({ displayedDrink, setDisplayedDr
 
 const styles = StyleSheet.create({
 	container: {
-		width: 60,
-		backgroundColor: "#E6E6E6",
-		borderRadius: 15,
 		flexDirection: "row",
-		textAlignVertical: "center"
+		paddingHorizontal: 10
 	},
 	textInput: {
-		top: 0,
-		left: 13,
 		color: "#121212",
-		height: 27,
-		flex: 2
+		flex: 1
 	},
 	percentage: {
 		color: "#121212",
-		flex: 1,
 		textAlignVertical: "center",
+		textAlign: "right",
 	}
 });

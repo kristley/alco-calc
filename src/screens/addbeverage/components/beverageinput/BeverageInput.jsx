@@ -14,37 +14,33 @@ export default function BeverageInput({
 }) {
 	return (
 		<View style={styles.container}>
-			<View style={{ flexDirection: "row", alignItems: "center"}}>
+			<View style={styles.row}>
 				<BeverageNameInput
-					style={styles.beverageNameInput}
 					displayedDrink={displayedDrink}
-					setDisplayedDrink={setDisplayedDrink}
+					style={styles.beverageInput}
 				/>
-                <BeverageColorInput style={{flex: 1}}/>
+				<BeverageColorInput style={styles.colorInput}/>
 			</View>
-
-			<View style={styles.beverageOthersInput}>
+			<View style={styles.row}>
 				<BeveragePercentageInput
-					style={styles.beverageInput}
 					displayedDrink={displayedDrink}
 					setDisplayedDrink={setDisplayedDrink}
+					style={styles.beverageInput}
 				/>
-
 				<BeverageVolumeInput
-					style={styles.beverageInput}
 					displayedDrink={displayedDrink}
 					setDisplayedDrink={setDisplayedDrink}
+					style={styles.beverageInput}
 				/>
-
 				<BeverageUnitInput
-					style={styles.beverageInput}
 					displayedDrink={displayedDrink}
 					setDisplayedDrink={setDisplayedDrink}
+					style={[styles.beverageInput]}
 				/>
-
 				<AddBeverageButton
 					displayedDrink={displayedDrink}
 					navigation={navigation}
+					style={styles.addButton}
 				/>
 			</View>
 		</View>
@@ -53,28 +49,30 @@ export default function BeverageInput({
 
 const styles = StyleSheet.create({
 	container: {
-		paddingBottom: 50,
 		flex: 1,
-		flexDirection: "column",
-	},
-	beverageNameInput: {
-		width: 250,
-		height: 44,
-		backgroundColor: "#E6E6E6",
-		borderRadius: 15,
-	},
-	beverageOthersInput: {
-		height: 27,
 		padding: 15,
-		marginHorizontal: 20,
-		flex: 1,
+	},
+	row: {
 		flexDirection: "row",
-		justifyContent: "space-between",
-		backgroundColor: "#00ff00",
+		flex: 1,
+		alignItems: "center",
+	},
+	colorInput: {
+		height: 30,
+		width: 30,
+		borderRadius: 15,
+		backgroundColor: "#f00",
 	},
 	beverageInput: {
-		height: 27,
 		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
+		height: 50,
+		marginRight: 15,
+		flex: 1,
+	},
+	addButton: {
+		borderRadius: 15,
+		height: 50,
+		flex: 1,
 	},
 });
