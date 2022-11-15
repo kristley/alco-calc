@@ -44,5 +44,5 @@ const data = [
     { id: 4, beverage: "Shot", volume: "45", unit: "ml", percentage: "40", color: "#6635CE" },
     { id: 5, beverage: "Cider", volume: "0.5", unit: "l", percentage: "4.7", color: "#127A6E" },
     { id: 6, beverage: "Vodka Redbull", volume: "0.5", unit: "l", percentage: "4.7", color: "#DD72D9" },
-    { id: 7, beverage: "Vodka Redbull Redbull", volume: "0.5", unit: "l", percentage: "4.7", color: "#DD72D9" },
+    // { id: 7, beverage: "Vodka Redbull Redbull", volume: "0.5", unit: "l", percentage: "4.7", color: "#DD72D9" },
 ];
