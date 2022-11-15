@@ -20,6 +20,7 @@ export default function BeveragePercentageInput({ displayedDrink, setDisplayedDr
 		<View style={[styles.container, style]}>
 			<TextInput
 				style={styles.textInput}
+				keyboardType='numeric'
 				placeholder="0"
 				value={percentage}
 				onChangeText={updatePercentage}

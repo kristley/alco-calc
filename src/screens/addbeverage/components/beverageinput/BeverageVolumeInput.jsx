@@ -21,6 +21,7 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink,
 	return (
 		<View style={[styles.container, style]}>
 			<TextInput
+				keyboardType="numeric"
 				placeholder="0"
 				style={styles.textInput}
 				value={volume}
