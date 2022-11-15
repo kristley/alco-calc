@@ -1,7 +1,11 @@
 //A way of getting the previous and next days recorded
 let dates = [];
 let index = 0;
-let url = "http://localhost:3000"
+const base_url = "http://localhost:3000"
+const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
 
 const data = {
     "20221115": [
@@ -46,60 +50,60 @@ getIndexes();
 
 
 /**
+ * Sends a get request to the server asking for all days
+ * 
+ * @returns A list of all days stored in database
+ */
+export const getDays = () => {
+    const api_url = base_url + "/day"
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .then((response) => response.json())
+    .then((response) => {console.log("Success: ", response)})
+    .catch((error) => {console.error("Error", error)});
+    return response;    
+    //return data;
+}
+
+/**
+ * Sends a get request to the server asking for a specific day given a date
+ * 
+ * @param {String} date 
+ * @returns A day object if it exists
+ */
+ export const getDay = (date) => {
+    const api_url = base_url + "/day/" + date
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .then((response) => response.json())
+    .then((response) => {console.log("Success: ", response)})
+    .catch((error) => {console.error("Error", error)});
+    return response;    
+    //return data;
+}
+
+
+
+/**
  * Gets the list of drinks corresponding to the date
  * 
  * @param {String} date 
  * @returns A list of drinks, empty list if no drinks
  */
 export const getDrinks = (date) => {
-    yearString = date.slice(0, 4)
-    monthString = date.slice(4, 6)
-    dayOfMonthString = date.slice(6,8)
-    const api_url = url + "/night/" + yearString + "/" + monthString + "/" + dayOfMonthString
+    const api_url = base_url + "/day/" + date + "/drinks"
     const response = fetch(api_url, {
         method: "GET",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-    }}).then((response) => response.json());
-    console.log(response)
-    return response;
+        headers: base_headers})
+    .then((response) => response.json())
+    .then((response) => {console.log("Success: ", response)})
+    .catch((error) => {console.error("Error", error)});
+    return response;    
     //return data[date];
 }
 
-//temp function get all drinks
-export const getAllDrinks = () => {
-    const response = fetch(url + "/drink/", {
-        method: "GET",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-    }}).then((response) => response.json()).then((data) => console.log(data));
-    console.log(response)
-    console.log(data[date])
-    return data[date];
-}
-
-/**
- * Creates a new day using the provided date
- * 
- * @param {String} date 
- * @returns Day object
- */
- const createDayHelper = (date) => {
-    yearString = date.slice(0, 4)
-    monthString = date.slice(4, 6)
-    dayOfMonthString = date.slice(6,8)
-    api_url = url + "/night/" + yearString + "/" + monthString + "/" + dayOfMonthString
-    const response = fetch(api_url, {
-        method: "POST",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-    }}).then((response) => response.json());
-    console.log(response)
-    return response
-}
 
 /**
  * Adds a drink to the selected date, if the date exists.
@@ -109,12 +113,22 @@ export const getAllDrinks = () => {
  * @returns null
  */
 export const addDrink = (date, drink) => {
-    
-    if (!dates.contains(date)) {
-        return;
-    }
+    const api_url = base_url + "/"  + date + "/add"
+    const response = fetch(api_url, {
+        method: "PATCH",
+        headers: base_headers,
+        body: JSON.stringify(drink)
+    })
+    .then((response) => response.json())
+    .then((drink) => {console.log("Success: ", drink)})
+    .catch((error) => {console.error("Error", error)});
 
-    data[date].push(drink);
+    
+    /*if (!dates.contains(date)) {
+        return;
+    }*/
+
+   // data[date].push(drink);
 }
 
 
@@ -126,20 +140,29 @@ export const addDrink = (date, drink) => {
  * @returns null
  */
 export const createDay = (date, drink) => {
-    
-    if (dates.contains(date)) {
+    const data = {date: date, drinks: [drink]}
+    const api_url = base_url + "/" + date
+    const response = fetch(api_url, {
+        method: "POST",
+        headers: base_headers,
+        body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((drink) => {console.log("Success: ", drink)})
+    .catch((error) => {console.error("Error", error)});
+    /*if (dates.contains(date)) {
         return;
     }
 
     data[date] = [drink];
-    getIndexes();
+    getIndexes();*/
 }
 
-export const addDrink2 = (drink) => {
+/*export const addDrink2 = (drink) => {
     
     drink.time = "16:57";
     data[20221115].push(drink);
-}
+}*/
 
 
 /**
@@ -150,6 +173,18 @@ export const addDrink2 = (drink) => {
  * @returns null
  */
 export const removeDrink = (date, drink) => {
+    const data = {drinks: [drink]}
+    const api_url = base_url + "/"  + date
+    const response = fetch(api_url, {
+        method: "PATCH",
+        headers: base_headers,
+        body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((drink) => {console.log("Success: ", drink)})
+    .catch((error) => {console.error("Error", error)});
+
+
     if (data[date].length < 2) {
         deleteDay(date);
     }
