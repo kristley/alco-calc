@@ -1,18 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import EntypoIcon from "react-native-vector-icons/Entypo";
+import ArrowButton from "./ArrowButton";
 
-export default function TopBar(props) {
+export default function TopBar() {
   return (
     <View style={styles.topBar}>
-      <EntypoIcon
-        name="chevron-thin-left"
-        style={styles.arrow}
+      <ArrowButton
+        symbol="chevron-thin-left"
       />
-      <Text style={styles.date}>Today</Text>
-      <EntypoIcon
-        name="chevron-thin-right"
-        style={styles.arrow}
+
+      <Text style={styles.date}>
+        Today
+      </Text>
+
+      <ArrowButton
+        symbol="chevron-thin-right"
       />
     </View>
   );
@@ -31,11 +33,5 @@ const styles = StyleSheet.create({
   date: {
     // textAlign : "center",
     fontSize: 30,
-
-  },
-  arrow: {
-    color: "rgba(128,128,128,1)",
-    fontSize: 40,
-    // backgroundColor: "#55f",
-  },
+  }
 });
