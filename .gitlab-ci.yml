@@ -1,7 +1,9 @@
-build-job:
+build project:
   stage: build
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - npm install
+    - npm test
+    - npm build
 
 test-job1:
   stage: test
