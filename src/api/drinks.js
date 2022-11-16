@@ -80,7 +80,7 @@ export const getDays = () => {
     .then((response) => response.json())
     .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
-    return response;    
+    return JSON.parse(response);    
     //return data;
 }
 
@@ -100,7 +100,7 @@ export const getDrinks = (date) => {
     .then((response) => response.json())
     .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
-    return response;    
+    return JSON.parse(response);     
     //return data[date];
 }
 
@@ -113,7 +113,7 @@ export const getDrinks = (date) => {
  * @returns null
  */
 export const addDrink = (date, drink) => {
-    const api_url = base_url + "/"  + date + "/add"
+    const api_url = base_url + "/day/"  + date + "/add"
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
@@ -141,7 +141,7 @@ export const addDrink = (date, drink) => {
  */
 export const createDay = (date, drink) => {
     const data = {date: date, drinks: [drink]}
-    const api_url = base_url + "/" + date
+    const api_url = base_url +  "/day"
     const response = fetch(api_url, {
         method: "POST",
         headers: base_headers,
@@ -173,19 +173,18 @@ export const createDay = (date, drink) => {
  * @returns null
  */
 export const removeDrink = (date, drink) => {
-    const data = {drinks: [drink]}
-    const api_url = base_url + "/"  + date
+    const api_url = base_url + "/day/"  + date + "/remove"
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
-        body: JSON.stringify(data)
+        body: JSON.stringify(drink)
     })
     .then((response) => response.json())
     .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
 
-
-    if (data[date].length < 2) {
+}
+  /*  if (data[date].length < 2) {
         deleteDay(date);
     }
 
@@ -194,7 +193,7 @@ export const removeDrink = (date, drink) => {
         array.splice(index, 1);
     }
 }
-
+*/
 
 /**
  * Deletes the date, if it exists.
@@ -203,5 +202,12 @@ export const removeDrink = (date, drink) => {
  * @returns null
  */
 export const deleteDay = (date) => {
-    delete data[date];
+    const api_url = base_url + "/day/" + date
+    const response = fetch(api_url, {
+        method: "DELETE",
+        headers: base_headers
+    })
+    .then((response) => response.json())
+    .then((drink) => {console.log("Success: ", drink)})
+    .catch((error) => {console.error("Error", error)});
 }
