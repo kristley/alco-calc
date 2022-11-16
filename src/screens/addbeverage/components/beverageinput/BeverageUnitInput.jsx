@@ -10,8 +10,8 @@ export default function BeverageUnitInput({
 	const [open, setOpen] = useState(false);
 	const [value, setUnit] = useState("cl");
 	const [items, setItems] = useState([
-		{ label: "cl", value: "cl" },
 		{ label: "ml", value: "ml" },
+		{ label: "cl", value: "cl" },
 		{ label: "dl", value: "dl" },
 		{ label: "l", value: "l" },
 	]);
