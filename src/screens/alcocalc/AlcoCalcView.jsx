@@ -4,6 +4,7 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getDrinks, toDateString } from "../../api/drinks";
+import Calculator from "./components/Calculator";
 
 export default function AlcoCalcView({ navigation, route }) {
 
@@ -22,6 +23,13 @@ export default function AlcoCalcView({ navigation, route }) {
 			<TopBar style={styles.topBar} displayedDate={displayedDate} setDisplayedDate={setDisplayedDate} today={today} />
 
 			<DrinkList style={styles.list} drinks={drinks} />
+
+
+			<Calculator
+				drinks={drinks}
+				displayedDate={displayedDate}
+				today={today}
+			/>
 
 			{
 				displayedDate == today &&

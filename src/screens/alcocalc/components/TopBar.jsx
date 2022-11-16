@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ArrowButton from "./ArrowButton";
 
 export default function TopBar({ displayedDate, setDisplayedDate, today }) {
 
-  const toReadableDate = (date) => {
-    return new Date(date.substring(0, 4), date.substring(5, 6) - 1, date.substring(7, 8)).toDateString()
+  const [readableDate, setReadableDate] = useState("");
+
+  const updateReadableDate = () => {
+    const datestring = new Date(displayedDate.substring(0, 4), displayedDate.substring(5, 6) - 1, displayedDate.substring(7, 8)).toDateString()
+    setReadableDate(datestring);
   }
+
+  useEffect(() => {
+    updateReadableDate();
+  }, [displayedDate]);
 
   return (
     <View style={styles.topBar}>
@@ -22,7 +29,7 @@ export default function TopBar({ displayedDate, setDisplayedDate, today }) {
         {
           displayedDate == today ?
             "Today" :
-            toReadableDate(displayedDate)
+            readableDate
         }
       </Text>
 
