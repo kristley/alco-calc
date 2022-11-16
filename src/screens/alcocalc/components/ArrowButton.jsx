@@ -16,12 +16,11 @@ export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, f
         }
         setDates(tempdates);
 
-        setIndex(dates.indexOf(displayedDate))
+        setIndex(tempdates.indexOf(displayedDate))
     }, [displayedDate])
 
 
     const changeDate = () => {
-        console.log(dates, index)
         if (dates.length < 2) {
             return;
         }
