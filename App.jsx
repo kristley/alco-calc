@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import AlcoCalcView from "./src/screens/alcocalc/AlcoCalcView";
 import AddBeverageView from "./src/screens/addbeverage/AddBeverageView";
 import { NavigationContainer } from "@react-navigation/native";
@@ -12,8 +12,14 @@ const Stack = createStackNavigator();
 function AppContainer() {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="AlcoCalcView" component={AlcoCalcView} />
-			<Stack.Screen name="AddBeverageView" component={AddBeverageView} />
+			<Stack.Screen
+				name="AlcoCalcView"
+				component={AlcoCalcView}
+			/>
+			<Stack.Screen
+				name="AddBeverageView"
+				component={AddBeverageView}
+			/>
 		</Stack.Navigator>
 	);
 }
@@ -32,5 +38,5 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: "#ddd",
-	},
+	}
 });

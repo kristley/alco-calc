@@ -41,10 +41,9 @@ const data = {
     ]
 }
 
-const getIndexes = () => {
+export const getDates = () => {
     const keys = Object.keys(data);
-    dates = keys.sort();
-    index = dates.length - 1;
+    return keys.sort();
 }
 
 getIndexes();
@@ -112,9 +111,8 @@ export const getDrinks = (date) => {
 
 
 /**
- * Adds a drink to the selected date, if the date exists.
+ * Adds a drink to the selected date.
  * 
- * @param {String} date 
  * @param {Object} drink 
  * @returns null
  */

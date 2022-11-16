@@ -2,9 +2,13 @@ get requests:
 
     getDrinks(date)
         return a list af all beverages stored on a specific date
+        if the date doesnt exist in the database, it returns an empty list
 
     getPrefabs()
         return a list of all registered prefabs
+
+    getDates()
+        return a sorted list of all dates stored in the database
 
 post requests:
 
