@@ -43,7 +43,7 @@ export const addPrefab = (prefab) => {
     .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
     } else {
-        console.log("More than 9 prefabs")
+        Alert.alert("More than 9 prefabs")
     }
     
 }
