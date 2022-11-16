@@ -1,7 +1,7 @@
 build project:
   image: node:18
   script:
-    - npm install --force
+    - npm install
     - npm test
     - npm build
 
