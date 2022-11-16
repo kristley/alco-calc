@@ -1,6 +1,3 @@
-//A way of getting the previous and next days recorded
-let dates = [];
-let index = 0;
 
 const data = {
     "20220423": [
@@ -35,14 +32,10 @@ const data = {
     ]
 }
 
-const getIndexes = () => {
+export const getDates = () => {
     const keys = Object.keys(data);
-    dates = keys.sort();
-    index = dates.length - 1;
+    return keys.sort();
 }
-
-getIndexes();
-
 
 /**
  * Gets the list of drinks corresponding to the date, if it exists
@@ -51,7 +44,10 @@ getIndexes();
  * @returns A list of drinks
  */
 export const getDrinks = (date) => {
-    return data[date];
+    if (date in data) {
+        return data[date];
+    }
+    return [];
 }
 
 
@@ -63,35 +59,35 @@ export const getDrinks = (date) => {
  * @returns null
  */
 export const createDay = (date, drink) => {
-    if (dates.contains(date)) {
+    if (date in data) {
         return;
     }
 
     data[date] = [drink];
-    getIndexes();
+    getKeys();
 }
 
 
 /**
- * Adds a drink to the selected date, if the date exists.
+ * Adds a drink to the selected date.
  * 
- * @param {String} date 
  * @param {Object} drink 
  * @returns null
  */
-export const addDrink = (date, drink) => {
-    if (!dates.contains(date)) {
+export const addDrink = (drink) => {
+    const today = new Date();
+
+    const date = toDateString(today);
+
+    drink.time = today.getHours() + ":" + today.getMinutes();
+
+    if (date in data) {
+        data[date].push(drink);
         return;
     }
 
-    data[date].push(drink);
+    data[date] = [drink];
 }
-
-export const addDrink2 = (drink) => {
-    drink.time = "16:57";
-    data[20220423].push(drink);
-}
-
 
 /**
  * Removes a drink from the selected date, if both exist.
@@ -120,4 +116,8 @@ export const removeDrink = (date, drink) => {
  */
 export const deleteDay = (date) => {
     delete data[date];
+}
+
+export const toDateString = (date) => {
+    return date.getFullYear().toString() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2);
 }

@@ -3,26 +3,36 @@ import React, { useEffect, useState } from "react";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { getDrinks } from "../../api/drinks";
+import { getDrinks, toDateString } from "../../api/drinks";
 
 export default function AlcoCalcView({ navigation, route }) {
 
+	const today = toDateString(new Date());
+
+	const [displayedDate, setDisplayedDate] = useState(today);
 	const [drinks, setDrinks] = useState([]);
 
 	useEffect(() => {
-		setDrinks(getDrinks("20220423"));
-	}, [route])
+		setDrinks(getDrinks(displayedDate));
+	}, [route, displayedDate]);
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<TopBar style={styles.topBar} />
+
+			<TopBar style={styles.topBar} displayedDate={displayedDate} setDisplayedDate={setDisplayedDate} today={today} />
+
 			<DrinkList style={styles.list} drinks={drinks} />
-			<View style={styles.addBeverageButton}>
-				<Button
-					title="Add beverage"
-					onPress={() => navigation.navigate("AddBeverageView")}
-				/>
-			</View>
+
+			{
+				displayedDate == today &&
+				<View style={styles.addBeverageButton}>
+					<Button
+						title="Add beverage"
+						onPress={() => navigation.navigate("AddBeverageView")}
+					/>
+				</View>
+			}
+
 		</SafeAreaView>
 	);
 }
