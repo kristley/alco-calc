@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 10,
-    padding: 10
+    padding: 10,
+    zIndex: -1,
   }
 });

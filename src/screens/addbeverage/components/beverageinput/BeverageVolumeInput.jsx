@@ -27,7 +27,6 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink,
 				value={volume}
 				onChangeText={updateVolume}
 			/>
-			<Text style={styles.volume}>{displayedDrink.unit}</Text>
 		</View>
 	)
 }
@@ -35,15 +34,11 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink,
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
-		paddingHorizontal: 10
+		paddingLeft: 10,
+		flex: 1,
 	},
 	textInput: {
 		color: "#121212",
 		flex: 1
 	},
-	volume: {
-		color: "#121212",
-		textAlignVertical: "center",
-		textAlign: "right",
-	}
 });
