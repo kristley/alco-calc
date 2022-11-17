@@ -7,7 +7,6 @@ export default function TopBar({ displayedDate, setDisplayedDate, todayString, d
 
   const [readableDate, setReadableDate] = useState("");
 
-
   const updateReadableDate = () => {
     const datestring = new Date(displayedDate.substring(0, 4), displayedDate.substring(4, 6) - 1, displayedDate.substring(6, 8)).toDateString()
     setReadableDate(datestring);
@@ -60,17 +59,16 @@ export default function TopBar({ displayedDate, setDisplayedDate, todayString, d
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 15,
-    marginHorizontal: 20,
-    backgroundColor: "#eee",
-    borderRadius: 20,
-  },
-  date: {
-    // textAlign : "center",
-    fontSize: 30,
-  }
+	topBar: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		padding: 15,
+		marginHorizontal: 20,
+		backgroundColor: "#eee",
+		borderRadius: 20,
+	},
+	date: {
+		fontSize: 24,
+	},
 });

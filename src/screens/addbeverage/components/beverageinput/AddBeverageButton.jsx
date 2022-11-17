@@ -58,7 +58,7 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		flex: 3,
 		justifyContent: "center",
 		alignItems: "center",
 	},

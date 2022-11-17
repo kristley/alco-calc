@@ -11,15 +11,37 @@ export const getTimeElapsed = (from, to) => {
     let fromArray = getTimeArray(from);
     let toArray = getTimeArray(to);
 
-    let hours = toArray[0] - fromArray[0];
-    let minutes = toArray[1] - fromArray[1];
+    let fromHours = parseInt(fromArray[0]);
+    let fromMinutes = parseInt(fromArray[1]);
+
+    let toHours = parseInt(toArray[0]);
+    let toMinutes = parseInt(toArray[1]);
+
+    let hours = toHours - fromHours;
+    let minutes = toMinutes - fromMinutes;
 
     if (minutes < 0) {
-        hours -= 1;
+        hours--;
         minutes = 60 + minutes;
     }
 
-    return ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2);
+    if (hours < 0) {
+        hours = 24 + hours;
+    }
+
+    let hoursString = hours.toString();
+    let minutesString = minutes.toString();
+
+    if (hours < 10) {
+        hoursString = "0" + hoursString;
+    }
+
+    if (minutes < 10) {
+        minutesString = "0" + minutesString;
+    }
+
+    return hoursString + ":" + minutesString;
+
 }
 
 
@@ -95,7 +117,8 @@ export const getBloodAlcohol = (volume, time) => {
     const hours = parseInt(timeArray[0]) + parseInt(timeArray[1]) / 60;
 
     const sum = volume * density / (weight * r) - hours * metabolism;
-    return Math.round(sum * 100) / 100;
+    const value = Math.round(sum * 100) / 100;
+    return value > 0 ? value : 0;
 };
 
 export const getDateString = (date) => {

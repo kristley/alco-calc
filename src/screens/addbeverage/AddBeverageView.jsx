@@ -23,10 +23,6 @@ export default function AddBeverageView({ navigation, route }) {
   
   const [prefabs, setPrefabs] = useState([])
 
-  
-
- 
-
   return (
     <SafeAreaView style={styles.container}>
 
@@ -44,7 +40,6 @@ export default function AddBeverageView({ navigation, route }) {
       <PrefabList
         displayedDrink={displayedDrink}
         setDisplayedDrink={setDisplayedDrink}
-
       />
 
     </SafeAreaView>
@@ -63,5 +58,5 @@ const styles = StyleSheet.create({
   },
   beverageInput: {
     flex: 1
-  }
+  },
 });

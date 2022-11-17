@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
 	},
 	nameOfBeverage: {
 		color: "#121212",
+		flex: 1
 	},
 });
