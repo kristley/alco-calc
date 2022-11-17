@@ -1,17 +1,16 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
-import { addPrefab } from "../../../../api/prefabs";
+import { addPrefab } from "../../../../api/apiService";
 
 export default function AddPrefabButton({ displayedDrink, setUpdate, update }) {
 
     const [completeDrink, setCompleteDrink] = useState(false);
 
-    const createPrefab = () => {
+    const createPrefab = async () => {
         if (!completeDrink) {
             return;
         }
-
-        addPrefab(displayedDrink);
+        const res = await addPrefab(displayedDrink);
         setUpdate(!update);
     }
 

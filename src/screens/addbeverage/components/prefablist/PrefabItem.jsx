@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
-import { removePrefab } from "../../../../api/prefabs";
+import { removePrefab } from "../../../../api/apiService";
 
 export default function PrefabItem({ setDisplayedDrink, item, setUpdate, update }) {
 
@@ -8,7 +8,7 @@ export default function PrefabItem({ setDisplayedDrink, item, setUpdate, update 
   const updateDisplayedDrink = () => {
     const newDrink = {};
     Object.assign(newDrink, item);
-    delete newDrink.id;
+    delete newDrink._id;
     setDisplayedDrink(newDrink)
   }
 
@@ -31,8 +31,8 @@ export default function PrefabItem({ setDisplayedDrink, item, setUpdate, update 
   }
 
 
-  const deletePrefab = () => {
-    removePrefab(item);
+  const deletePrefab = async () => {
+    const res = await removePrefab(item);
     setUpdate(!update);
   }
 
