@@ -34,6 +34,7 @@ export default function AddBeverageView({ navigation }) {
 
       <PrefabList
         setDisplayedDrink={setDisplayedDrink}
+        style={styles.prefabList}
       />
 
     </SafeAreaView>
@@ -52,5 +53,8 @@ const styles = StyleSheet.create({
   },
   beverageInput: {
     flex: 1
+  },
+  prefabList: {
+    flex: 2
   }
 });

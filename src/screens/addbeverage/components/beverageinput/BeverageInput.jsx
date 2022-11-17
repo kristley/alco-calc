@@ -19,7 +19,7 @@ export default function BeverageInput({
 					displayedDrink={displayedDrink}
 					style={styles.beverageInput}
 				/>
-				<BeverageColorInput style={styles.colorInput}/>
+				<BeverageColorInput style={styles.colorInput} />
 			</View>
 			<View style={styles.row}>
 				<BeveragePercentageInput
@@ -27,15 +27,9 @@ export default function BeverageInput({
 					setDisplayedDrink={setDisplayedDrink}
 					style={styles.beverageInput}
 				/>
-				<BeverageVolumeInput
+				<BeverageVolumeUnitInput
 					displayedDrink={displayedDrink}
 					setDisplayedDrink={setDisplayedDrink}
-					style={styles.beverageInput}
-				/>
-				<BeverageUnitInput
-					displayedDrink={displayedDrink}
-					setDisplayedDrink={setDisplayedDrink}
-					style={[styles.beverageInput]}
 				/>
 				<AddBeverageButton
 					displayedDrink={displayedDrink}
@@ -43,6 +37,23 @@ export default function BeverageInput({
 					style={styles.addButton}
 				/>
 			</View>
+		</View>
+	);
+}
+
+function BeverageVolumeUnitInput({displayedDrink, setDisplayedDrink}) {
+	return (
+		<View style={[styles.beverageInput, { flexDirection: "row", flex: 4 }]}>
+			<BeverageVolumeInput
+				displayedDrink={displayedDrink}
+				setDisplayedDrink={setDisplayedDrink}
+				style={styles.beverageVolumeInput}
+			/>
+			<BeverageUnitInput
+				displayedDrink={displayedDrink}
+				setDisplayedDrink={setDisplayedDrink}
+				style={[styles.beverageVolumeInput, { flex: 3 }]}
+			/>
 		</View>
 	);
 }
@@ -68,11 +79,16 @@ const styles = StyleSheet.create({
 		borderRadius: 15,
 		height: 50,
 		marginRight: 15,
+		flex: 2,
+	},
+	beverageVolumeInput: {
+		backgroundColor: "#E6E6E6",
+		borderRadius: 15,
+		height: 50,
 		flex: 1,
 	},
 	addButton: {
 		borderRadius: 15,
 		height: 50,
-		flex: 1,
 	},
 });

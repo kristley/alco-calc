@@ -14,7 +14,7 @@ export default function PrefabList({ setDisplayedDrink }) {
         alignItems="center"
         data={data}
         renderItem={({ item }) => (
-          <PrefabItem item={item} setDisplayedDrink={setDisplayedDrink} />
+          <PrefabItem item={item} setDisplayedDrink={setDisplayedDrink}/>
         )}
       />
     </View>
@@ -26,14 +26,9 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 20,
+
+    paddingTop: 20,
     zIndex: -1,
-  },
-  item: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 10,
-    padding: 10
-  },
+  }
 });
 
