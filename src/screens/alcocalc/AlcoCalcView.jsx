@@ -4,7 +4,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { getDay, getDrinks, toDateString } from "../../api/drinks";
 import Calculator from "./components/Calculator";
 
