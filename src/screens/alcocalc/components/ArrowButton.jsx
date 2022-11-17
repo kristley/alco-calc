@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { getDrinks, getDay } from "../../../api/apiService";
-import { getDates, toDateString } from "../../../api/drinks";
 import { getDateString, getNextDate, getPreviousDate } from "../../../calculator/calculator";
 
 
