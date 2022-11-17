@@ -59,12 +59,7 @@ export const getDays = () => {
     const response = fetch(api_url, {
         method: "GET",
         headers: base_headers})
-    .then((response) => response.json())
-    .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
-    console.log("getdays")
-    console.log(Array.from(JSON.parse(response)));
-    console.log(JSON.parse(response))
     return Array.from(response);    
     //return data;
 }
@@ -81,7 +76,6 @@ export const getDays = () => {
         method: "GET",
         headers: base_headers})
     .then((response) => response.json())
-    .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
     return JSON.parse(response);    
     //return data;
@@ -96,14 +90,11 @@ export const getDays = () => {
  * @returns A list of drinks, empty list if no drinks
  */
 export const getDrinks = (date) => {
-    console.log("before getdrinks")
-    console.log("---")
     const api_url = base_url + "/day/" + date + "/drinks"
     const response = fetch(api_url, {
         method: "GET",
         headers: base_headers})
     .then((response) => response.json())
-    .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
     return response;     
     //return data[date];
@@ -124,7 +115,6 @@ export const addDrink = (date, drink) => {
         body: JSON.stringify(drink)
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
 
     
@@ -152,7 +142,6 @@ export const createDay = (date, drink) => {
         body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
     /*if (dates.contains(date)) {
         return;
@@ -208,7 +197,6 @@ export const removeDrink = (date, drink) => {
         body: JSON.stringify(drink)
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
 
 }
@@ -236,6 +224,5 @@ export const deleteDay = (date) => {
         headers: base_headers
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
 }

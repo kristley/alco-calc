@@ -17,7 +17,6 @@ export const getPrefabs = () => {
         method: "GET",
         headers: base_headers})
     .then((response) => response.json())
-    .then((response) => {console.log("Success: ", response)})
     .catch((error) => {console.error("Error", error)});
     return Array.from(response);    
 
@@ -30,17 +29,16 @@ export const getPrefabs = () => {
  * @param {Object} prefab 
  * @returns null
  */
-export const addPrefab = (prefab) => {
+export  const addPrefab = async (prefab) => {
     if (getPrefabs().length < 9){
         const data = {date: date, drinks: [drink]}
     const api_url = base_url +  "/prefab"
-    const response = fetch(api_url, {
+    const response = await fetch(api_url, {
         method: "POST",
         headers: base_headers,
         body: JSON.stringify(data)
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
     } else {
         Alert.alert("More than 9 prefabs")
@@ -61,7 +59,6 @@ export const removePrefab = (prefab) => {
         headers: base_headers
     })
     .then((response) => response.json())
-    .then((drink) => {console.log("Success: ", drink)})
     .catch((error) => {console.error("Error", error)});
 }
 
