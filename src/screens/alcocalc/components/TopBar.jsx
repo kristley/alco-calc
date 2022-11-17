@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import ArrowButton from "./ArrowButton";
 import { getDateString } from "../../../calculator/calculator";
 
-export default function TopBar({ displayedDate, setDisplayedDate, todayString, date, setDate, day, setDay, drinks, setDrinks}) {
+export default function TopBar({ displayedDate, setDisplayedDate, todayString, date, setDate, day, setDay, drinks, setDrinks, availableDates}) {
 
   const [readableDate, setReadableDate] = useState("");
 
@@ -31,6 +31,7 @@ export default function TopBar({ displayedDate, setDisplayedDate, todayString, d
         day={day}
         drinks={drinks}
         setDrinks={setDrinks}
+        availableDates={availableDates}
       />
 
       <Text style={styles.date}>
@@ -48,11 +49,11 @@ export default function TopBar({ displayedDate, setDisplayedDate, todayString, d
         forward={true}
         todayString={todayString}
         date={date}
-        setDate={setDate}
         day={day}
         setDay={setDay}
         drinks={drinks}
         setDrinks={setDrinks}
+        availableDates={availableDates}
       />
     </View>
   );
