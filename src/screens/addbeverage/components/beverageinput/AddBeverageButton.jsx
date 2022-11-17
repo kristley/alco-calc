@@ -19,14 +19,12 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
 			return;
 		}
     const api_url = base_url + "/day/"  + date + "/add"
-    console.log("addDrink API-url: ", api_url)
-    console.log(displayedDrink)
-
+    const timeString = (new Date().getHours().toString()) + ":" + (new Date().getMinutes().toString())
     const data = await fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
         body: JSON.stringify({
-              time : "16:37",
+              time : timeString,
               beverage: displayedDrink.beverage,
               volume: displayedDrink.volume,
               color: displayedDrink.color,
@@ -38,7 +36,6 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
         .catch((error) => {console.error("Error", error)})
     // convert the data to json
     const json = await data.json();
-    console.log("addDrink  -----", json)
     
 		//addDrink(displayedDrink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
