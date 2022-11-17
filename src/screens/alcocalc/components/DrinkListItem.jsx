@@ -1,9 +1,35 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 
 export default function DrinkListItem({ item }) {
+
+  const openDeleteWindow = () => {
+    Alert.alert(
+      "Remove drink?",
+      "Are you sure you want to remove this drink?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "OK",
+          onPress: deleteDrink
+        }
+      ]
+    )
+  }
+
+  const deleteDrink = () => {
+    console.log("delete drink");
+    return;
+  }
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onLongPress={openDeleteWindow}
+    >
       <Text style={[styles.cell, styles.time]}>{item.time}</Text>
       <Text style={styles.cell}>{item.beverage}</Text>
       <Text style={styles.cell}>{item.volume}</Text>
