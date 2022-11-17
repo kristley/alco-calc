@@ -3,16 +3,15 @@ import { StyleSheet, View, FlatList, Alert } from "react-native";
 import { getPrefabs } from "../../../../api/prefabs";
 import PrefabItem from "./PrefabItem";
 
-export default function PrefabList({ setDisplayedDrink }) {
-
-  let data = getPrefabs();
-
+export default function PrefabList({ prefabs, setDisplayedDrink }) {
+  
+  
   return (
     <View style={[styles.container]}>
       <FlatList
         numColumns={3}
         alignItems="center"
-        data={data}
+        data={prefabs}
         renderItem={({ item }) => (
           <PrefabItem item={item} setDisplayedDrink={setDisplayedDrink} />
         )}

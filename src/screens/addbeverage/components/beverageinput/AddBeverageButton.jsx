@@ -5,11 +5,42 @@ import { addDrink } from "../../../../api/drinks";
 export default function AddBeverageButton({ displayedDrink, navigation, style }) {
 	const [completeDrink, setCompleteDrink] = useState(false);
 
-	const addBeverage = () => {
+  const base_url = "http://localhost:3000"
+	const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  }
+  const date =	(new Date().getYear() + 1900).toString() + 
+  (new Date().getMonth() + 1).toString()  +
+  (new Date().getDate()).toString();
+
+	const addBeverage = async () => {
 		if (!completeDrink) {
 			return;
 		}
-		addDrink(displayedDrink);
+    const api_url = base_url + "/day/"  + date + "/add"
+    console.log("addDrink API-url: ", api_url)
+    console.log(displayedDrink)
+
+    const data = await fetch(api_url, {
+        method: "PATCH",
+        headers: base_headers,
+        body: JSON.stringify({
+              time : "16:37",
+              beverage: displayedDrink.beverage,
+              volume: displayedDrink.volume,
+              color: displayedDrink.color,
+              percentage: displayedDrink.percentage,
+              unit: displayedDrink.unit,
+              id: displayedDrink.id
+            })
+          })
+        .catch((error) => {console.error("Error", error)})
+    // convert the data to json
+    const json = await data.json();
+    console.log("addDrink  -----", json)
+    
+		//addDrink(displayedDrink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 
