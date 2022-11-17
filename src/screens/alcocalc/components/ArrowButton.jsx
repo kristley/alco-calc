@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
+import { getDrinks, getDay } from "../../../api/apiService";
 import { getDates, toDateString } from "../../../api/drinks";
 import { getDateString, getNextDate, getPreviousDate } from "../../../calculator/calculator";
 
@@ -17,30 +18,17 @@ export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, f
  useEffect(() => { 
 
     const updateDrinks = async () => {
-			const api_url = base_url + "/day/" + displayedDate + "/drinks"
-			const data = await fetch(api_url,  {
-				method: "GET",
-				headers: base_headers})
-				.catch((error) => {	console.error("Error", error)})
-			
-			// convert the data to json
-			const json2 = await data.json();
-			return setDrinks(json2)
+			const data = await getDrinks(displayedDate)
+			const json = await data.json();
+            setDrinks(json)
 			}
         
 
 		const updateDay = async () => {
-			const api_url = base_url + "/day/" + displayedDate
-			const data = await fetch(api_url,  {
-			method: "GET",
-			headers: base_headers})
-			.catch((error) => {console.log("Error", error)})
-
-    
+			const data = await getDay(displayedDate)
 			const json = await data.json();
 			setDay(json);
 		}
-
 
     updateDay()
     updateDrinks()

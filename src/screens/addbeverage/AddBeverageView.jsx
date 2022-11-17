@@ -5,17 +5,11 @@ import {
   Button
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { getPrefabs } from "../../api/prefabs";
 import BeverageInput from "./components/beverageinput/BeverageInput";
 import PrefabList from "./components/prefablist/PrefabList";
+import { getPrefabs } from "../../api/apiService";
 
 export default function AddBeverageView({ navigation, route }) {
-
-  const base_url = "http://localhost:3000"
-	const base_headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
 
   const [displayedDrink, setDisplayedDrink] = useState(
     {
@@ -30,11 +24,7 @@ export default function AddBeverageView({ navigation, route }) {
 
   useEffect(() => {
     const updatePrefabs = async () => {
-      const api_url = base_url + "/prefab"
-			const data = await fetch(api_url,  {
-			method: "GET",
-			headers: base_headers})
-			.catch((error) => {console.log("Error", error)})    
+      const data = await getPrefabs();
 			const json = await data.json();
       setPrefabs(json)
 
