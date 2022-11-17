@@ -31,6 +31,7 @@ export default function AlcoCalcView({ navigation, route }) {
 		const updateDay = async () => {
 			const data = await getDay(displayedDate)
 			const json = await data.json();
+			console.log(displayedDate)
 			setDay(json);
 		}
 		updateDay()
@@ -57,7 +58,7 @@ export default function AlcoCalcView({ navigation, route }) {
 			<DrinkList style={styles.list} drinks={drinks} />
 			<View style={styles.bottom}>
 				{
-					displayedDate == today &&
+					displayedDate == todayString &&
 					<AddDrinkButton
 						navigation={navigation}
 					/>
