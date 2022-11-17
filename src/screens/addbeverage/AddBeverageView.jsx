@@ -6,10 +6,11 @@ import {
   Button,
   Alert
 } from "react-native";
+import { getPrefabs } from "../../api/prefabs";
 import BeverageInput from "./components/beverageinput/BeverageInput";
 import PrefabList from "./components/prefablist/PrefabList";
 
-export default function AddBeverageView({ navigation }) {
+export default function AddBeverageView({ navigation, route }) {
 
   const [displayedDrink, setDisplayedDrink] = useState(
     {
@@ -19,6 +20,21 @@ export default function AddBeverageView({ navigation }) {
       percentage: "",
       color: "#d0021b"
     });
+  
+  const [prefabs, setPrefabs] = useState([])
+
+  useEffect(() => {
+    const updatePrefabs = async () => {
+      const data = await getPrefabs();
+      // convert the data to json
+      const json = await data.json();
+      setPrefabs(json);
+
+    }
+    updatePrefabs()
+  }, [route])
+
+ 
 
   return (
     <View style={styles.container}>
@@ -35,6 +51,7 @@ export default function AddBeverageView({ navigation }) {
       />
 
       <PrefabList
+        prefabs={prefabs}
         setDisplayedDrink={setDisplayedDrink}
       />
 

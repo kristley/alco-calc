@@ -3,19 +3,55 @@ import React, { useEffect, useState } from "react";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { getDrinks, toDateString } from "../../api/drinks";
+import { getDay, getDrinks, toDateString } from "../../api/drinks";
 import Calculator from "./components/Calculator";
 
 export default function AlcoCalcView({ navigation, route }) {
 
-	const today = toDateString(new Date());
+	const base_url = "http://localhost:3000"
+	const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
 
+	const today =	(new Date().getYear() + 1900).toString() + 
+                    (new Date().getMonth() + 1).toString()  +
+                    (new Date().getDate()).toString();
 	const [displayedDate, setDisplayedDate] = useState(today);
 	const [drinks, setDrinks] = useState([]);
+	const [day, setDay] = useState()
 
-	useEffect(() => {
-		setDrinks(getDrinks(displayedDate));
-	}, [route, displayedDate]);
+
+  	useEffect(() => {
+		const updateDrinks = async () => {
+			const api_url = base_url + "/day/" + displayedDate + "/drinks"
+			const data = await fetch(api_url,  {
+				method: "GET",
+				headers: base_headers})
+				.catch((error) => {console.error("Error", error)})
+			
+			// convert the data to json
+			const json = await data.json();
+			setDrinks(json);
+			}
+
+		const updateDay = async () => {
+			const api_url = base_url + "/day/" + displayedDate
+			const data = await fetch(api_url,  {
+			method: "GET",
+			headers: base_headers})
+			.catch((error) => {console.error("Error", error)})
+    
+			const json = await data.json();
+			setDay(json);
+		}
+    	updateDrinks()
+		updateDay()
+ 	 }, [route])
+
+	//useEffect(() => {
+		//setDrinks(getDrinks(displayedDate));
+	//}, [route, displayedDate]);
 
 	return (
 		<SafeAreaView style={styles.container}>
