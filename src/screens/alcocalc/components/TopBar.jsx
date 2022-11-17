@@ -14,52 +14,54 @@ export default function TopBar({
 	drinks,
 	setDrinks,
 }) {
-	const updateReadableDate = () => {
-		if (displayedDate == today) {
-			setReadableDate("Today");
-			return;
-		}
-		const datestring = new Date(
-			displayedDate.substring(0, 4),
-			displayedDate.substring(5, 6) - 1,
-			displayedDate.substring(7, 8)
-		).toDateString();
-		setReadableDate(datestring);
-	};
+  const updateReadableDate = () => {
+    const datestring = new Date(displayedDate.substring(0, 4), displayedDate.substring(4, 6) - 1, displayedDate.substring(6, 8)).toDateString()
+    setReadableDate(datestring);
+  }
 
-	return (
-		<View style={styles.topBar}>
-			<ArrowButton
-				symbol="chevron-thin-left"
-				displayedDate={displayedDate}
-				setDisplayedDate={setDisplayedDate}
-				forward={false}
-				todayString={todayString}
-				date={date}
-				setDate={setDate}
-				setDay={setDay}
-				day={day}
-				drinks={drinks}
-				setDrinks={setDrinks}
-			/>
+  useEffect(() => {
+    updateReadableDate();
+  }, [displayedDate]);
 
-			<Text style={styles.date}>{readableDate}</Text>
+  return (
+    <View style={styles.topBar}>
+      <ArrowButton
+        symbol="chevron-thin-left"
+        displayedDate={displayedDate}
+        setDisplayedDate={setDisplayedDate}
+        forward={false}
+        todayString={todayString}
+        date={date}
+        setDate={setDate}
+        setDay={setDay}
+        day={day}
+        drinks={drinks}
+        setDrinks={setDrinks}
+      />
 
-			<ArrowButton
-				symbol="chevron-thin-right"
-				displayedDate={displayedDate}
-				setDisplayedDate={setDisplayedDate}
-				forward={true}
-				todayString={todayString}
-				date={date}
-				setDate={setDate}
-				day={day}
-				setDay={setDay}
-				drinks={drinks}
-				setDrinks={setDrinks}
-			/>
-		</View>
-	);
+      <Text style={styles.date}>
+        {
+          displayedDate == todayString ?
+            "Today" :
+            readableDate
+        }
+      </Text>
+
+      <ArrowButton
+        symbol="chevron-thin-right"
+        displayedDate={displayedDate}
+        setDisplayedDate={setDisplayedDate}
+        forward={true}
+        todayString={todayString}
+        date={date}
+        setDate={setDate}
+        day={day}
+        setDay={setDay}
+        drinks={drinks}
+        setDrinks={setDrinks}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

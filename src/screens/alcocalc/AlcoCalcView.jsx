@@ -10,6 +10,8 @@ import { getDateString, getNextDate } from "../../calculator/calculator";
 import { getDrinks, getDay } from "../../api/apiService";
 
 export default function AlcoCalcView({ navigation, route }) {
+	const [update, setUpdate] = useState(true);
+
 
 
 	const today = new Date()
@@ -35,7 +37,7 @@ export default function AlcoCalcView({ navigation, route }) {
 		}
 		updateDay()
     	updateDrinks()
- 	 }, [route])
+ 	 }, [route, update])
 
 	useEffect(() => {
 	}, [route, displayedDate]);
@@ -54,10 +56,15 @@ export default function AlcoCalcView({ navigation, route }) {
 				drinks={drinks}
 				setDrinks={setDrinks}
 			/>
-			<DrinkList style={styles.list} drinks={drinks} />
+			<DrinkList 
+				style={styles.list}
+			 	drinks={drinks}
+				setUpdate={setUpdate}
+				update={update}
+			/>
 			<View style={styles.bottom}>
 				{
-					displayedDate == today &&
+					displayedDate == todayString &&
 					<AddDrinkButton
 						navigation={navigation}
 					/>

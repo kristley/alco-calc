@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, FlatList, Alert } from "react-native";
-import { getPrefabs } from "../../../../api/prefabs";
+import { getPrefabs } from "../../../../api/apiService";
 import AddPrefabButton from "./AddPrefabButton";
 import PrefabItem from "./PrefabItem";
 
@@ -12,12 +12,14 @@ export default function PrefabList({ setDisplayedDrink, displayedDrink }) {
   const [update, setUpdate] = useState(true);
 
   useEffect(() => {
-    updatePrefabs();
-  }, [update])
+    const updatePrefabs = async () => {
+      const data = await getPrefabs();
+			const json = await data.json();
+      setPrefabs(json)
 
-  const updatePrefabs = () => {
-    setPrefabs(getPrefabs());
-  }
+    }
+    updatePrefabs()
+  }, [update])
 
   return (
     <View style={[styles.container]}>

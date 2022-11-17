@@ -2,7 +2,10 @@ import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import DrinkListItem from "./DrinkListItem";
 
-export default function DrinkList({ style, drinks }) {
+export default function DrinkList({ style, drinks, update, setUpdate}) {
+
+
+
 
   return (
     <View style={[styles.container, style]}>
@@ -11,7 +14,11 @@ export default function DrinkList({ style, drinks }) {
         data={[...drinks].reverse()}
         inverted={true}
         renderItem={({ item }) => (
-          <DrinkListItem item={item} />
+          <DrinkListItem 
+            item={item}
+            update={update}
+            setUpdate={setUpdate}
+          />
         )}
       />
     </View>

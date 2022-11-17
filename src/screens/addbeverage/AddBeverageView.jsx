@@ -23,18 +23,6 @@ export default function AddBeverageView({ navigation, route }) {
   
   const [prefabs, setPrefabs] = useState([])
 
-  useEffect(() => {
-    const updatePrefabs = async () => {
-      const data = await getPrefabs();
-			const json = await data.json();
-      setPrefabs(json)
-
-    }
-    updatePrefabs()
-  }, [route])
-
- 
-
   return (
     <SafeAreaView style={styles.container}>
 
@@ -52,7 +40,6 @@ export default function AddBeverageView({ navigation, route }) {
       <PrefabList
         displayedDrink={displayedDrink}
         setDisplayedDrink={setDisplayedDrink}
-        style={styles.prefabList}
       />
 
     </SafeAreaView>
@@ -72,7 +59,4 @@ const styles = StyleSheet.create({
   beverageInput: {
     flex: 1
   },
-  prefabList: {
-    flex: 2
-  }
 });

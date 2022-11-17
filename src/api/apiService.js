@@ -1,3 +1,4 @@
+import { getDateString } from "../calculator/calculator"
 export const base_url = "http://localhost:3000"
 export const base_headers = {
     "Accept": "application/json",
@@ -50,15 +51,18 @@ export const addDrink = (date, drink) => {
  * @returns A Promise that resolves with a Response object. 
  *          Response.json() returns the modified Day object.
  */
-export const removeDrink = (date, drink) => {
+export const removeDrink =  (drink) => {
+    const date = getDateString(new Date())
     const api_url = base_url + "/day/"  + date + "/remove"
+    console.log(api_url)
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
-        body: JSON.stringify(drink)
+        body: JSON.stringify({
+            id: drink._id})
     })
-    .then((response) => response.json())
     .catch((error) => {console.error("Error", error)});
+    return response
 }
 
 //-------------------------
@@ -167,8 +171,9 @@ export const getPrefabs = () => {
 
 export const addPrefab = async (prefab) => {
     const response1 = await getPrefabs()
-    const noOfPrefabs = response1.json().length
-    if (noOfPrefabs > 9){
+    const json = await response1.json()
+    noOfPrefabs = json.length
+    if (noOfPrefabs < 9){
         const api_url = base_url +  "/prefab"
         const response2 = await fetch(api_url, {
         method: "POST",
@@ -177,9 +182,6 @@ export const addPrefab = async (prefab) => {
         })
         .catch((error) => {console.error("Error", error)});
         return response2;
-
-    } else {
-        Alert.alert("More than 9 prefabs")
     }
     
 }
@@ -193,12 +195,11 @@ export const addPrefab = async (prefab) => {
  *          Response.json() returns the deleted Prefab object
  */
 export const removePrefab = (prefab) => {
-    const api_url = base_url + "/day/" + prefab.id
+    const api_url = base_url + "/prefab/" + prefab._id
     const response = fetch(api_url, {
         method: "DELETE",
         headers: base_headers
     })
-    .then((response) => response.json())
     .catch((error) => {console.error("Error", error)});
     return response;
 }
