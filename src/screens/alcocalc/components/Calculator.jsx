@@ -9,7 +9,7 @@ Display total volume of pure alcohol
 Display drinking time (time from first to last drink)
 */
 
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import BloodAlcoholDisplay from "./BloodAlcoholDisplay";
 import TimeDisplay from "./TimeDisplay";
 import VolumeDisplay from "./VolumeDisplay";
@@ -21,11 +21,12 @@ export default function Calculator({ drinks, displayedDate, today }) {
     const [timeElapsed, setTimeElapsed] = useState("");
 
     return (
-        <View>
+        <View style={styles.container}>
             <VolumeDisplay
                 drinks={drinks}
                 totalVolume={totalVolume}
                 setTotalVolume={setTotalVolume}
+                style={styles.displayed}
             />
 
             <TimeDisplay
@@ -34,6 +35,7 @@ export default function Calculator({ drinks, displayedDate, today }) {
                 today={today}
                 timeElapsed={timeElapsed}
                 setTimeElapsed={setTimeElapsed}
+                style={styles.displayed}
             />
 
             {
@@ -41,8 +43,20 @@ export default function Calculator({ drinks, displayedDate, today }) {
                 <BloodAlcoholDisplay
                     totalVolume={totalVolume}
                     timeElapsed={timeElapsed}
+                    style={styles.displayed}
                 />
             }
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around",
+    },
+    displayed:{
+        flex: 1,
+    }
+});

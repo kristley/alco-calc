@@ -68,6 +68,7 @@ export const createDay = (date, drink) => {
 }
 
 
+
 /**
  * Adds a drink to the selected date.
  * 
@@ -79,8 +80,9 @@ export const addDrink = (drink) => {
 
     const date = toDateString(today);
 
-    drink.time = today.getHours() + ":" + today.getMinutes();
+    const addZero = (num) => num < 10 ? `0${num}` : num;
 
+    drink.time = addZero(today.getHours()) + ":" + addZero(today.getMinutes());
     if (date in data) {
         data[date].push(drink);
         return;

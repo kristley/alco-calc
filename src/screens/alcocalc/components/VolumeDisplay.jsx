@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { useEffect } from "react";
 import { getTotalVolume } from "../../../calculator/calculator";
+import Display from "./Display";
 
 export default function VolumeDisplay({ drinks, totalVolume, setTotalVolume }) {
 
@@ -12,7 +12,9 @@ export default function VolumeDisplay({ drinks, totalVolume, setTotalVolume }) {
         setTotalVolume(getTotalVolume(drinks));
     }
 
-    return (
-        <Text>Absolute volume: {totalVolume}ml </Text>
-    );
+	return (
+        <Display title="Total vol." value={totalVolume+'ml'} />
+	);
 }
+
+
