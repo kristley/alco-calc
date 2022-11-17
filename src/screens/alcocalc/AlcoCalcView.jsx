@@ -6,6 +6,7 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { getDay, getDrinks, toDateString } from "../../api/drinks";
 import Calculator from "./components/Calculator";
+import { getDateString, getNextDate } from "../../calculator/calculator";
 
 export default function AlcoCalcView({ navigation, route }) {
 
@@ -15,25 +16,28 @@ export default function AlcoCalcView({ navigation, route }) {
     "Content-Type": "application/json"
 }
 
-	const today =	(new Date().getYear() + 1900).toString() + 
-                    (new Date().getMonth() + 1).toString()  +
-                    (new Date().getDate()).toString();
-	const [displayedDate, setDisplayedDate] = useState(today);
+	const today = new Date()
+	const todayString = getDateString(today)
+	const [displayedDate, setDisplayedDate] = useState(todayString);
+	const [date, setDate] = useState(today)
 	const [drinks, setDrinks] = useState([]);
 	const [day, setDay] = useState()
 
 
   	useEffect(() => {
+
+
 		const updateDrinks = async () => {
 			const api_url = base_url + "/day/" + displayedDate + "/drinks"
 			const data = await fetch(api_url,  {
 				method: "GET",
 				headers: base_headers})
-				.catch((error) => {console.error("Error", error)})
+				.catch((error) => {	console.error("Error", error)})
 			
 			// convert the data to json
-			const json = await data.json();
-			setDrinks(json);
+			const thisJson = await data.json();
+			setDrinks(thisJson)
+			//setDrinks(json);
 			}
 
 		const updateDay = async () => {
@@ -41,18 +45,18 @@ export default function AlcoCalcView({ navigation, route }) {
 			const data = await fetch(api_url,  {
 			method: "GET",
 			headers: base_headers})
-			.catch((error) => {console.error("Error", error)})
+			.catch((error) => {console.log("Error", error)})
+
     
 			const json = await data.json();
 			setDay(json);
 		}
-    	updateDrinks()
 		updateDay()
+    	updateDrinks()
  	 }, [route])
 
-	//useEffect(() => {
-		//setDrinks(getDrinks(displayedDate));
-	//}, [route, displayedDate]);
+	useEffect(() => {
+	}, [route, displayedDate]);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -60,11 +64,17 @@ export default function AlcoCalcView({ navigation, route }) {
 				style={styles.topBar}
 				displayedDate={displayedDate}
 				setDisplayedDate={setDisplayedDate}
-				today={today}
+				date={date}
+				setDate={setDate}
+				todayString={todayString}
+				day={day}
+				setDay={setDay}
+				drinks={drinks}
+				setDrinks={setDrinks}
 			/>
 			<DrinkList style={styles.list} drinks={drinks} />
 			<View style={styles.bottom}>
-				{displayedDate == today && (
+				{displayedDate == todayString && (
 					<TouchableOpacity
 						style={styles.addBeverageButton}
 						onPress={() => navigation.navigate("AddBeverageView")}
@@ -76,7 +86,7 @@ export default function AlcoCalcView({ navigation, route }) {
 					style={styles.calc}
 					drinks={drinks}
 					displayedDate={displayedDate}
-					today={today}
+					todayString={todayString}
 				/>
 			</View>
 		</SafeAreaView>

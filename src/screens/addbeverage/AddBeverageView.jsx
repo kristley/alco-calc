@@ -11,6 +11,12 @@ import PrefabList from "./components/prefablist/PrefabList";
 
 export default function AddBeverageView({ navigation, route }) {
 
+  const base_url = "http://localhost:3000"
+	const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
+
   const [displayedDrink, setDisplayedDrink] = useState(
     {
       beverage: "",
@@ -24,10 +30,13 @@ export default function AddBeverageView({ navigation, route }) {
 
   useEffect(() => {
     const updatePrefabs = async () => {
-      const data = await getPrefabs();
-      // convert the data to json
-      const json = await data.json();
-      setPrefabs(json);
+      const api_url = base_url + "/prefab"
+			const data = await fetch(api_url,  {
+			method: "GET",
+			headers: base_headers})
+			.catch((error) => {console.log("Error", error)})    
+			const json = await data.json();
+      setPrefabs(json)
 
     }
     updatePrefabs()
