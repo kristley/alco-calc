@@ -34,7 +34,8 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink,
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
-		paddingHorizontal: 10
+		paddingLeft: 10,
+		flex: 1,
 	},
 	textInput: {
 		color: "#121212",
