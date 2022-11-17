@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
+    zIndex: -1
   },
   beverageName: {
     textAlign: "center",

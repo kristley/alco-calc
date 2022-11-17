@@ -1,7 +1,6 @@
-import React from "react";
-import { StyleSheet, View} from "react-native";
+import React, {useState} from "react";
+import { View} from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 export default function BeverageColorInput({style}) {
@@ -19,13 +18,30 @@ const [open, setOpen] = useState(false);
   ]);
 
   return (
-    <DropDownPicker
-      open={open}
-      value={value}
-      items={items}
-      setOpen={setOpen}
-      setValue={setValue}
-      setItems={setItems}
-    />
+		<DropDownPicker
+			open={open}
+			value={value}
+			items={items}
+			setOpen={setOpen}
+			setValue={setValue}
+			setItems={setItems}
+			style={{
+				height: 50,
+				width: 80,
+				borderRadius: 15,
+				borderWidth: 0,
+				backgroundColor: "#E6E6E6",
+			}}
+			dropDownContainerStyle={{
+				width: 80,
+				borderRadius: 15,
+				borderWidth: 0,
+				backgroundColor: "#E6E6E6",
+			}}
+			// textStyle opacity is set to 0 to hide the text
+			textStyle={{ opacity: 0, width: 0, height: 0 }}
+			// lableStyle opacity is set to 0 to hide the text
+			labelStyle={{ opacity: 0, width: 0, height: 0 }}
+		/>
   );
 }

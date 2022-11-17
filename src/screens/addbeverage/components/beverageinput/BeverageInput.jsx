@@ -20,7 +20,6 @@ export default function BeverageInput({
 					setDisplayedDrink={setDisplayedDrink}
 					style={styles.beverageInput}
 				/>
-				<BeverageColorInput style={styles.colorInput} />
 			</View>
 			<View style={styles.row}>
 				<BeveragePercentageInput
@@ -38,6 +37,7 @@ export default function BeverageInput({
 					style={styles.addButton}
 				/>
 			</View>
+			<BeverageColorInput style={styles.colorInput} />
 		</View>
 	);
 }
@@ -66,14 +66,13 @@ const styles = StyleSheet.create({
 	},
 	row: {
 		flexDirection: "row",
-		flex: 1,
+		flex: 4,
 		alignItems: "center",
+		// space between
+		justifyContent: "space-between",
 	},
 	colorInput: {
-		height: 30,
-		width: 30,
-		borderRadius: 15,
-		backgroundColor: "#f00",
+		flex: 1
 	},
 	beverageInput: {
 		backgroundColor: "#E6E6E6",

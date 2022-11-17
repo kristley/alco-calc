@@ -44,7 +44,7 @@ export default function BeverageUnitInput({
 			containerStyle={style}
 			style={[{ borderWidth: 0 }, style]}
 			dropDownContainerStyle={styles.dropdown}
-			zIndex={1}
+			zIndex={10}
 		/>
 	);
 }
