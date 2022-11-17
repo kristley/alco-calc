@@ -4,18 +4,40 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
-import { getDrinks, toDateString } from "../../api/drinks";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
+import { getDateString, getNextDate } from "../../calculator/calculator";
+import { getDrinks, getDay } from "../../api/apiService";
 
 export default function AlcoCalcView({ navigation, route }) {
-	const today = toDateString(new Date());
 
-	const [displayedDate, setDisplayedDate] = useState(today);
+
+	const today = new Date()
+	const todayString = getDateString(today)
+	const [displayedDate, setDisplayedDate] = useState(todayString);
+	const [date, setDate] = useState(today)
 	const [drinks, setDrinks] = useState([]);
+	const [day, setDay] = useState()
+
+
+  	useEffect(() => {
+
+		const updateDrinks = async () => {
+			const data = await getDrinks(displayedDate)
+			const json = await data.json();
+			setDrinks(json)
+			}
+
+		const updateDay = async () => {
+			const data = await getDay(displayedDate)
+			const json = await data.json();
+			setDay(json);
+		}
+		updateDay()
+    	updateDrinks()
+ 	 }, [route])
 
 	useEffect(() => {
-		setDrinks(getDrinks(displayedDate));
 	}, [route, displayedDate]);
 
 	return (
@@ -24,7 +46,13 @@ export default function AlcoCalcView({ navigation, route }) {
 				style={styles.topBar}
 				displayedDate={displayedDate}
 				setDisplayedDate={setDisplayedDate}
-				today={today}
+				date={date}
+				setDate={setDate}
+				todayString={todayString}
+				day={day}
+				setDay={setDay}
+				drinks={drinks}
+				setDrinks={setDrinks}
 			/>
 			<DrinkList style={styles.list} drinks={drinks} />
 			<View style={styles.bottom}>
@@ -39,7 +67,7 @@ export default function AlcoCalcView({ navigation, route }) {
 					style={styles.calc}
 					drinks={drinks}
 					displayedDate={displayedDate}
-					today={today}
+					todayString={todayString}
 				/>
 			</View>
 		</SafeAreaView>

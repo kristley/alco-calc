@@ -1,46 +1,60 @@
 import { useEffect, useState } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
-import { getDates, toDateString } from "../../../api/drinks";
+import { getDrinks, getDay } from "../../../api/apiService";
+import { getDateString, getNextDate, getPreviousDate } from "../../../calculator/calculator";
 
 
-export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, forward, today }) {
+export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, forward, todayString, date, setDate, day, setDay, drinks, setDrinks}) {
 
-    const [dates, setDates] = useState(getDates());
-    const [index, setIndex] = useState(dates.indexOf(displayedDate));
+    const base_url = "http://localhost:3000"
+	const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
 
-    useEffect(() => {
-        const tempdates = getDates();
-        if (!tempdates.includes(today)) {
-            tempdates.push(today);
-        }
-        setDates(tempdates);
 
-        setIndex(tempdates.indexOf(displayedDate))
+ useEffect(() => { 
+
+    const updateDrinks = async () => {
+			const data = await getDrinks(displayedDate)
+			const json = await data.json();
+            setDrinks(json)
+			}
+        
+
+		const updateDay = async () => {
+			const data = await getDay(displayedDate)
+			const json = await data.json();
+			setDay(json);
+		}
+
+    updateDay()
+    updateDrinks()
     }, [displayedDate])
 
 
     const changeDate = () => {
-        if (dates.length < 2) {
-            return;
-        }
+
 
         //If right button is pressed
         if (forward) {
             //Dont do anything if showing today
-            if (displayedDate == today) {
+            if (displayedDate == todayString) {
                 return;
             }
             //Otherwise display next date in array
-            setDisplayedDate(dates[index + 1]);
-            return;
-        }
+            const newDate = getNextDate(date)
 
-        //If left button is pressed
-        if (index == 0) {
+            setDate(newDate);
+            setDisplayedDate(getDateString(newDate));
             return;
         }
-        setDisplayedDate(dates[index - 1]);
+        
+        const newDate = getPreviousDate(date)
+        setDate(newDate);
+        setDisplayedDate(getDateString(newDate));
+
     }
 
     return (

@@ -8,8 +8,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AddPrefabButton from "./components/prefablist/AddPrefabButton";
 import BeverageInput from "./components/beverageinput/BeverageInput";
 import PrefabList from "./components/prefablist/PrefabList";
+import { getPrefabs } from "../../api/apiService";
 
-export default function AddBeverageView({ navigation }) {
+export default function AddBeverageView({ navigation, route }) {
 
   const [displayedDrink, setDisplayedDrink] = useState(
     {
@@ -19,6 +20,20 @@ export default function AddBeverageView({ navigation }) {
       percentage: "",
       color: "#d0021b"
     });
+  
+  const [prefabs, setPrefabs] = useState([])
+
+  useEffect(() => {
+    const updatePrefabs = async () => {
+      const data = await getPrefabs();
+			const json = await data.json();
+      setPrefabs(json)
+
+    }
+    updatePrefabs()
+  }, [route])
+
+ 
 
   return (
     <SafeAreaView style={styles.container}>

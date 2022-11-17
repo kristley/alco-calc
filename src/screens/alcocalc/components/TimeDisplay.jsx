@@ -5,7 +5,7 @@ import Display from "./Display";
 export default function TimeDisplay({
 	drinks,
 	displayedDate,
-	today,
+	todayString,
 	timeElapsed,
 	setTimeElapsed,
 }) {
@@ -22,7 +22,7 @@ export default function TimeDisplay({
 		let from = drinks[0].time;
 		let to;
 
-		if (today == displayedDate) {
+		if (todayString == displayedDate) {
 			const now = new Date();
 			to = now.getHours() + ":" + now.getMinutes();
 		} else {
