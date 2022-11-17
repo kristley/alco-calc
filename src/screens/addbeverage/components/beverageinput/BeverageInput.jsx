@@ -17,6 +17,7 @@ export default function BeverageInput({
 			<View style={styles.row}>
 				<BeverageNameInput
 					displayedDrink={displayedDrink}
+					setDisplayedDrink={setDisplayedDrink}
 					style={styles.beverageInput}
 				/>
 				<BeverageColorInput style={styles.colorInput} />

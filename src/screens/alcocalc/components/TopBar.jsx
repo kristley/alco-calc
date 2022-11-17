@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ArrowButton from "./ArrowButton";
+import { getDateString } from "../../../calculator/calculator";
 
-export default function TopBar({ displayedDate, setDisplayedDate, today }) {
-	const [readableDate, setReadableDate] = useState("");
-
+export default function TopBar({
+	displayedDate,
+	setDisplayedDate,
+	todayString,
+	date,
+	setDate,
+	day,
+	setDay,
+	drinks,
+	setDrinks,
+}) {
 	const updateReadableDate = () => {
-		if(displayedDate == today) {
+		if (displayedDate == today) {
 			setReadableDate("Today");
 			return;
 		}
@@ -18,10 +27,6 @@ export default function TopBar({ displayedDate, setDisplayedDate, today }) {
 		setReadableDate(datestring);
 	};
 
-	useEffect(() => {
-		updateReadableDate();
-	}, [displayedDate]);
-
 	return (
 		<View style={styles.topBar}>
 			<ArrowButton
@@ -29,19 +34,29 @@ export default function TopBar({ displayedDate, setDisplayedDate, today }) {
 				displayedDate={displayedDate}
 				setDisplayedDate={setDisplayedDate}
 				forward={false}
-				today={today}
+				todayString={todayString}
+				date={date}
+				setDate={setDate}
+				setDay={setDay}
+				day={day}
+				drinks={drinks}
+				setDrinks={setDrinks}
 			/>
 
-			<Text style={styles.date}>
-				{readableDate}
-			</Text>
+			<Text style={styles.date}>{readableDate}</Text>
 
 			<ArrowButton
 				symbol="chevron-thin-right"
 				displayedDate={displayedDate}
 				setDisplayedDate={setDisplayedDate}
 				forward={true}
-				today={today}
+				todayString={todayString}
+				date={date}
+				setDate={setDate}
+				day={day}
+				setDay={setDay}
+				drinks={drinks}
+				setDrinks={setDrinks}
 			/>
 		</View>
 	);

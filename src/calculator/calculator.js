@@ -97,3 +97,21 @@ export const getBloodAlcohol = (volume, time) => {
     const sum = volume * density / (weight * r) - hours * metabolism;
     return Math.round(sum * 100) / 100;
 };
+
+export const getPreviousDate = (currentDate) => {
+    const previous = new Date(currentDate.getTime());
+    previous.setDate(currentDate.getDate() - 1);
+    return previous;
+}
+
+export const getNextDate = (currentDate) => {
+    const next = new Date(currentDate.getTime());
+    next.setDate(currentDate.getDate() + 1);
+    return next;
+}
+
+export const getDateString = (date) => {
+    return (date.getYear() + 1900).toString() + 
+    (date.getMonth() + 1).toString()  +
+    (date.getDate()).toString();
+}

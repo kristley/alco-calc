@@ -32,7 +32,7 @@ export const addPrefab = (prefab) => {
 export const removePrefab = (prefab) => {
     const index = data.indexOf(prefab);
     if (index > -1) {
-        array.splice(index, 1);
+        data.splice(index, 1);
     }
 }
 
