@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
-
-export default function DrinkListItem({ item }) {
+import { removeDrink } from "../../../api/apiService";
+export default function DrinkListItem({ item, update, setUpdate }) {
 
   const openDeleteWindow = () => {
     Alert.alert(
@@ -20,8 +20,10 @@ export default function DrinkListItem({ item }) {
     )
   }
 
-  const deleteDrink = () => {
-    console.log("delete drink");
+  const deleteDrink = async () => {
+    const res = await removeDrink (item) 
+    const json = await res.json()
+    setUpdate(!update)
     return;
   }
 

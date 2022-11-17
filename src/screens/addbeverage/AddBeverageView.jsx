@@ -23,15 +23,7 @@ export default function AddBeverageView({ navigation, route }) {
   
   const [prefabs, setPrefabs] = useState([])
 
-  useEffect(() => {
-    const updatePrefabs = async () => {
-      const data = await getPrefabs();
-			const json = await data.json();
-      setPrefabs(json)
-
-    }
-    updatePrefabs()
-  }, [route])
+  
 
  
 
@@ -52,6 +44,7 @@ export default function AddBeverageView({ navigation, route }) {
       <PrefabList
         displayedDrink={displayedDrink}
         setDisplayedDrink={setDisplayedDrink}
+
       />
 
     </SafeAreaView>
