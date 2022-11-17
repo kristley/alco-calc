@@ -14,6 +14,8 @@ export default function TopBar({
 	drinks,
 	setDrinks,
 }) {
+  const [readableDate, setReadableDate] = useState("");
+
   const updateReadableDate = () => {
     const datestring = new Date(displayedDate.substring(0, 4), displayedDate.substring(4, 6) - 1, displayedDate.substring(6, 8)).toDateString()
     setReadableDate(datestring);
