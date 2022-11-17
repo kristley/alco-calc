@@ -1,12 +1,26 @@
 import { Alert } from "react-native";
 
+const base_url = "http://localhost:3000"
+const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
+
 /**
  * Sends a get request to the server asking for all prefabs
  * 
  * @returns A list of all registered prefabs
  */
 export const getPrefabs = () => {
-    return data;
+    const api_url = base_url + "/prefab"
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+    return Array.from(response);    
+
+    //return data;
 }
 
 /**
@@ -15,12 +29,21 @@ export const getPrefabs = () => {
  * @param {Object} prefab 
  * @returns null
  */
-export const addPrefab = (prefab) => {
-    if (data.length < 9) {
-        data.push(prefab);
-        return;
+export  const addPrefab = async (prefab) => {
+    if (getPrefabs().length < 9){
+        const data = {date: date, drinks: [drink]}
+    const api_url = base_url +  "/prefab"
+    const response = await fetch(api_url, {
+        method: "POST",
+        headers: base_headers,
+        body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+    } else {
+        Alert.alert("More than 9 prefabs")
     }
-    Alert.alert("Too many prefabs");
+    
 }
 
 /**
@@ -30,13 +53,16 @@ export const addPrefab = (prefab) => {
  * @returns null
  */
 export const removePrefab = (prefab) => {
-    const index = data.indexOf(prefab);
-    if (index > -1) {
-        array.splice(index, 1);
-    }
+    const api_url = base_url + "/day/" + prefab.id
+    const response = fetch(api_url, {
+        method: "DELETE",
+        headers: base_headers
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
 }
 
-
+/*
 const data = [
     { id: 1, beverage: "Beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
     { id: 2, beverage: "Beer", volume: "0.3", unit: "l", percentage: "4.7", color: "#ee0" },
@@ -46,3 +72,4 @@ const data = [
     { id: 6, beverage: "Vodka Redbull", volume: "0.5", unit: "l", percentage: "4.7", color: "#DD72D9" },
     // { id: 7, beverage: "Vodka Redbull Redbull", volume: "0.5", unit: "l", percentage: "4.7", color: "#DD72D9" },
 ];
+*/

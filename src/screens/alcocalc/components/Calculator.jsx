@@ -15,7 +15,7 @@ import TimeDisplay from "./TimeDisplay";
 import VolumeDisplay from "./VolumeDisplay";
 import { useState } from "react";
 
-export default function Calculator({ drinks, displayedDate, today }) {
+export default function Calculator({ drinks, displayedDate, todayString }) {
 
     const [totalVolume, setTotalVolume] = useState("");
     const [timeElapsed, setTimeElapsed] = useState("");
@@ -32,14 +32,14 @@ export default function Calculator({ drinks, displayedDate, today }) {
             <TimeDisplay
                 drinks={drinks}
                 displayedDate={displayedDate}
-                today={today}
+                todayString={todayString}
                 timeElapsed={timeElapsed}
                 setTimeElapsed={setTimeElapsed}
                 style={styles.displayed}
             />
 
             {
-                displayedDate == today &&
+                displayedDate == todayString &&
                 <BloodAlcoholDisplay
                     totalVolume={totalVolume}
                     timeElapsed={timeElapsed}

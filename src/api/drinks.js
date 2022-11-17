@@ -1,6 +1,15 @@
+//A way of getting the previous and next days recorded
+let dates = [];
+let index = 0;
+const base_url = "http://localhost:3000"
+const base_headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+}
+/*
 
 const data = {
-    "20220423": [
+    "20221115": [
         { time: "00:30", beverage: "wine", volume: "2.0", unit: "dl", percentage: "11.5", color: "#7a121f" },
         { time: "17:14", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
         { time: "17:00", beverage: "beer", volume: "0.5", unit: "l", percentage: "4.7", color: "#E8AA32" },
@@ -37,17 +46,83 @@ export const getDates = () => {
     return keys.sort();
 }
 
+getIndexes();
+*/
+
 /**
- * Gets the list of drinks corresponding to the date, if it exists
+ * Sends a get request to the server asking for all days
+ * 
+ * @returns A list of all days stored in database
+ */
+export const getDays = () => {
+    const api_url = base_url + "/day"
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .catch((error) => {console.error("Error", error)});
+    return Array.from(response);    
+    //return data;
+}
+
+/**
+ * Sends a get request to the server asking for a specific day given a date
  * 
  * @param {String} date 
- * @returns A list of drinks
+ * @returns A day object if it exists
+ */
+ export const getDay = (date) => {
+    const api_url = base_url + "/day/" + date
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+    return JSON.parse(response);    
+    //return data;
+}
+
+
+
+/**
+ * Gets the list of drinks corresponding to the date
+ * 
+ * @param {String} date 
+ * @returns A list of drinks, empty list if no drinks
  */
 export const getDrinks = (date) => {
-    if (date in data) {
-        return data[date];
-    }
-    return [];
+    const api_url = base_url + "/day/" + date + "/drinks"
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers})
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+    return response;     
+    //return data[date];
+}
+
+
+/**
+ * Adds a drink to the selected date.
+ * 
+ * @param {Object} drink 
+ * @returns null
+ */
+export const addDrink = (date, drink) => {
+    const api_url = base_url + "/day/"  + date + "/add"
+    const response = fetch(api_url, {
+        method: "PATCH",
+        headers: base_headers,
+        body: JSON.stringify(drink)
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+
+    
+    /*if (!dates.contains(date)) {
+        return;
+    }*/
+
+   // data[date].push(drink);
 }
 
 
@@ -59,14 +134,28 @@ export const getDrinks = (date) => {
  * @returns null
  */
 export const createDay = (date, drink) => {
-    if (date in data) {
+    const data = {date: date, drinks: [drink]}
+    const api_url = base_url +  "/day"
+    const response = fetch(api_url, {
+        method: "POST",
+        headers: base_headers,
+        body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+    /*if (dates.contains(date)) {
         return;
     }
 
     data[date] = [drink];
-    getKeys();
+    getIndexes();*/
 }
 
+/*export const addDrink2 = (drink) => {
+    
+    drink.time = "16:57";
+    data[20221115].push(drink);
+}*/
 
 
 /**
@@ -75,6 +164,8 @@ export const createDay = (date, drink) => {
  * @param {Object} drink 
  * @returns null
  */
+
+/*
 export const addDrink = (drink) => {
     const today = new Date();
 
@@ -90,7 +181,7 @@ export const addDrink = (drink) => {
 
     data[date] = [drink];
 }
-
+*/
 /**
  * Removes a drink from the selected date, if both exist.
  * 
@@ -99,7 +190,17 @@ export const addDrink = (drink) => {
  * @returns null
  */
 export const removeDrink = (date, drink) => {
-    if (data[date].length < 2) {
+    const api_url = base_url + "/day/"  + date + "/remove"
+    const response = fetch(api_url, {
+        method: "PATCH",
+        headers: base_headers,
+        body: JSON.stringify(drink)
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
+
+}
+  /*  if (data[date].length < 2) {
         deleteDay(date);
     }
 
@@ -108,7 +209,7 @@ export const removeDrink = (date, drink) => {
         array.splice(index, 1);
     }
 }
-
+*/
 
 /**
  * Deletes the date, if it exists.
@@ -117,9 +218,11 @@ export const removeDrink = (date, drink) => {
  * @returns null
  */
 export const deleteDay = (date) => {
-    delete data[date];
-}
-
-export const toDateString = (date) => {
-    return date.getFullYear().toString() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2);
+    const api_url = base_url + "/day/" + date
+    const response = fetch(api_url, {
+        method: "DELETE",
+        headers: base_headers
+    })
+    .then((response) => response.json())
+    .catch((error) => {console.error("Error", error)});
 }
