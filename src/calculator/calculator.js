@@ -128,18 +128,6 @@ export const getBloodAlcohol = (volume, time) => {
     return value > 0 ? value : 0;
 };
 
-export const getPreviousDate = (currentDate) => {
-    const previous = new Date(currentDate.getTime());
-    previous.setDate(currentDate.getDate() - 1);
-    return previous;
-}
-
-export const getNextDate = (currentDate) => {
-    const next = new Date(currentDate.getTime());
-    next.setDate(currentDate.getDate() + 1);
-    return next;
-}
-
 export const getDateString = (date) => {
     return (date.getYear() + 1900).toString() +
         (date.getMonth() + 1).toString() +

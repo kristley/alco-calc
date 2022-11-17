@@ -5,6 +5,8 @@ export const base_headers = {
     "Content-Type": "application/json"
 }
 
+
+
 //-------------------------
 //DRINKS
 
@@ -140,6 +142,16 @@ export const deleteDay = (date) => {
         headers: base_headers
     })
         .catch((error) => { console.error("Error", error) });
+    return response;
+}
+
+
+export const getAvailableDates = () => {
+    const api_url = base_url + "/day/dates/all"
+    const response = fetch(api_url,  {
+    method: "GET",
+    headers: base_headers})
+    .catch((error) => {console.log("Error", error)})
     return response;
 }
 

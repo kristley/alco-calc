@@ -34,8 +34,8 @@ export default function DrinkListItem({ item, update, setUpdate }) {
     >
       <Text style={[styles.cell, styles.time]}>{item.time}</Text>
       <Text style={styles.cell}>{item.beverage}</Text>
-      <Text style={styles.cell}>{item.volume}</Text>
-      <Text style={styles.cell}>{item.percentage}</Text>
+      <Text style={styles.cell}>{item.volume + item.unit}</Text>
+      <Text style={styles.cell}>{item.percentage + "%"}</Text>
       <View style={styles.cell}>
         <View style={[styles.circular, { backgroundColor: item.color }]} />
       </View>

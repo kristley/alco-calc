@@ -7,11 +7,20 @@ import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
 import { getDateString, getNextDate } from "../../calculator/calculator";
-import { getDrinks, getDay } from "../../api/apiService";
+import { getDrinks, getDay, getAvailableDates } from "../../api/apiService";
 
 export default function AlcoCalcView({ navigation, route }) {
 	const [update, setUpdate] = useState(true);
+	const [availableDates, setAvailableDates] = useState([])
 
+	useEffect(() => {
+		const updateAvailableDates = async () => {
+			const data = await getAvailableDates()
+			const json = await data.json()
+			setAvailableDates(json)
+		}
+		updateAvailableDates()
+	}, []);
 
 
 	const today = new Date()
@@ -39,8 +48,6 @@ export default function AlcoCalcView({ navigation, route }) {
     	updateDrinks()
  	 }, [route, update])
 
-	useEffect(() => {
-	}, [route, displayedDate]);
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -49,12 +56,12 @@ export default function AlcoCalcView({ navigation, route }) {
 				displayedDate={displayedDate}
 				setDisplayedDate={setDisplayedDate}
 				date={date}
-				setDate={setDate}
 				todayString={todayString}
 				day={day}
 				setDay={setDay}
 				drinks={drinks}
 				setDrinks={setDrinks}
+				availableDates={availableDates}
 			/>
 			<DrinkList 
 				style={styles.list}
