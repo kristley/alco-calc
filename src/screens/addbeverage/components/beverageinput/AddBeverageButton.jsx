@@ -3,6 +3,7 @@ import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { addDrink } from "../../../../api/drinks";
 
 export default function AddBeverageButton({ displayedDrink, navigation, style }) {
+
 	const [completeDrink, setCompleteDrink] = useState(false);
 
 	const addBeverage = () => {

@@ -6,6 +6,7 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import { getDrinks, toDateString } from "../../api/drinks";
 import Calculator from "./components/Calculator";
+import AddDrinkButton from "./components/AddDrinkButton";
 
 export default function AlcoCalcView({ navigation, route }) {
 	const today = toDateString(new Date());
@@ -27,14 +28,13 @@ export default function AlcoCalcView({ navigation, route }) {
 			/>
 			<DrinkList style={styles.list} drinks={drinks} />
 			<View style={styles.bottom}>
-				{displayedDate == today && (
-					<TouchableOpacity
-						style={styles.addBeverageButton}
-						onPress={() => navigation.navigate("AddBeverageView")}
-					>
-						<Text style={styles.addBeverageButtonText}>+</Text>
-					</TouchableOpacity>
-				)}
+				{
+					displayedDate == today &&
+					<AddDrinkButton
+						navigation={navigation}
+					/>
+				}
+
 				<Calculator
 					style={styles.calc}
 					drinks={drinks}
@@ -66,21 +66,6 @@ const styles = StyleSheet.create({
 		borderTopLeftRadius: 15,
 		borderTopRightRadius: 15,
 		paddingVertical: 20,
-	},
-	addBeverageButton: {
-		height: 70,
-		width: 70,
-		borderRadius: 35,
-		backgroundColor: "#8d1e4d",
-		alignSelf: "center",
-		marginBottom: 20
-	},
-	addBeverageButtonText: {
-		flex: 1,
-		fontSize: 50,
-		textAlign: "center",
-		textAlignVertical: "center",
-		color: "#fff",
 	},
 	calc: {
 		paddingVertical: 20,
