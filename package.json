@@ -27,7 +27,12 @@
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.20.2",
     "@testing-library/react-native": "^11.4.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^29.3.1",
+    "eslint": "^8.27.0",
+    "eslint-plugin-jest": "^27.1.5",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-native": "^4.0.0",
     "react-test-renderer": "^18.1.0"
   },
   "jest": {

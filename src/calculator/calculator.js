@@ -32,9 +32,9 @@ export const getTimeElapsed = (from, to) => {
 const getTimeArray = (timeString) => {
     let timeArray = timeString.split(":");
 
-    timeArray.forEach(element => {
-        element = parseInt(element);
-    });
+    for (let i = 0; i < timeArray.length; i++) {
+        timeArray[i] = parseInt(timeArray[i]);
+    }
 
     return timeArray;
 }
@@ -81,7 +81,14 @@ const getVolumeFromUnit = (unit) => {
 }
 
 
-
+/**
+ * Takes an amount of alcohol in ml, and an amount of time on the format "hours:minutes"
+ * and calculates current blood alcohol level based on an average norwegian adult male.
+ * 
+ * @param {String} volume 
+ * @param {String} time 
+ * @returns Total blood alcohol
+ */
 export const getBloodAlcohol = (volume, time) => {
 
     //fomula: ml * density / (weight * r) - hours * metabolism
@@ -111,7 +118,7 @@ export const getNextDate = (currentDate) => {
 }
 
 export const getDateString = (date) => {
-    return (date.getYear() + 1900).toString() + 
-    (date.getMonth() + 1).toString()  +
-    (date.getDate()).toString();
+    return (date.getYear() + 1900).toString() +
+        (date.getMonth() + 1).toString() +
+        (date.getDate()).toString();
 }

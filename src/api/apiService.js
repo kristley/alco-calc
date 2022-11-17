@@ -18,9 +18,10 @@ export const getDrinks = (date) => {
     const api_url = base_url + "/day/" + date + "/drinks"
     const response = fetch(api_url, {
         method: "GET",
-        headers: base_headers})
-    .catch((error) => {console.error("Error", error)});
-    return response;  
+        headers: base_headers
+    })
+        .catch((error) => { console.error("Error", error) });
+    return response;
 }
 
 
@@ -32,13 +33,13 @@ export const getDrinks = (date) => {
  *          Response.json() returns the modified Day object.
  */
 export const addDrink = (date, drink) => {
-    const api_url = base_url + "/day/"  + date + "/add"
+    const api_url = base_url + "/day/" + date + "/add"
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
         body: JSON.stringify(drink)
     })
-    .catch((error) => {console.error("Error", error)});
+        .catch((error) => { console.error("Error", error) });
     return response;
 }
 
@@ -51,17 +52,18 @@ export const addDrink = (date, drink) => {
  * @returns A Promise that resolves with a Response object. 
  *          Response.json() returns the modified Day object.
  */
-export const removeDrink =  (drink) => {
+export const removeDrink = (drink) => {
     const date = getDateString(new Date())
-    const api_url = base_url + "/day/"  + date + "/remove"
+    const api_url = base_url + "/day/" + date + "/remove"
     console.log(api_url)
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
         body: JSON.stringify({
-            id: drink._id})
+            id: drink._id
+        })
     })
-    .catch((error) => {console.error("Error", error)});
+        .catch((error) => { console.error("Error", error) });
     return response
 }
 
@@ -77,10 +79,11 @@ export const removeDrink =  (drink) => {
 */
 export const getDays = () => {
     const api_url = base_url + "/day/"
-    const response = fetch(api_url,  {
-    method: "GET",
-    headers: base_headers})
-    .catch((error) => {console.log("Error", error)})
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers
+    })
+        .catch((error) => { console.log("Error", error) })
     return response;
 }
 
@@ -93,10 +96,11 @@ export const getDays = () => {
 */
 export const getDay = (date) => {
     const api_url = base_url + "/day/" + date
-    const response = fetch(api_url,  {
-    method: "GET",
-    headers: base_headers})
-    .catch((error) => {console.log("Error", error)})
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers
+    })
+        .catch((error) => { console.log("Error", error) })
     return response;
 }
 
@@ -110,14 +114,14 @@ export const getDay = (date) => {
  *          Response.json() returns the created Day object
  */
 export const createDay = (date, drink) => {
-    const data = {date: date, drinks: [drink]}
-    const api_url = base_url +  "/day"
+    const data = { date: date, drinks: [drink] }
+    const api_url = base_url + "/day"
     const response = fetch(api_url, {
         method: "POST",
         headers: base_headers,
         body: JSON.stringify(data)
     })
-    .catch((error) => {console.error("Error", error)});
+        .catch((error) => { console.error("Error", error) });
     return response
 
 }
@@ -135,7 +139,7 @@ export const deleteDay = (date) => {
         method: "DELETE",
         headers: base_headers
     })
-    .catch((error) => {console.error("Error", error)});
+        .catch((error) => { console.error("Error", error) });
     return response;
 }
 
@@ -152,11 +156,12 @@ export const deleteDay = (date) => {
 */
 export const getPrefabs = () => {
     const api_url = base_url + "/prefab"
-    const response = fetch(api_url,  {
-    method: "GET",
-    headers: base_headers})
-    .catch((error) => {console.log("Error", error)})
-    return response;    
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers
+    })
+        .catch((error) => { console.log("Error", error) })
+    return response;
 }
 
 
@@ -172,18 +177,18 @@ export const getPrefabs = () => {
 export const addPrefab = async (prefab) => {
     const response1 = await getPrefabs()
     const json = await response1.json()
-    noOfPrefabs = json.length
-    if (noOfPrefabs < 9){
-        const api_url = base_url +  "/prefab"
+    const noOfPrefabs = json.length()
+    if (noOfPrefabs < 9) {
+        const api_url = base_url + "/prefab"
         const response2 = await fetch(api_url, {
-        method: "POST",
-        headers: base_headers,
-        body: JSON.stringify(prefab)
+            method: "POST",
+            headers: base_headers,
+            body: JSON.stringify(prefab)
         })
-        .catch((error) => {console.error("Error", error)});
+            .catch((error) => { console.error("Error", error) });
         return response2;
     }
-    
+
 }
 
 
@@ -200,7 +205,7 @@ export const removePrefab = (prefab) => {
         method: "DELETE",
         headers: base_headers
     })
-    .catch((error) => {console.error("Error", error)});
+        .catch((error) => { console.error("Error", error) });
     return response;
 }
 
