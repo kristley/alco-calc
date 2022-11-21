@@ -58,5 +58,6 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "space-between",
     padding: 20,
+    zIndex: -1,
   }
 });
