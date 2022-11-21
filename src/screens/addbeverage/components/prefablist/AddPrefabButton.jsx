@@ -10,7 +10,7 @@ export default function AddPrefabButton({ displayedDrink, setUpdate, update }) {
         if (!completeDrink) {
             return;
         }
-        const res = await addPrefab(displayedDrink);
+        await addPrefab(displayedDrink);
         setUpdate(!update);
     }
 
@@ -30,32 +30,32 @@ export default function AddPrefabButton({ displayedDrink, setUpdate, update }) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        textAlign: "center",
-        backgroundColor: "#E6E6E6",
-        width: 90,
-        margin: 10,
-        height: 80,
-        borderRadius: 15,
-        marginVertical: 5,
-        alignItems: "center",
-        borderWidth: 2,
-        display: "flex",
-        justifyContent: "space-around",
-    },
     addPrefabButton: {
+        color: "#444",
         flex: 1,
         fontSize: 50,
         textAlign: "center",
         textAlignVertical: "center",
-        color: "#444",
     },
     completeDrink: {
-        color: "#8d1e4d",
-        borderColor: "#8d1e4d"
+        borderColor: "#8d1e4d",
+        color: "#8d1e4d"
+    },
+    container: {
+        alignItems: "center",
+        backgroundColor: "#E6E6E6",
+        borderRadius: 15,
+        borderWidth: 2,
+        display: "flex",
+        height: 80,
+        justifyContent: "space-around",
+        margin: 10,
+        marginVertical: 5,
+        textAlign: "center",
+        width: 90,
     },
     incompleteDrink: {
-        color: "#c791a8",
-        borderColor: "#c791a8"
+        borderColor: "#c791a8",
+        color: "#c791a8"
     }
 });

@@ -35,8 +35,7 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
           })
         .catch((error) => {console.error("Error", error)})
     // convert the data to json
-    const json = await data.json();
-    
+		await data.json();
 		//addDrink(displayedDrink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
@@ -57,16 +56,16 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 3,
-		justifyContent: "center",
-		alignItems: "center",
-	},
 	add: {
 		color: "#fff",
 	},
 	completeDrink: {
 		backgroundColor: "#8d1e4d",
+	},
+	container: {
+		alignItems: "center",
+		flex: 3,
+		justifyContent: "center",
 	},
 	incompleteDrink: {
 		backgroundColor: "#c791a8",
