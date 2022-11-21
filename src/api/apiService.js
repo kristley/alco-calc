@@ -146,6 +146,12 @@ export const deleteDay = (date) => {
 }
 
 
+/**
+ * Sends a get request to the server asking for all dates
+ * 
+ * @returns A Promise that resolves with a Response object. 
+ *          Response.json() returns an array of all dates
+*/
 export const getAvailableDates = () => {
     const api_url = base_url + "/day/dates/all"
     const response = fetch(api_url,  {
