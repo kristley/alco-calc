@@ -1,39 +1,56 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 
 
-export default function BeverageColorInput({}) {
-const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    {label: 'red', value: '#FF0000', icon: () => <View style={{backgroundColor: "#FF0000" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'green', value: '#00FF00', icon: () => <View style={{backgroundColor: "#00FF00" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'blue', value: '#0000FF', icon: () => <View style={{backgroundColor: "#0000FF" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'yellow', value: '#FFFF00', icon: () => <View style={{backgroundColor: "#FFFF00" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'orange', value: '#FFA500', icon: () => <View style={{backgroundColor: "#FFA500" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'purple', value: '#800080', icon: () => <View style={{backgroundColor: "#800080" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'pink', value: '#FFC0CB', icon: () => <View style={{backgroundColor: "#FFC0CB" , width: 18, height: 18, borderRadius: 9}} />},
-    {label: 'brown', value: '#A52A2A', icon: () => <View style={{backgroundColor: "#A52A2A" , width: 18, height: 18, borderRadius: 9}} />},
-  ]);
+export default function BeverageColorInput({ displayedDrink, setDisplayedDrink }) {
 
-  return (
+	const [open, setOpen] = useState(false);
+
+	const [color, setColor] = useState(null);
+
+	const updateColor = (value) => {
+		setColor(value);
+		console.log(value);
+
+		const newDrink = {};
+		Object.assign(newDrink, displayedDrink);
+		newDrink.color = value;
+		setDisplayedDrink(newDrink);
+	}
+
+	useEffect(() => {
+		setColor(displayedDrink.color);
+	}, [displayedDrink]);
+
+
+	return (
 		<DropDownPicker
 			open={open}
-			value={value}
+			value={color}
 			items={items}
 			setOpen={setOpen}
-			setValue={setValue}
-			setItems={setItems}
+			setValue={setColor}
+			onChangeValue={updateColor}
 			style={styles.dropdown}
-			dropDownContainerStyle={styles.dropdownContainer}		// textStyle opacity is set to 0 to hide the text
+			dropDownContainerStyle={styles.dropdownContainer}
 			textStyle={{ opacity: 0, width: 0, height: 0 }}
-			// lableStyle opacity is set to 0 to hide the text
 			labelStyle={{ opacity: 0, width: 0, height: 0 }}
 		/>
-  );
+	);
 }
+
+const items = [
+	{ label: 'orange', value: '#E8AA32', icon: () => <View style={{ backgroundColor: "#E8AA32", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'pink', value: '#DD72D9', icon: () => <View style={{ backgroundColor: "#DD72D9", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'brown', value: '#7a121f', icon: () => <View style={{ backgroundColor: "#7a121f", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'purple', value: '#6635CE', icon: () => <View style={{ backgroundColor: "#6635CE", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'green', value: '#127A6E', icon: () => <View style={{ backgroundColor: "#127A6E", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'yellow', value: '#ee0', icon: () => <View style={{ backgroundColor: "#ee0", width: 18, height: 18, borderRadius: 9 }} /> },
+	{ label: 'gray', value: '#444444', icon: () => <View style={{ backgroundColor: "#444444", width: 18, height: 18, borderRadius: 9 }} /> }
+]
+
 
 const styles = StyleSheet.create({
 	dropdown: {

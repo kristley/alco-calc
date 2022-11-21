@@ -37,12 +37,16 @@ export default function BeverageInput({
 					style={styles.addButton}
 				/>
 			</View>
-			<BeverageColorInput style={styles.colorInput} />
+			<BeverageColorInput
+				style={styles.colorInput}
+				displayedDrink={displayedDrink}
+				setDisplayedDrink={setDisplayedDrink}
+			/>
 		</View>
 	);
 }
 
-function BeverageVolumeUnitInput({displayedDrink, setDisplayedDrink}) {
+function BeverageVolumeUnitInput({ displayedDrink, setDisplayedDrink }) {
 	return (
 		<View style={[styles.beverageInput, { flexDirection: "row", flex: 4 }]}>
 			<BeverageVolumeInput

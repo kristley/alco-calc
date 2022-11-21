@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 
-export default function BeverageNameInput({
-	displayedDrink,
-	setDisplayedDrink,
-	style,
-}) {
+export default function BeverageNameInput({ displayedDrink, setDisplayedDrink, style }) {
+
 	const [name, setName] = useState("");
 
 	const updateName = (value) => {
