@@ -22,7 +22,7 @@ export default function DrinkListItem({ item, update, setUpdate }) {
 
   const deleteDrink = async () => {
     const res = await removeDrink (item) 
-    const json = await res.json()
+    await res.json()
     setUpdate(!update)
     return;
   }
@@ -44,27 +44,27 @@ export default function DrinkListItem({ item, update, setUpdate }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#eee",
-    padding: 15,
-    borderRadius: 5,
-    marginVertical: 5,
-    textAlign: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   cell: {
     width: '25%',
+  },
+  circular: {
+    borderRadius: 10,
+    height: 20,
+    width: 20,
+  },
+  container: {
+    alignItems: "center",
+    backgroundColor: "#eee",
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: 5,
+    padding: 15,
+    textAlign: "center",
   },
   time: {
     color: "#888",
     fontSize: 12,
     width: '18%',
-  },
-  circular: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
   }
 });

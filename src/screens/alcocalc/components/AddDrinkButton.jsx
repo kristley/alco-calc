@@ -15,18 +15,18 @@ export default function AddDrinkButton({ navigation }) {
 
 const styles = StyleSheet.create({
     addBeverageButton: {
-        height: 70,
-        width: 70,
-        borderRadius: 35,
-        backgroundColor: "#8d1e4d",
         alignSelf: "center",
-        marginBottom: 20
+        backgroundColor: "#8d1e4d",
+        borderRadius: 35,
+        height: 70,
+        marginBottom: 20,
+        width: 70
     },
     addBeverageButtonText: {
+        color: "#fff",
         flex: 1,
         fontSize: 50,
         textAlign: "center",
         textAlignVertical: "center",
-        color: "#fff",
     }
 });

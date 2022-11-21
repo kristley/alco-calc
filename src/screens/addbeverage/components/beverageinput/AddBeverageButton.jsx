@@ -1,39 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { addDrink } from "../../../../api/apiService";
+import { getDateString, getTimeString } from "../../../../calculator/calculator";
 
 export default function AddBeverageButton({ displayedDrink, navigation, style }) {
 
 	const [completeDrink, setCompleteDrink] = useState(false);
 
-  const base_url = "http://lafa7-2001-700-300-4106-85ba-3343-f003-a845.eu.ngrok.io"
-	const base_headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-  }
-  const date =	(new Date().getYear() + 1900).toString() + 
-  (new Date().getMonth() + 1).toString()  +
-  (new Date().getDate()).toString();
-
+	const date = getDateString(new Date());
 	const addBeverage = async () => {
 		if (!completeDrink) {
 			return;
 		}
-    const api_url = base_url + "/day/"  + date + "/add"
-    const timeString = (new Date().getHours().toString()) + ":" + (new Date().getMinutes().toString())
-	const data = await addDrink(date, {
-		time: timeString,
-        beverage: displayedDrink.beverage,
-        volume: displayedDrink.volume,
-        unit: displayedDrink.unit,
-        percentage: displayedDrink.percentage,
-        color: displayedDrink.color,
-		id: displayedDrink.id}
-
-	)
-	const json = await data.json();
-    
-		//addDrink(displayedDrink);
+		const drink = structuredClone(displayedDrink);
+		drink.time = getTimeString(new Date());
+		await addDrink(date, drink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 
@@ -53,16 +34,16 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 3,
-		justifyContent: "center",
-		alignItems: "center",
-	},
 	add: {
 		color: "#fff",
 	},
 	completeDrink: {
 		backgroundColor: "#8d1e4d",
+	},
+	container: {
+		alignItems: "center",
+		flex: 3,
+		justifyContent: "center",
 	},
 	incompleteDrink: {
 		backgroundColor: "#c791a8",

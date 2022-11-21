@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		paddingHorizontal: 10
 	},
+	percentage: {
+		color: "#121212",
+		textAlign: "right",
+		textAlignVertical: "center",
+	},
 	textInput: {
 		color: "#121212",
 		flex: 1
-	},
-	percentage: {
-		color: "#121212",
-		textAlignVertical: "center",
-		textAlign: "right",
 	}
 });

@@ -1,12 +1,11 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
-import { getDateString, getNextDate } from "../../calculator/calculator";
+import { getDateString } from "../../calculator/calculator";
 import { getDrinks, getDay, getAvailableDates } from "../../api/apiService";
 
 export default function AlcoCalcView({ navigation, route }) {
@@ -26,12 +25,12 @@ export default function AlcoCalcView({ navigation, route }) {
 	const today = new Date()
 	const todayString = getDateString(today)
 	const [displayedDate, setDisplayedDate] = useState(todayString);
-	const [date, setDate] = useState(today)
+	const [date] = useState(today)
 	const [drinks, setDrinks] = useState([]);
 	const [day, setDay] = useState()
 
 
-  	useEffect(() => {
+	useEffect(() => {
 
 		const updateDrinks = async () => {
 			const data = await getDrinks(displayedDate)
@@ -45,8 +44,8 @@ export default function AlcoCalcView({ navigation, route }) {
 			setDay(json);
 		}
 		updateDay()
-    	updateDrinks()
- 	 }, [route, update])
+		updateDrinks()
+	}, [route, update])
 
 
 	return (
@@ -65,7 +64,7 @@ export default function AlcoCalcView({ navigation, route }) {
 			/>
 			<DrinkList 
 				style={styles.list}
-			 	drinks={drinks}
+				drinks={drinks}
 				setUpdate={setUpdate}
 				update={update}
 			/>
@@ -89,27 +88,27 @@ export default function AlcoCalcView({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		marginTop: 15,
-		flex: 1,
-	},
-	topBar: {
-		marginTop: 40,
-		paddingTop: 20,
-		paddingHorizontal: 20,
-		flex: 1,
-	},
-	list: {
-		flex: 5,
-	},
 	bottom: {
-		flex: 2,
 		backgroundColor: "#e6e6e6",
 		borderTopLeftRadius: 15,
 		borderTopRightRadius: 15,
+		flex: 2,
 		paddingVertical: 20,
 	},
 	calc: {
 		paddingVertical: 20,
+	},
+	container: {
+		flex: 1,
+		marginTop: 15,
+	},
+	list: {
+		flex: 5,
+	},
+	topBar: {
+		flex: 1,
+		marginTop: 40,
+		paddingHorizontal: 20,
+		paddingTop: 20,
 	}
 });

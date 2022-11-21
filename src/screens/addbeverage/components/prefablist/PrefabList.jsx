@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, FlatList, Alert } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import { getPrefabs } from "../../../../api/apiService";
 import AddPrefabButton from "./AddPrefabButton";
 import PrefabItem from "./PrefabItem";
@@ -52,16 +52,9 @@ export default function PrefabList({ setDisplayedDrink, displayedDrink }) {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
     flex: 2,
     justifyContent: "space-between",
-    alignItems: "center",
     padding: 20,
-  },
-  item: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 10,
-    padding: 10,
-    zIndex: -1,
   }
 });

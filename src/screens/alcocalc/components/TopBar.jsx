@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ArrowButton from "./ArrowButton";
-import { getDateString } from "../../../calculator/calculator";
 
 export default function TopBar({ displayedDate, setDisplayedDate, todayString, date, setDate, day, setDay, drinks, setDrinks, availableDates}) {
 
@@ -59,16 +58,16 @@ export default function TopBar({ displayedDate, setDisplayedDate, todayString, d
 }
 
 const styles = StyleSheet.create({
-	topBar: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-		alignItems: "center",
-		padding: 15,
-		marginHorizontal: 20,
-		backgroundColor: "#eee",
-		borderRadius: 20,
-	},
 	date: {
 		fontSize: 24,
+	},
+	topBar: {
+		alignItems: "center",
+		backgroundColor: "#eee",
+		borderRadius: 20,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		marginHorizontal: 20,
+		padding: 15,
 	},
 });

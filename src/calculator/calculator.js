@@ -128,8 +128,20 @@ export const getBloodAlcohol = (volume, time) => {
     return value > 0 ? value : 0;
 };
 
+/**
+ * 
+ * @param {Date} date 
+ * @returns A string on the format "YYYYMMDD"
+ */
 export const getDateString = (date) => {
     return (date.getYear() + 1900).toString() +
         (date.getMonth() + 1).toString() +
         (date.getDate()).toString();
 }
+
+/**
+ * 
+ * @param {Date} date 
+ * @returns A string on the format "HH:MM"
+ */
+export const getTimeString = (date) => ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);

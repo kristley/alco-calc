@@ -60,36 +60,36 @@ function BeverageVolumeUnitInput({displayedDrink, setDisplayedDrink}) {
 }
 
 const styles = StyleSheet.create({
+	addButton: {
+		borderRadius: 15,
+		height: 50,
+	},
+	beverageInput: {
+		backgroundColor: "#E6E6E6",
+		borderRadius: 15,
+		flex: 2,
+		height: 50,
+		marginRight: 15,
+	},
+	beverageVolumeInput: {
+		backgroundColor: "#E6E6E6",
+		borderRadius: 15,
+		flex: 1,
+		height: 50,
+	},
+	colorInput: {
+		backgroundColor: "#f00",
+		borderRadius: 15,
+		height: 30,
+		width: 30,
+	},
 	container: {
 		flex: 1,
 		padding: 15,
 	},
 	row: {
+		alignItems: "center",
 		flexDirection: "row",
 		flex: 1,
-		alignItems: "center",
-	},
-	colorInput: {
-		height: 30,
-		width: 30,
-		borderRadius: 15,
-		backgroundColor: "#f00",
-	},
-	beverageInput: {
-		backgroundColor: "#E6E6E6",
-		borderRadius: 15,
-		height: 50,
-		marginRight: 15,
-		flex: 2,
-	},
-	beverageVolumeInput: {
-		backgroundColor: "#E6E6E6",
-		borderRadius: 15,
-		height: 50,
-		flex: 1,
-	},
-	addButton: {
-		borderRadius: 15,
-		height: 50,
 	},
 });
