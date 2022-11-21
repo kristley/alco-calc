@@ -59,7 +59,6 @@ export const addDrink = (date, drink) => {
 export const removeDrink = (drink) => {
     const date = getDateString(new Date())
     const api_url = base_url + "/day/" + date + "/remove"
-    console.log(api_url)
     const response = fetch(api_url, {
         method: "PATCH",
         headers: base_headers,
@@ -127,7 +126,6 @@ export const createDay = (date, drink) => {
     })
         .catch((error) => { console.error("Error", error) });
     return response
-
 }
 
 /**
@@ -192,7 +190,7 @@ export const getPrefabs = () => {
 export const addPrefab = async (prefab) => {
     const response1 = await getPrefabs()
     const json = await response1.json()
-    const noOfPrefabs = json.length()
+    const noOfPrefabs = json.length;
     if (noOfPrefabs < 9) {
         const api_url = base_url + "/prefab"
         const response2 = await fetch(api_url, {

@@ -1,9 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { removeDrink } from "../../../api/apiService";
-export default function DrinkListItem({ item, update, setUpdate }) {
+import { getDateString } from "../../../calculator/calculator";
+export default function DrinkListItem({ item, update, setUpdate, displayedDate, today }) {
 
   const openDeleteWindow = () => {
+    if (displayedDate != getDateString(today)) {
+      return;
+    }
+
     Alert.alert(
       "Remove drink?",
       "Are you sure you want to remove this drink?",
@@ -21,7 +26,7 @@ export default function DrinkListItem({ item, update, setUpdate }) {
   }
 
   const deleteDrink = async () => {
-    const res = await removeDrink (item) 
+    const res = await removeDrink(item)
     await res.json()
     setUpdate(!update)
     return;

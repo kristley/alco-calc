@@ -18,7 +18,6 @@ export default function BeverageUnitInput({
 
 	const updateUnit = (value) => {
 		setUnit(value);
-		console.log(value);
 		const newDrink = {};
 		Object.assign(newDrink, displayedDrink);
 		newDrink.unit = value;

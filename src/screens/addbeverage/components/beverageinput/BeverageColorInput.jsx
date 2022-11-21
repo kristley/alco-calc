@@ -12,7 +12,6 @@ export default function BeverageColorInput({ displayedDrink, setDisplayedDrink }
 
 	const updateColor = (value) => {
 		setColor(value);
-		console.log(value);
 
 		const newDrink = {};
 		Object.assign(newDrink, displayedDrink);
