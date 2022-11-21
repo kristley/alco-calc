@@ -1,42 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { addDrink } from "../../../../api/apiService";
+import { getDateString, getTimeString } from "../../../../calculator/calculator";
 
 export default function AddBeverageButton({ displayedDrink, navigation, style }) {
 
 	const [completeDrink, setCompleteDrink] = useState(false);
 
-  const base_url = "http://localhost:3000"
-	const base_headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-  }
-  const date =	(new Date().getYear() + 1900).toString() + 
-  (new Date().getMonth() + 1).toString()  +
-  (new Date().getDate()).toString();
-
+	const date = getDateString(new Date());
 	const addBeverage = async () => {
 		if (!completeDrink) {
 			return;
 		}
-    const api_url = base_url + "/day/"  + date + "/add"
-    const timeString = (new Date().getHours().toString()) + ":" + (new Date().getMinutes().toString())
-    const data = await fetch(api_url, {
-        method: "PATCH",
-        headers: base_headers,
-        body: JSON.stringify({
-              time : timeString,
-              beverage: displayedDrink.beverage,
-              volume: displayedDrink.volume,
-              color: displayedDrink.color,
-              percentage: displayedDrink.percentage,
-              unit: displayedDrink.unit,
-              id: displayedDrink.id
-            })
-          })
-        .catch((error) => {console.error("Error", error)})
-    // convert the data to json
-		await data.json();
-		//addDrink(displayedDrink);
+		const drink = structuredClone(displayedDrink);
+		drink.time = getTimeString(new Date());
+		await addDrink(date, drink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 
