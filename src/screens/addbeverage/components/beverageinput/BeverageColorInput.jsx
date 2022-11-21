@@ -53,16 +53,16 @@ const items = [
 
 const styles = StyleSheet.create({
 	dropdown: {
+		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
 		borderWidth: 0,
 		height: 50,
 		width: 80,
-		backgroundColor: "#E6E6E6",
 	},
 	dropdownContainer: {
-		width: 80,
+		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
 		borderWidth: 0,
-		backgroundColor: "#E6E6E6",
+		width: 80,
 	}
 });
