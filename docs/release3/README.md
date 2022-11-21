@@ -9,6 +9,23 @@ Like in the previous releases, you are able to log drinks and see your BAC. The 
 
 You can easily see logs for previous days and navigate between them. You can also see how long you were drinking for and how much pure alcohol you consumed for these days.
 
+### Work habits and work division
+This release is heavily plagued by the fact that we have had a lot of trouble with Java-modularization. We spoke to technical assistance several times, but couldn't get any help. Therefore we decided, after a lot of discussion, to make a new project and start over. This meant that we had to start over with the frontend and in addition create a whole new backend. An issue with this approach is that you need a mobile phone to use the app, which means localhosting the server was troublesome. As a result we ended up deploying the server to Heroku, which is an web-server hosting platform. We also only had three group members, as one of our group members never showed up after the first meeting. This was a big setback for us, but we managed to get the app to work in the end, after discussing delaying the project with the TA. We were told that we had until midnight the 21st of November to finish the project.
+
+We have followed strict guidelines to always have a better, working version of the project on our main brach by using merge request that are reviewed by at least one other group member. We have also used the issue tracker to keep track of what we need to do and what we have done. All three working on the project have worked a whole lot on the project, and we have all contributed heavily to the project. It was a big project to work on, but we have had good teamwork and followed the contract we made in the beginning of the project. 
+
+### Project architecture
+
+![Class diagram](class_diagram.png)
+*This is basically how the class diagram would look if we were using an object oriented approach*
+![Sequence_diagram](sequence_diagram.png)
+![Package diagram](package_diagram.png)
+
+## Code testing and quality
+
+We are using ESLint to check the code quality and have integrated Prettier to work with the linter. We have also used Jest to test the code. In addition we have set up an advanced CI-system with the Gitlab-CI. The CI-system runs the linter and tests the app, and we won't be able to merge to the main branch if the tests fail. 
+
+If we had more time we would have made coverage report through the CI-system and added more advanced tests to better test the UI, but with the limited resources we had we had to prioritize other things. 
 ## User stories
 
 As a user I want to be able to log my drinks so that I can keep track of my alcohol consumption.
