@@ -1,5 +1,5 @@
 import { getDateString } from "../calculator/calculator"
-export const base_url = "http://afa7-2001-700-300-4106-85ba-3343-f003-a845.eu.ngrok.io"
+export const base_url = "https://alcocalc-api.herokuapp.com"
 export const base_headers = {
     "Accept": "application/json",
     "Content-Type": "application/json",
@@ -150,10 +150,11 @@ export const deleteDay = (date) => {
 
 export const getAvailableDates = () => {
     const api_url = base_url + "/day/dates/all"
-    const response = fetch(api_url,  {
-    method: "GET",
-    headers: base_headers})
-    .catch((error) => {console.log("Error", error)})
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers
+    })
+        .catch((error) => { console.log("Error", error) })
     return response;
 }
 
