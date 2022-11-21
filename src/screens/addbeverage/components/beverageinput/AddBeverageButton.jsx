@@ -12,7 +12,8 @@ export default function AddBeverageButton({ displayedDrink, navigation, style })
 		if (!completeDrink) {
 			return;
 		}
-		const drink = structuredClone(displayedDrink);
+		const drink = {};
+		Object.assign(drink, displayedDrink);
 		drink.time = getTimeString(new Date());
 		await addDrink(date, drink);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });

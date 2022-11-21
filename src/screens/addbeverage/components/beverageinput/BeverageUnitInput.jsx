@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
@@ -16,13 +16,13 @@ export default function BeverageUnitInput({
 		{ label: "l", value: "l" },
 	]);
 
-  const updateUnit = (value) => {
+	const updateUnit = (value) => {
 		setUnit(value);
 		const newDrink = {};
 		Object.assign(newDrink, displayedDrink);
 		newDrink.unit = value;
 		setDisplayedDrink(newDrink);
-  }
+	}
 
 	useEffect(() => {
 		setUnit(displayedDrink.unit)
@@ -44,7 +44,7 @@ export default function BeverageUnitInput({
 			containerStyle={style}
 			style={[{ borderWidth: 0 }, style]}
 			dropDownContainerStyle={styles.dropdown}
-			zIndex={1}
+			zIndex={10}
 		/>
 	);
 }

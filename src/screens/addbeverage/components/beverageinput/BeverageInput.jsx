@@ -20,7 +20,6 @@ export default function BeverageInput({
 					setDisplayedDrink={setDisplayedDrink}
 					style={styles.beverageInput}
 				/>
-				<BeverageColorInput style={styles.colorInput} />
 			</View>
 			<View style={styles.row}>
 				<BeveragePercentageInput
@@ -38,11 +37,16 @@ export default function BeverageInput({
 					style={styles.addButton}
 				/>
 			</View>
+			<BeverageColorInput
+				style={styles.colorInput}
+				displayedDrink={displayedDrink}
+				setDisplayedDrink={setDisplayedDrink}
+			/>
 		</View>
 	);
 }
 
-function BeverageVolumeUnitInput({displayedDrink, setDisplayedDrink}) {
+function BeverageVolumeUnitInput({ displayedDrink, setDisplayedDrink }) {
 	return (
 		<View style={[styles.beverageInput, { flexDirection: "row", flex: 4 }]}>
 			<BeverageVolumeInput

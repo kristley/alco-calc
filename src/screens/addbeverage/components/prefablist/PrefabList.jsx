@@ -34,6 +34,7 @@ export default function PrefabList({ setDisplayedDrink, displayedDrink }) {
                 displayedDrink={displayedDrink}
                 setUpdate={setUpdate}
                 update={update}
+                style={styles.item}
               />
             );
           }
@@ -42,6 +43,7 @@ export default function PrefabList({ setDisplayedDrink, displayedDrink }) {
               item={item}
               setDisplayedDrink={setDisplayedDrink}
               setUpdate={setUpdate} update={update}
+              style={styles.item}
             />
           );
         }}
@@ -56,5 +58,6 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: "space-between",
     padding: 20,
+    zIndex: -1,
   }
 });

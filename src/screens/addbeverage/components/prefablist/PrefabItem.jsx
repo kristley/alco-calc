@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     margin: 10,
     marginVertical: 5,
     textAlign: "center",
-    width: 90
+    width: 90,
+    zIndex: -1,
   },
   nameContainer: {
     flex: 2,
