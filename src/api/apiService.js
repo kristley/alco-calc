@@ -1,8 +1,10 @@
 import { getDateString } from "../calculator/calculator"
-export const base_url = "http://localhost:3000"
+export const base_url = "http://afa7-2001-700-300-4106-85ba-3343-f003-a845.eu.ngrok.io"
 export const base_headers = {
     "Accept": "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "-skip-browser-warning": "something"
+
 }
 
 
