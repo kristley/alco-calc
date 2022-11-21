@@ -1,9 +1,13 @@
 import { getDateString } from "../calculator/calculator"
-export const base_url = "http://localhost:3000"
+export const base_url = "https://alcocalc-api.herokuapp.com"
 export const base_headers = {
     "Accept": "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "-skip-browser-warning": "something"
+
 }
+
+
 
 //-------------------------
 //DRINKS
@@ -140,6 +144,17 @@ export const deleteDay = (date) => {
         headers: base_headers
     })
         .catch((error) => { console.error("Error", error) });
+    return response;
+}
+
+
+export const getAvailableDates = () => {
+    const api_url = base_url + "/day/dates/all"
+    const response = fetch(api_url, {
+        method: "GET",
+        headers: base_headers
+    })
+        .catch((error) => { console.log("Error", error) })
     return response;
 }
 

@@ -40,7 +40,7 @@ export default function BeverageUnitInput({
 			defaultValue={value}
 			placeholder="Unit"
 			placeholderStyle={{ color: "#9EA0A4" }}
-      		onChangeValue={updateUnit}
+			onChangeValue={updateUnit}
 			containerStyle={style}
 			style={[{ borderWidth: 0 }, style]}
 			dropDownContainerStyle={styles.dropdown}
@@ -51,8 +51,8 @@ export default function BeverageUnitInput({
 
 const styles = StyleSheet.create({
 	dropdown: {
+		backgroundColor: "#E6E6E6",
 		borderRadius: 15,
 		borderWidth: 0,
-		backgroundColor: "#E6E6E6",
 	}
 });

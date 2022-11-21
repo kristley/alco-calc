@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { useEffect } from "react";
+import { TouchableOpacity } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { getDrinks, getDay } from "../../../api/apiService";
-import { getDateString, getNextDate, getPreviousDate } from "../../../calculator/calculator";
 
-
-export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, forward, todayString, date, setDate, day, setDay, drinks, setDrinks}) {
-
-    const base_url = "http://localhost:3000"
-	const base_headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-}
-
+export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, forward, todayString, setDay, setDrinks, availableDates}) {
 
  useEffect(() => { 
 
@@ -35,8 +26,10 @@ export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, f
 
 
     const changeDate = () => {
-
-
+        
+        const index = availableDates.indexOf(displayedDate)
+        console.log(availableDates)
+        console.log("INDEX: ----", index)
         //If right button is pressed
         if (forward) {
             //Dont do anything if showing today
@@ -44,16 +37,21 @@ export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, f
                 return;
             }
             //Otherwise display next date in array
-            const newDate = getNextDate(date)
+            const newDate = availableDates[index + 1]
+            if (newDate == todayString){
+                setDisplayedDate(todayString);
 
-            setDate(newDate);
-            setDisplayedDate(getDateString(newDate));
+            } else {
+                setDisplayedDate(newDate);
+            }
             return;
         }
         
-        const newDate = getPreviousDate(date)
-        setDate(newDate);
-        setDisplayedDate(getDateString(newDate));
+        const newDate = availableDates[index - 1]
+        if (index != 0){
+            setDisplayedDate(newDate);
+
+        }
 
     }
 
@@ -61,15 +59,9 @@ export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, f
         <TouchableOpacity onPress={changeDate}>
             <EntypoIcon
                 name={symbol}
-                style={styles.arrow}
+                size={40}
+                color={"#808080"}
             />
         </TouchableOpacity>
     );
 }
-
-const styles = StyleSheet.create({
-    arrow: {
-        color: "rgba(128,128,128,1)",
-        fontSize: 40
-    }
-});

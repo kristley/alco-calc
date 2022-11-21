@@ -32,7 +32,7 @@ export default function PrefabItem({ setDisplayedDrink, item, setUpdate, update 
 
 
   const deletePrefab = async () => {
-    const res = await removePrefab(item);
+    await removePrefab(item);
     setUpdate(!update);
   }
 
@@ -57,42 +57,41 @@ export default function PrefabItem({ setDisplayedDrink, item, setUpdate, update 
 
 
 const styles = StyleSheet.create({
-  container: {
-    textAlign: "center",
-    backgroundColor: "#E6E6E6",
-    width: 90,
-    margin: 10,
-    height: 80,
-    borderRadius: 15,
-    marginVertical: 5,
-    alignItems: "center",
-    borderWidth: 2,
-    display: "flex",
-    justifyContent: "space-around",
-    zIndex: -1
-  },
   beverageName: {
-    textAlign: "center",
     color: "#121212",
+    textAlign: "center",
   },
   beveragePercentage: {
     flex: 1,
-    textAlign: "center",
     fontSize: 12,
+    textAlign: "center",
   },
   beverageVolume: {
     flex: 1,
-    textAlign: "center",
     fontSize: 12,
+    textAlign: "center",
   },
-  volumeAndPercentagecontainer: {
-    flex: 1,
-    flexDirection: "row",
+  container: {
+    alignItems: "center",
+    backgroundColor: "#E6E6E6",
+    borderRadius: 15,
+    borderWidth: 2,
+    display: "flex",
+    height: 80,
     justifyContent: "space-around",
-    alignItems: "center"
+    margin: 10,
+    marginVertical: 5,
+    textAlign: "center",
+    width: 90
   },
   nameContainer: {
     flex: 2,
     justifyContent: "center"
+  },
+  volumeAndPercentagecontainer: {
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around"
   }
 });

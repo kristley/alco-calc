@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, TextInput, Alert } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 
 export default function BeverageNameInput({
 	displayedDrink,

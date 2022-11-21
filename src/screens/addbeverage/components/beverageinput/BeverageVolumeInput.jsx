@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, TextInput, Text } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 
 
 export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink, style }) {
@@ -34,8 +34,8 @@ export default function BeverageVolumeInput({ displayedDrink, setDisplayedDrink,
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
-		paddingLeft: 10,
 		flex: 1,
+		paddingLeft: 10,
 	},
 	textInput: {
 		color: "#121212",

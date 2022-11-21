@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import { View} from "react-native";
+import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 
-export default function BeverageColorInput({style}) {
+
+export default function BeverageColorInput({}) {
 const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -25,23 +26,27 @@ const [open, setOpen] = useState(false);
 			setOpen={setOpen}
 			setValue={setValue}
 			setItems={setItems}
-			style={{
-				height: 50,
-				width: 80,
-				borderRadius: 15,
-				borderWidth: 0,
-				backgroundColor: "#E6E6E6",
-			}}
-			dropDownContainerStyle={{
-				width: 80,
-				borderRadius: 15,
-				borderWidth: 0,
-				backgroundColor: "#E6E6E6",
-			}}
-			// textStyle opacity is set to 0 to hide the text
+			style={styles.dropdown}
+			dropDownContainerStyle={styles.dropdownContainer}		// textStyle opacity is set to 0 to hide the text
 			textStyle={{ opacity: 0, width: 0, height: 0 }}
 			// lableStyle opacity is set to 0 to hide the text
 			labelStyle={{ opacity: 0, width: 0, height: 0 }}
 		/>
   );
 }
+
+const styles = StyleSheet.create({
+	dropdown: {
+		borderRadius: 15,
+		borderWidth: 0,
+		height: 50,
+		width: 80,
+		backgroundColor: "#E6E6E6",
+	},
+	dropdownContainer: {
+		width: 80,
+		borderRadius: 15,
+		borderWidth: 0,
+		backgroundColor: "#E6E6E6",
+	}
+});
