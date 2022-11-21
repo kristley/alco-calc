@@ -8,7 +8,7 @@ export default function DrinkList({ style, drinks, update, setUpdate}) {
 
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={style}>
       <FlatList
         style={styles.scrollArea}
         data={[...drinks].reverse()}
@@ -26,30 +26,9 @@ export default function DrinkList({ style, drinks, update, setUpdate}) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
-  item: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  circular: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-  },
   scrollArea: {
     height: 420,
-    // backgroundColor: "#fff",
-    marginTop: 28,
     marginHorizontal: 20,
-  },
-  tableHeaders: {
-    width: 286,
-    height: 16,
-    marginTop: 11,
-    marginLeft: 23,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    marginTop: 28,
   },
 });
