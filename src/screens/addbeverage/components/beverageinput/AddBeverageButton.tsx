@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { addDrink } from "../../../../api/apiService";
-import { getDateString, getTimeString } from "../../../../calculator/calculator";
+import { getTimeString } from "../../../../calculator/calculator";
+import { useDrinkValid, useGetDrink } from "../../Providers/DrinkProvider";
 
-export default function AddBeverageButton({ displayedDrink, navigation, style }) {
+export default function AddBeverageButton() {
+	const navigation = useNavigation();
+	const validDrink = useDrinkValid();
+	const drink = useGetDrink();
 
-	const [completeDrink, setCompleteDrink] = useState(false);
-
-	const date = getDateString(new Date());
 	const addBeverage = async () => {
-		if (!completeDrink) {
-			return;
-		}
-		const drink = {};
-		Object.assign(drink, displayedDrink);
-		drink.time = getTimeString(new Date());
-		await addDrink(date, drink);
+		if (!validDrink) return;
+
+		const time = getTimeString(new Date());
+
+		const beverage = {...drink, time: time} as Beverage;
+		await addDrink(beverage);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
-
-	useEffect(() => {
-		setCompleteDrink(!Object.values(displayedDrink).some((x) => x === ""));
-	}, [displayedDrink]);
 
 	return (
 		<TouchableOpacity
 			onPress={addBeverage}
-			style={[style, styles.container, { ...(completeDrink ? styles.completeDrink : styles.incompleteDrink) }]}
-			disabled={!completeDrink}
+			style={[styles.container, { ...(validDrink ? styles.completeDrink : styles.incompleteDrink) }]}
+			disabled={!validDrink}
 		>
 			<Text style={styles.add}>Add +</Text>
 		</TouchableOpacity>
@@ -42,6 +39,8 @@ const styles = StyleSheet.create({
 		backgroundColor: "#8d1e4d",
 	},
 	container: {
+		borderRadius: 15,
+		height: 50,
 		alignItems: "center",
 		flex: 3,
 		justifyContent: "center",

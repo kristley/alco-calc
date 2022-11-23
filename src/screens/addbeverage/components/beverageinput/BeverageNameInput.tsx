@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
+import { useSetDrink } from "../../Providers/DrinkProvider";
+import { beverageInput } from "./BeverageInputStyles";
 
-export default function BeverageNameInput({ displayedDrink, setDisplayedDrink, style }) {
+export default function BeverageNameInput() {
 
 	const [name, setName] = useState("");
-
-	const updateName = (value) => {
-		setName(value);
-		const newDrink = {};
-		Object.assign(newDrink, displayedDrink);
-		newDrink.beverage = value;
-		setDisplayedDrink(newDrink);
-	};
+	const setDrink = useSetDrink();
 
 	useEffect(() => {
-		setName(displayedDrink.beverage);
-	}, [displayedDrink]);
+		setDrink((oldDrink) => {
+			return { ...oldDrink, beverage: name }
+		});
+	}, [name]);
 
 	return (
-		<View style={[styles.container, style]}>
+		<View style={[styles.container, beverageInput]}>
 			<TextInput
 				placeholder="Name of beverage"
 				style={styles.nameOfBeverage}
 				value={name}
-				onChangeText={updateName}
+				onChangeText={setName}
 			/>
 		</View>
 	);

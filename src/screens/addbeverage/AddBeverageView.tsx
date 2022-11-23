@@ -5,17 +5,17 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import BeverageInput from "./components/beverageinput/BeverageInput";
 import PrefabList from "./components/prefablist/PrefabList";
+import DrinkProvider from "./Providers/DrinkProvider";
 
-export default function AddBeverageView({ navigation }) {
+type Drink = {
+  beverage: string,
+  volume: string,
+  unit: string,
+  percentage: string,
+  color: Color
+}
+export default function AddBeverageView() {
 
-  const [displayedDrink, setDisplayedDrink] = useState(
-    {
-      beverage: "",
-      volume: "",
-      unit: "",
-      percentage: "",
-      color: "#d0021b"
-    });
   
   return (
     <SafeAreaView style={styles.container}>
@@ -23,13 +23,11 @@ export default function AddBeverageView({ navigation }) {
       <Text style={styles.header}>
         Add beverage
       </Text>
-
-      <BeverageInput
-        style={styles.beverageInput}
-        displayedDrink={displayedDrink}
-        setDisplayedDrink={setDisplayedDrink}
-        navigation={navigation}
-      />
+      <DrinkProvider>
+        <BeverageInput
+          style={styles.beverageInput}
+        />
+      </DrinkProvider >
 
       <PrefabList
         displayedDrink={displayedDrink}

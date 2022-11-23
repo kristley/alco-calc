@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useSetDrink } from "../../Providers/DrinkProvider";
+import { beverageInputBase, beverageInput} from "./BeverageInputStyles";
 
-export default function BeverageUnitInput({
-	displayedDrink,
-	setDisplayedDrink,
-	style,
-}) {
+type Item = {
+	label: string;
+	value: Unit;
+}
+
+export default function BeverageUnitInput(
+) {
 	const [open, setOpen] = useState(false);
-	const [value, setUnit] = useState("cl");
-	const [items, setItems] = useState([
+	const [value, setUnit] = useState<Unit>("cl");
+	const [items, setItems] = useState<Item[]>([
 		{ label: "ml", value: "ml" },
 		{ label: "cl", value: "cl" },
 		{ label: "dl", value: "dl" },
 		{ label: "l", value: "l" },
 	]);
-
-	const updateUnit = (value) => {
-		setUnit(value);
-		const newDrink = {};
-		Object.assign(newDrink, displayedDrink);
-		newDrink.unit = value;
-		setDisplayedDrink(newDrink);
-	}
-
+	const setDrink = useSetDrink();
+	
 	useEffect(() => {
-		setUnit(displayedDrink.unit)
-	}, [displayedDrink])
-
+		setDrink((drink) => ({ ...drink, unit: value }));
+	}, [value]);
+	
 
 	return (
 		<DropDownPicker
@@ -37,22 +33,14 @@ export default function BeverageUnitInput({
 			setOpen={setOpen}
 			setValue={setUnit}
 			setItems={setItems}
-			defaultValue={value}
+			disableBorderRadius={true}
 			placeholder="Unit"
 			placeholderStyle={{ color: "#9EA0A4" }}
 			onChangeValue={updateUnit}
-			containerStyle={style}
-			style={[{ borderWidth: 0 }, style]}
-			dropDownContainerStyle={styles.dropdown}
+			containerStyle={beverageInput}
+			style={beverageInput}
+			dropDownContainerStyle={beverageInputBase}
 			zIndex={10}
 		/>
 	);
 }
-
-const styles = StyleSheet.create({
-	dropdown: {
-		backgroundColor: "#E6E6E6",
-		borderRadius: 15,
-		borderWidth: 0,
-	}
-});

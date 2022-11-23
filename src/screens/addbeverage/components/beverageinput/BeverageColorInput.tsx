@@ -4,7 +4,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 
 
-export default function BeverageColorInput({ displayedDrink, setDisplayedDrink }) {
+export default function BeverageColorInput() {
 
 	const [open, setOpen] = useState(false);
 
