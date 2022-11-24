@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { useUpdateDrink } from "./DrinkUpdater";
 
 
 
@@ -8,21 +9,15 @@ export default function BeverageColorInput() {
 
 	const [open, setOpen] = useState(false);
 
-	const [color, setColor] = useState(null);
+	const [color, setColor] = useState<Color>("#447ea9");
+	useUpdateDrink(color, (drink) => ({ ...drink, color: color }));
 
-	const updateColor = (value) => {
-		setColor(value);
-
-		const newDrink = {};
-		Object.assign(newDrink, displayedDrink);
-		newDrink.color = value;
-		setDisplayedDrink(newDrink);
+	// Todo: fix color can be null
+	const updateColor = (color : Color | null) => {
+		if (color) {
+			setColor(color);
+		}
 	}
-
-	useEffect(() => {
-		setColor(displayedDrink.color);
-	}, [displayedDrink]);
-
 
 	return (
 		<DropDownPicker
@@ -40,7 +35,13 @@ export default function BeverageColorInput() {
 	);
 }
 
-const items = [
+type ColorDropDownItem = {
+	label: string;
+	value: Color;
+	icon: () => JSX.Element;
+};
+
+const items : ColorDropDownItem[] = [
 	{ label: 'orange', value: '#E8AA32', icon: () => <View style={{ backgroundColor: "#E8AA32", width: 18, height: 18, borderRadius: 9 }} /> },
 	{ label: 'pink', value: '#DD72D9', icon: () => <View style={{ backgroundColor: "#DD72D9", width: 18, height: 18, borderRadius: 9 }} /> },
 	{ label: 'brown', value: '#7a121f', icon: () => <View style={{ backgroundColor: "#7a121f", width: 18, height: 18, borderRadius: 9 }} /> },

@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
-import { useSetDrink } from "../../Providers/DrinkProvider";
 import { beverageVolumeInput } from "./BeverageInputStyles";
+import { useUpdateDrink } from "./DrinkUpdater";
 
 
 export default function BeverageVolumeInput() {
 
 	const [volume, setVolume] = useState("");
-	const setDrink = useSetDrink();
-	
-	useEffect(() => {
-		setDrink((oldDrink) =>{
-			return {...oldDrink, volume: volume}
-		});
-	}, [volume]);
-
+	useUpdateDrink(volume, (drink) => ({ ...drink, volume: volume }));
 
 	return (
 		<View style={[styles.container, beverageVolumeInput]}>

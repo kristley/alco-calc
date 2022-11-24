@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Text } from "react-native";
-import { useDrink, useSetDrink } from "../../Providers/DrinkProvider";
 import { beverageInput } from "./BeverageInputStyles";
+import { useUpdateDrink } from "./DrinkUpdater";
 
 export default function BeveragePercentageInput() {
 	const [percentage, setPercentage] = useState("");
-	const setDrink = useSetDrink();
-	useEffect(() => {
-		setDrink((oldDrink) => {
-			return { ...oldDrink, percentage: percentage }
-		});
-	}, [percentage]);
+	useUpdateDrink(percentage, (drink) => ({ ...drink, unit: percentage }));
 
 	return (
 		<View style={[styles.container, beverageInput]}>

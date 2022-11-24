@@ -2,14 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 
 const INITIAL_DRINK: Drink = {
   beverage: '',
-  volume: 0,
+  volume: "",
   unit: 'cl',
-  percentage: 0,
+  percentage: "",
   color: '#447ea9'
 };
 
+//todo: update validation to be better
 function drinkHasValidInputs(drink: Drink): boolean {
-  return drink.beverage !== '' && drink.volume > 0 && drink.percentage > 0;
+  return drink.beverage !== '' && drink.volume !== '' && drink.percentage !== '';
 }
 
 const DrinkContext = React.createContext<Drink>({} as Drink);
