@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import { getDrinks, getDay } from "../../../api/apiService";
 
-export default function ArrowButton({ symbol, displayedDate, setDisplayedDate, forward, todayString, setDay, setDrinks, availableDates }) {
+export default function ArrowButton() {
 
     useEffect(() => {
 

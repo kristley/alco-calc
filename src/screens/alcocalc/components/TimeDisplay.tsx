@@ -2,13 +2,7 @@ import { useEffect } from "react";
 import { getTimeElapsed } from "../../../calculator/calculator";
 import Display from "./Display";
 
-export default function TimeDisplay({
-	drinks,
-	displayedDate,
-	todayString,
-	timeElapsed,
-	setTimeElapsed,
-}) {
+export default function TimeDisplay() {
 	useEffect(() => {
 		updateTimeElapsed();
 	}, [drinks]);

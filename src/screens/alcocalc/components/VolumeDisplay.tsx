@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getTotalVolume } from "../../../calculator/calculator";
 import Display from "./Display";
 
-export default function VolumeDisplay({ drinks, totalVolume, setTotalVolume }) {
+export default function VolumeDisplay() {
 
     useEffect(() => {
         updateTotalVolume();
