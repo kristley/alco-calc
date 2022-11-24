@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
-import { removePrefab } from '../../../../api/apiService';
 import { useSetDrink } from '../../Providers/DrinkProvider';
+import { useSetPrefabs } from '../../Providers/prefabsProvider';
 
 type PrefabItemProps = {
   drink: Drink;
@@ -9,6 +9,7 @@ type PrefabItemProps = {
 
 export default function PrefabItem({ drink }: PrefabItemProps) {
   const setDisplayedDrink = useSetDrink();
+  const setPrefabs = useSetPrefabs();
 
   const openDeleteWindow = () => {
     Alert.alert(
@@ -21,7 +22,9 @@ export default function PrefabItem({ drink }: PrefabItemProps) {
         },
         {
           text: 'OK',
-          onPress: async () => await removePrefab(drink)
+          onPress: () => // remove drink from prefabs
+            setPrefabs((prev) => prev.filter((d) => d !== drink))
+            
         }
       ]
     );

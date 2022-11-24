@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { addDrink } from "../../../../api/apiService";

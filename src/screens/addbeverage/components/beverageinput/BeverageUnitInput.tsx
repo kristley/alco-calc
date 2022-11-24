@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import { beverageInputBase, beverageInput} from "./BeverageInputStyles";
 import { useUpdateDrink } from "./DrinkUpdater";

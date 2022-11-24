@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { beverageInput } from "./BeverageInputStyles";
 import { useUpdateDrink } from "./DrinkUpdater";

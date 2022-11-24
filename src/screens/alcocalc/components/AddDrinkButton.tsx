@@ -1,6 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export default function AddDrinkButton({ navigation }) {
+export default function AddDrinkButton() {
+
+    const navigation = useNavigation();
 
     return (
         <TouchableOpacity
