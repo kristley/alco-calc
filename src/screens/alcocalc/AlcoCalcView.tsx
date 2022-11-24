@@ -7,16 +7,19 @@ import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
 import { getDateString } from "../../calculator/calculator";
 import { getDrinks, getDay } from "../../api/apiService";
+import { useRoute } from "@react-navigation/native";
 
-export default function AlcoCalcView({ navigation, route }) {
+export default function AlcoCalcView() {
 	const [update, setUpdate] = useState(true);
 
-	const today = new Date()
-	const todayString = getDateString(today)
+	const route = useRoute();
+
+	const today = new Date();
+	const todayString = getDateString(today);
 	const [displayedDate, setDisplayedDate] = useState(todayString);
-	const [date] = useState(today)
+	const [date] = useState(today);
 	const [drinks, setDrinks] = useState([]);
-	const [day, setDay] = useState()
+	const [day, setDay] = useState();
 
 
 	useEffect(() => {
@@ -39,39 +42,15 @@ export default function AlcoCalcView({ navigation, route }) {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<TopBar
-				style={styles.topBar}
-				displayedDate={displayedDate}
-				setDisplayedDate={setDisplayedDate}
-				date={date}
-				todayString={todayString}
-				day={day}
-				setDay={setDay}
-				drinks={drinks}
-				setDrinks={setDrinks}
-			/>
-			<DrinkList
-				style={styles.list}
-				drinks={drinks}
-				setUpdate={setUpdate}
-				update={update}
-				displayedDate={displayedDate}
-				today={today}
-			/>
+			<TopBar/>
+			<DrinkList/>
 			<View style={styles.bottom}>
 				{
-					displayedDate == todayString &&
-					<AddDrinkButton
-						navigation={navigation}
-					/>
+					displayedDate == todayString && // todo get today is today from provider
+					<AddDrinkButton/>
 				}
 
-				<Calculator
-					style={styles.calc}
-					drinks={drinks}
-					displayedDate={displayedDate}
-					todayString={todayString}
-				/>
+				<Calculator/>
 			</View>
 		</SafeAreaView>
 	);

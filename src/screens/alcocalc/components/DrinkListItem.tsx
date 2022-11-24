@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { removeDrink } from "../../../api/apiService";
 import { getDateString } from "../../../calculator/calculator";
+
 export default function DrinkListItem() {
 
   const openDeleteWindow = () => {
