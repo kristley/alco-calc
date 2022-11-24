@@ -1,29 +1,23 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { useState, useEffect } from "react";
 import { addPrefab } from "../../../../api/apiService";
+import { useDrinkValid, useGetDrink } from "../../Providers/DrinkProvider";
 
-export default function AddPrefabButton({ displayedDrink, setUpdate, update }) {
+export default function AddPrefabButton() {
 
-    const [completeDrink, setCompleteDrink] = useState(false);
+    const drink = useGetDrink();
+    const validDrink = useDrinkValid();
 
     const createPrefab = async () => {
-        if (!completeDrink) {
-            return;
-        }
-        await addPrefab(displayedDrink);
-        setUpdate(!update);
+        if (!validDrink) return;
+
+        await addPrefab(drink);
     }
 
-    useEffect(() => {
-        setCompleteDrink(!Object.values(displayedDrink).some((x) => x === ""));
-    }, [displayedDrink]);
-
     return (
-        <TouchableOpacity
-            onPress={createPrefab}
-        >
-            <View style={[styles.container, { ...(completeDrink ? styles.completeDrink : styles.incompleteDrink) }]}>
-                <Text style={[styles.addPrefabButton, { ...(completeDrink ? styles.completeDrink : styles.incompleteDrink) }]}>+</Text>
+        <TouchableOpacity onPress={createPrefab}>
+            <View style={[styles.container, { ...(validDrink ? styles.completeDrink : styles.incompleteDrink) }]}>
+                <Text style={[styles.addPrefabButton, { ...(validDrink ? styles.completeDrink : styles.incompleteDrink) }]}>+</Text>
             </View>
         </TouchableOpacity>
     );
