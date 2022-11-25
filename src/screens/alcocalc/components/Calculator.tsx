@@ -24,9 +24,7 @@ export default function Calculator() {
 
             {
                 displayedDate == todayString && // todo get today is today from provider
-                <BloodAlcoholDisplay
-                    style={styles.displayed}
-                />
+                <BloodAlcoholDisplay/>
             }
         </View>
     );
@@ -38,7 +36,4 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
     },
-    displayed:{
-        flex: 1,
-    }
 });

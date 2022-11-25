@@ -1,17 +1,9 @@
-import { useEffect } from "react";
-import { getVol } from "../calculator/calculator";
+import { useGetDrinksVol } from "../Providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function VolumeDisplay() {
 
-    useEffect(() => {
-        updateTotalVolume();
-    }, [drinks])
-
-    const updateTotalVolume = () => {
-        setTotalVolume(getVol(drinks));
-    }
-
+    const totalVolume = useGetDrinksVol();
 	return (
         <Display title="Total vol." value={totalVolume+'ml'} />
 	);

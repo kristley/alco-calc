@@ -6,9 +6,9 @@ const DrinksListContext = React.createContext<Beverage[]>({} as Beverage[]);
 const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Beverage[]>>>(
   () => {}
 );
-const DrinksBALContext = React.createContext<Number>(0);
-const DrinksVolContext = React.createContext<Number>(0);
-const DrinksTimeContext = React.createContext<Number>(0);
+const DrinksBALContext = React.createContext<number>(0);
+const DrinksVolContext = React.createContext<number>(0);
+const DrinksTimeContext = React.createContext<number>(0);
 
 export function useGetDrinksList(): Beverage[] {
   return useContext(DrinksListContext);
@@ -18,15 +18,15 @@ export function useSetDrinksList(): React.Dispatch<React.SetStateAction<Beverage
   return useContext(DrinksListUpdateContext);
 }
 
-export function useGetDrinksBAL(): Number {
+export function useGetDrinksBAL(): number {
   return useContext(DrinksBALContext);
 }
 
-export function useGetDrinksVol(): Number {
+export function useGetDrinksVol(): number {
   return useContext(DrinksVolContext);
 }
 
-export function useGetDrinksTime(): Number {
+export function useGetDrinksTime(): number {
   return useContext(DrinksTimeContext);
 }
 

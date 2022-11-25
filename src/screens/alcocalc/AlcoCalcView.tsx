@@ -5,40 +5,8 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
-import { getDateString } from "./calculator/calculator";
-import { getDrinks, getDay } from "../../api/apiService";
-import { useRoute } from "@react-navigation/native";
 
 export default function AlcoCalcView() {
-	const [update, setUpdate] = useState(true);
-
-	const route = useRoute();
-
-	const today = new Date();
-	const todayString = getDateString(today);
-	const [displayedDate, setDisplayedDate] = useState(todayString);
-	const [date] = useState(today);
-	const [drinks, setDrinks] = useState([]);
-	const [day, setDay] = useState();
-
-
-	useEffect(() => {
-
-		const updateDrinks = async () => {
-			const data = await getDrinks(displayedDate)
-			const json = await data.json();
-			setDrinks(json)
-		}
-
-		const updateDay = async () => {
-			const data = await getDay(displayedDate)
-			const json = await data.json();
-			setDay(json);
-		}
-		updateDay()
-		updateDrinks()
-	}, [route, update])
-
 
 	return (
 		<SafeAreaView style={styles.container}>

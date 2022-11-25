@@ -2,8 +2,11 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { removeDrink } from "../../../api/apiService";
 import { getDateString } from "../calculator/calculator";
+import { useSetDrinksList } from "../Providers/DrinksListProvider";
 
-export default function DrinkListItem() {
+export default function DrinkListItem({ drink }: { drink: Beverage}) {
+
+  const setDrinksList = useSetDrinksList();
 
   const openDeleteWindow = () => {
     if (displayedDate != getDateString(today)) {
@@ -20,17 +23,13 @@ export default function DrinkListItem() {
         },
         {
           text: "OK",
-          onPress: deleteDrink
+          onPress: () => {
+            removeDrink(drink.id);
+            setDrinksList(drinks.filter(d => d.id != drink.id));
+          }
         }
       ]
     )
-  }
-
-  const deleteDrink = async () => {
-    const res = await removeDrink(item)
-    await res.json()
-    setUpdate(!update)
-    return;
   }
 
   return (
@@ -38,12 +37,12 @@ export default function DrinkListItem() {
       style={styles.container}
       onLongPress={openDeleteWindow}
     >
-      <Text style={[styles.cell, styles.time]}>{item.time}</Text>
-      <Text style={styles.cell}>{item.beverage}</Text>
-      <Text style={styles.cell}>{item.volume + item.unit}</Text>
-      <Text style={styles.cell}>{item.percentage + "%"}</Text>
+      <Text style={[styles.cell, styles.time]}>{drink.time}</Text>
+      <Text style={styles.cell}>{drink.beverage}</Text>
+      <Text style={styles.cell}>{drink.volume + drink.unit}</Text>
+      <Text style={styles.cell}>{drink.percentage + "%"}</Text>
       <View style={styles.cell}>
-        <View style={[styles.circular, { backgroundColor: item.color }]} />
+        <View style={[styles.circular, { backgroundColor: drink.color }]} />
       </View>
     </TouchableOpacity >
   );
