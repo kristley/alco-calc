@@ -1,7 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
-export default function ArrowButton({symbol, onPress}: {symbol: any, onPress: () => void}) {
+export default function ArrowButton({symbol, onPress}: {symbol: "chevron-thin-right" | "chevron-thin-left", onPress: () => void}) {
     return (
         <TouchableOpacity onPress={onPress}>
             <Entypo

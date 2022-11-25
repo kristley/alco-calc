@@ -11,6 +11,7 @@ export default function TopBar() {
     <View style={styles.topBar}>
       <ArrowButton
         symbol="chevron-thin-left"
+        onPress={() => {}}
         // todo onpress should navigate to previous day
       />
 
@@ -24,6 +25,7 @@ export default function TopBar() {
 
       <ArrowButton
         symbol="chevron-thin-right"
+        onPress={() => {}}
         // todo onpress should navigate to next day
       />
     </View>
