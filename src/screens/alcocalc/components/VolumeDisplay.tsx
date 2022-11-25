@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getTotalVolume } from "../../../calculator/calculator";
+import { getVol } from "../calculator/calculator";
 import Display from "./Display";
 
 export default function VolumeDisplay() {
@@ -9,7 +9,7 @@ export default function VolumeDisplay() {
     }, [drinks])
 
     const updateTotalVolume = () => {
-        setTotalVolume(getTotalVolume(drinks));
+        setTotalVolume(getVol(drinks));
     }
 
 	return (

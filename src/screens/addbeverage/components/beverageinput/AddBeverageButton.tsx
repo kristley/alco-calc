@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { addDrink } from "../../../../api/apiService";
-import { getTimeString } from "../../../../calculator/calculator";
+import { getTimeString } from "../../../alcocalc/calculator/calculator";
 import { useDrinkValid, useGetDrink } from "../../Providers/DrinkProvider";
 
 export default function AddBeverageButton() {

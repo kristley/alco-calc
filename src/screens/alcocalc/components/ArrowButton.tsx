@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
-import EntypoIcon from "react-native-vector-icons/Entypo";
+import { Entypo } from '@expo/vector-icons';
 import { getDrinks, getDay } from "../../../api/apiService";
 
 export default function ArrowButton() {
@@ -55,7 +55,7 @@ export default function ArrowButton() {
 
     return (
         <TouchableOpacity onPress={changeDate}>
-            <EntypoIcon
+            <Entypo
                 name={symbol}
                 size={40}
                 color={"#808080"}

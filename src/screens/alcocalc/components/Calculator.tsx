@@ -13,7 +13,6 @@ import { View, StyleSheet } from "react-native";
 import BloodAlcoholDisplay from "./BloodAlcoholDisplay";
 import TimeDisplay from "./TimeDisplay";
 import VolumeDisplay from "./VolumeDisplay";
-import { useState } from "react";
 
 export default function Calculator() {
 
@@ -21,7 +20,6 @@ export default function Calculator() {
     return (
         <View style={styles.container}>
             <VolumeDisplay/>
-
             <TimeDisplay/>
 
             {

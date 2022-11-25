@@ -1,7 +1,7 @@
 type Drink = {
     beverage: string,
     volume: string,
-    unit: string,
+    unit: Unit,
     percentage: string,
     color: Color
 }

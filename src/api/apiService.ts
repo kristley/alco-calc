@@ -1,4 +1,4 @@
-import { getDateString } from "../calculator/calculator"
+import { getDateString } from "../screens/alcocalc/calculator/calculator"
 export const base_url = "https://alcocalc-api.herokuapp.com"
 export const base_headers = {
     "Accept": "application/json",

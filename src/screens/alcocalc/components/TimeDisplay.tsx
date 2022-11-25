@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getTimeElapsed } from "../../../calculator/calculator";
+import { getTimeElapsed } from "../calculator/calculator";
 import Display from "./Display";
 
 export default function TimeDisplay() {

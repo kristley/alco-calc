@@ -5,7 +5,7 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
-import { getDateString } from "../../calculator/calculator";
+import { getDateString } from "./calculator/calculator";
 import { getDrinks, getDay } from "../../api/apiService";
 import { useRoute } from "@react-navigation/native";
 

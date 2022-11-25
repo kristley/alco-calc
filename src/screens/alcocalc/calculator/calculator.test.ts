@@ -1,4 +1,4 @@
-import { getTimeElapsed, getTotalVolume, getBloodAlcohol } from "./calculator";
+import { getTimeElapsed, getVol, getBAC\ } from "./calculator";
 
 test("getTimeElapsed returns the correct time differential", () => {
 	expect(getTimeElapsed("00:00", "00:00")).toBe("00:00");
@@ -10,9 +10,9 @@ test("getTimeElapsed returns the correct time differential", () => {
 });
 
 test("getTotalVolume returns the correct volume", () => {
-	expect(getTotalVolume([])).toBe(0);
+	expect(getVol([])).toBe(0);
 	expect(
-		getTotalVolume([
+		getVol([
 			{
 				volume: "0.5",
 				unit: "l",
@@ -21,7 +21,7 @@ test("getTotalVolume returns the correct volume", () => {
 		])
 	).toBe(22); // 0.5 * 1000 * 4.5 / 100 = 22.5 -> 22 if floored
 	expect(
-		getTotalVolume([
+		getVol([
 			{
 				volume: "0.5",
 				unit: "l",
@@ -35,7 +35,7 @@ test("getTotalVolume returns the correct volume", () => {
 		])
 	).toBe(45); // 0.5 * 1000 * 4.5 / 100 = 22.5 -> 22.5 * 2 = 45 if floored
 	expect(
-		getTotalVolume([
+		getVol([
 			{
 				volume: "5",
 				unit: "dl",
@@ -51,8 +51,8 @@ test("getTotalVolume returns the correct volume", () => {
 });
 
 test("getBloodAlcohol returns the correct blood alcohol", () => {
-    expect(getBloodAlcohol(0, "00:00")).toBe(0);
-    expect(getBloodAlcohol(45, "00:00")).toBe(0.59); // 45 * 0.789 / (89 * 0.68) = 0.59
-    expect(getBloodAlcohol(45, "01:00")).toBe(0.44); // 45 * 0.789 / (89 * 0.68) - 0.15 = 0.58 - 0.15 = 0.43
-    expect(getBloodAlcohol(0, "01:00")).toBe(0); // 
+    expect(getBAC\(0, "00:00")).toBe(0);
+    expect(getBAC\(45, "00:00")).toBe(0.59); // 45 * 0.789 / (89 * 0.68) = 0.59
+    expect(getBAC\(45, "01:00")).toBe(0.44); // 45 * 0.789 / (89 * 0.68) - 0.15 = 0.58 - 0.15 = 0.43
+    expect(getBAC\(0, "01:00")).toBe(0); // 
 });
