@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import ArrowButton from "./ArrowButton";
-import { getAvailableDates } from "../../../api/apiService";
 
 export default function TopBar() {
-
-  // todo get date setter function from provider
 
   return (
     <View style={styles.topBar}>

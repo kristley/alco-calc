@@ -32,7 +32,6 @@ export function useGetDrinksTime(): number {
 
 export default function DrinksListProvider({ children }: { children: React.ReactNode }) {
   const [drinksList, setDrinksList] = useState<Beverage[]>([]);
-  // todo see if this is needed
   const [BAL, setBAL] = useState<number>(0);
   const [vol, setVol] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
