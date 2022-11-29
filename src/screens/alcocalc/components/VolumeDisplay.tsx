@@ -8,5 +8,3 @@ export default function VolumeDisplay() {
         <Display title="Total vol." value={totalVolume+'ml'} />
 	);
 }
-
-

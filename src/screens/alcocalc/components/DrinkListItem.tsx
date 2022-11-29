@@ -1,17 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
-import { removeDrink } from "../../../api/apiService";
-import { getDateString } from "../calculator/calculator";
 import { useSetDrinksList } from "../Providers/DrinksListProvider";
+import { useGetIsTonight } from "../Providers/NightsProvider";
 
 export default function DrinkListItem({ drink }: { drink: Beverage}) {
 
   const setDrinksList = useSetDrinksList();
-
+  const isTonight = useGetIsTonight();
   const openDeleteWindow = () => {
-    if (displayedDate != getDateString(today)) {
-      return;
-    }
+    if (isTonight) return;
 
     Alert.alert(
       "Remove drink?",
@@ -24,8 +21,9 @@ export default function DrinkListItem({ drink }: { drink: Beverage}) {
         {
           text: "OK",
           onPress: () => {
-            removeDrink(drink.id);
-            setDrinksList(drinks.filter(d => d.id != drink.id));
+            setDrinksList((prevDrinksList) => {
+              return prevDrinksList.filter((prevDrink) => prevDrink !== drink);
+            });
           }
         }
       ]

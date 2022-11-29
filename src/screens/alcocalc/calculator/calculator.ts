@@ -1,6 +1,6 @@
 
-// a function that takes in a to and from time as strings and returns the difference in minutes
-const getMinutesBetweenTimes = (fromTime: string, toTime: string) => {
+
+function getMinutesBetweenTimes(fromTime: string, toTime: string) {
     const fromTimeDate = new Date(`2020-01-01T${fromTime}`);
     const toTimeDate = new Date(`2020-01-01T${toTime}`);
     let difference = toTimeDate.getTime() - fromTimeDate.getTime();
@@ -10,12 +10,16 @@ const getMinutesBetweenTimes = (fromTime: string, toTime: string) => {
     return difference / 1000 / 60;
 }
 
-const getTimeArray = (timeString: string) => {
+function getTimeArray(timeString: string) {
     let timeArray = timeString.split(":");
 
     return timeArray.map((time) => {
         return parseInt(time);
     });
+}
+
+export function getTime(drinksList: Beverage[]) {
+    return getMinutesBetweenTimes(drinksList[0].time, drinksList[drinksList.length - 1].time);
 }
 
 /**
@@ -24,7 +28,7 @@ const getTimeArray = (timeString: string) => {
  * @param {Drink[]} drinks 
  * @returns Total amount of pure alcohol as a whole number
  */
-export const getVol = (drinks: Drink[]) => {
+export function getVol(drinks: Drink[]) {
 
     let volume = 0;
 
@@ -33,7 +37,7 @@ export const getVol = (drinks: Drink[]) => {
         volume += drinkVolume * Number(drink.percentage) / 100;
     });
 
-    return volume
+    return volume;
 }
 
 
@@ -43,7 +47,7 @@ export const getVol = (drinks: Drink[]) => {
  * @param {Unit} unit 
  * @returns Number of ml as an int
  */
-const getVolumeFromUnit = (unit: Unit) => {
+function getVolumeFromUnit(unit: Unit) {
     switch (unit) {
         case "l":
             return 1000;
@@ -66,8 +70,7 @@ const getVolumeFromUnit = (unit: Unit) => {
  * @param {number} time 
  * @returns Total blood alcohol
  */
-export const getBAL = (volume: number, time: number) => {
-
+export function getBAL(volume: number, time: number) {
     //fomula: ml * density / (weight * r) - hours * metabolism
 
     const metabolism = 0.15;
@@ -80,13 +83,13 @@ export const getBAL = (volume: number, time: number) => {
     const sum = volume * density / (weight * r) - hours * metabolism;
     const value = Math.round(sum * 100) / 100;
     return value > 0 ? value : 0;
-};
+}
 
 /**
  * 
  * @returns A string on the format "YYYYMMDD"
  */
-export const getDateString = (date: Date) => {
+export function getDateString(date: Date) {
     return (date.getFullYear()).toString() +
         (date.getMonth() + 1).toString() +
         (date.getDate()).toString();
@@ -97,4 +100,6 @@ export const getDateString = (date: Date) => {
  * @param {Date} date 
  * @returns A string on the format "HH:MM"
  */
-export const getTimeString = (date: Date) => ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+export function getTimeString(date: Date) {
+    return ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+}

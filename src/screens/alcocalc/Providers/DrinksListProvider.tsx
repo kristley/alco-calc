@@ -1,6 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { getBAL, getTime, getVol } from '../calculator/calculator';
+import { useGetNights as useGetNight } from './NightsProvider';
 
 const DrinksListContext = React.createContext<Beverage[]>({} as Beverage[]);
 const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Beverage[]>>>(
@@ -31,16 +32,18 @@ export function useGetDrinksTime(): number {
 }
 
 export default function DrinksListProvider({ children }: { children: React.ReactNode }) {
-  const [drinksList, setDrinksList] = useState<Beverage[]>([]);
+  const night = useGetNight();
+  const [drinksList, setDrinksList] = useState<Beverage[]>(night.drinks);
   const [BAL, setBAL] = useState<number>(0);
   const [vol, setVol] = useState<number>(0);
   const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     setVol(getVol(drinksList));
-    setTime(getTime(drinksList[0].time, drinksList[drinksList.length - 1].time));
+    setTime(getTime(drinksList));
     setBAL(getBAL(vol, time));
   }, [drinksList]);
+
 // Todo implement calculator providers: BAL, total volume, time elapsed
 
   return (

@@ -1,7 +1,10 @@
 import { StyleSheet, View, Text } from "react-native";
+import { useGetIsTonight } from "../Providers/NightsProvider";
 import ArrowButton from "./ArrowButton";
 
 export default function TopBar() {
+
+  const isTonight = useGetIsTonight();
 
   return (
     <View style={styles.topBar}>
@@ -13,9 +16,9 @@ export default function TopBar() {
 
       <Text style={styles.date}>
         {
-          displayedDate == todayString ?
+          isTonight ?
             "Today" :
-            readableDate
+            "Other" // todo change to date
         }
       </Text>
 

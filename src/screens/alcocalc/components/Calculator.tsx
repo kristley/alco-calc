@@ -10,12 +10,13 @@ Display drinking time (time from first to last drink)
 */
 
 import { View, StyleSheet } from "react-native";
+import { useGetIsTonight } from "../Providers/NightsProvider";
 import BloodAlcoholDisplay from "./BloodAlcoholDisplay";
 import TimeDisplay from "./TimeDisplay";
 import VolumeDisplay from "./VolumeDisplay";
 
 export default function Calculator() {
-
+    const isTonight = useGetIsTonight();
 
     return (
         <View style={styles.container}>
@@ -23,7 +24,7 @@ export default function Calculator() {
             <TimeDisplay/>
 
             {
-                displayedDate == todayString && // todo get today is today from provider
+                isTonight &&
                 <BloodAlcoholDisplay/>
             }
         </View>
