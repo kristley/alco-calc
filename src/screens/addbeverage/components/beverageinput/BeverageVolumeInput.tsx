@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { beverageVolumeInput } from "./BeverageInputStyles";
-import { useUpdateDrink } from "./DrinkUpdater";
+import { useInputState } from "./DrinkUpdater";
 
 
 export default function BeverageVolumeInput() {
-
-	const [volume, setVolume] = useState("");
-	useUpdateDrink(volume, (drink) => ({ ...drink, volume: volume }));
+	const [volume, setVolume] = useInputState("", "volume");
 
 	return (
 		<View style={[styles.container, beverageVolumeInput]}>

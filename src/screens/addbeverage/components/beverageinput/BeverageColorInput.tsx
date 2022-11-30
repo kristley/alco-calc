@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useUpdateDrink } from "./DrinkUpdater";
+import { useInputState } from "./DrinkUpdater";
 
 
 
@@ -9,8 +9,7 @@ export default function BeverageColorInput() {
 
 	const [open, setOpen] = useState(false);
 
-	const [color, setColor] = useState<Color>("#447ea9");
-	useUpdateDrink(color, (drink) => ({ ...drink, color: color }));
+	const [color, setColor] = useInputState<Color>("#447ea9", "color");
 
 	// Todo: fix color can be null
 	const updateColor = (color : Color | null) => {

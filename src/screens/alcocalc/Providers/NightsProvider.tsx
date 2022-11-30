@@ -4,7 +4,7 @@ const NightsContext = React.createContext<Night>({} as Night);
 const NightsUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Night>>>(
   () => {}
 );
-const NightIsTonightContext = React.createContext<boolean>(false);
+const NightIsTonightContext = React.createContext<boolean>(true);
 
 export function useGetNights(): Night {
   return useContext(NightsContext);

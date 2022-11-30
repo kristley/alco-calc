@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import { beverageInputBase, beverageInput} from "./BeverageInputStyles";
-import { useUpdateDrink } from "./DrinkUpdater";
+import { useInputState } from "./DrinkUpdater";
 
 type UnitDropDownItem = {
 	label: string;
@@ -11,7 +11,6 @@ type UnitDropDownItem = {
 export default function BeverageUnitInput(
 ) {
 	const [open, setOpen] = useState(false);
-	const [value, setUnit] = useState<Unit>("cl");
 	const items : UnitDropDownItem[] = [
 		{ label: "ml", value: "ml" },
 		{ label: "cl", value: "cl" },
@@ -19,7 +18,7 @@ export default function BeverageUnitInput(
 		{ label: "l", value: "l" },
 	];
 	// todo: fix unit can be null
-	useUpdateDrink(value, (drink) => ({ ...drink, unit: value }));
+	const [unit, setUnit] = useInputState<Unit>("cl", "unit");
 	const updateUnit = (value : Unit | null) => {
 		if (value) {
 			setUnit(value);
@@ -29,7 +28,7 @@ export default function BeverageUnitInput(
 	return (
 		<DropDownPicker
 			open={open}
-			value={value}
+			value={unit}
 			items={items}
 			setOpen={setOpen}
 			setValue={setUnit}

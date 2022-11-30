@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { beverageInput } from "./BeverageInputStyles";
-import { useUpdateDrink } from "./DrinkUpdater";
+import { useInputState } from "./DrinkUpdater";
 
 export default function BeverageNameInput() {
 
-	const [name, setName] = useState<string>(""); 
-	useUpdateDrink(name, (drink : Drink) => ({ ...drink, beverage: name } as Drink));
+	const [name, setName] = useInputState("", "beverage");
 
 	return (
 		<View style={[styles.container, beverageInput]}>
