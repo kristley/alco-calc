@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-const INITIAL_DRINK: Drink = {
-  beverage: '',
+const INITIAL_DRINK: Beverage = {
+  name: '',
   volume: "",
   unit: 'cl',
   percentage: "",
@@ -9,23 +9,23 @@ const INITIAL_DRINK: Drink = {
 };
 
 //todo: update validation to be better
-function drinkHasValidInputs(drink: Drink): boolean {
-  return drink.beverage !== '' && drink.volume !== '' && drink.percentage !== '';
+function drinkHasValidInputs(drink: Beverage): boolean {
+  return drink.name !== '' && drink.volume !== '' && drink.percentage !== '';
 }
 
-const DrinkContext = React.createContext<Drink>({} as Drink);
-const DrinkUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Drink>>>(
+const DrinkContext = React.createContext<Beverage>({} as Beverage);
+const DrinkUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Beverage>>>(
   () => {}
 );
 const DrinkValidContext = React.createContext<boolean>(false);
 
-export function useDrink(): [Drink, React.Dispatch<React.SetStateAction<Drink>>] {
+export function useDrink(): [Beverage, React.Dispatch<React.SetStateAction<Beverage>>] {
   return [useContext(DrinkContext), useContext(DrinkUpdateContext)];
 }
-export function useGetDrink(): Drink {
+export function useGetDrink(): Beverage {
   return useContext(DrinkContext);
 }
-export function useSetDrink(): React.Dispatch<React.SetStateAction<Drink>> {
+export function useSetDrink(): React.Dispatch<React.SetStateAction<Beverage>> {
   return useContext(DrinkUpdateContext);
 }
 export function useDrinkValid(): boolean {
@@ -33,7 +33,7 @@ export function useDrinkValid(): boolean {
 }
 
 export default function DrinkProvider({ children } : { children: React.ReactNode }) {
-  const [drink, setDrink] = useState<Drink>(INITIAL_DRINK);
+  const [drink, setDrink] = useState<Beverage>(INITIAL_DRINK);
   const drinkValid = React.useMemo(() => {
     return drinkHasValidInputs(drink);
   }, [drink]);

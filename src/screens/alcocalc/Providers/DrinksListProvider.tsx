@@ -3,19 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getBAL, getTime, getVol } from '../calculator/calculator';
 import { useGetNights as useGetNight } from './NightsProvider';
 
-const DrinksListContext = React.createContext<Beverage[]>([] as Beverage[]);
-const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Beverage[]>>>(
+const DrinksListContext = React.createContext<Drink[]>([] as Drink[]);
+const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Drink[]>>>(
   () => {}
 );
 const DrinksBALContext = React.createContext<number>(0);
 const DrinksVolContext = React.createContext<number>(0);
 const DrinksTimeContext = React.createContext<number>(0);
 
-export function  useGetDrinksList(): Beverage[] {
+export function  useGetDrinksList(): Drink[] {
   return useContext(DrinksListContext);
 }
 
-export function useSetDrinksList(): React.Dispatch<React.SetStateAction<Beverage[]>> {
+export function useSetDrinksList(): React.Dispatch<React.SetStateAction<Drink[]>> {
   return useContext(DrinksListUpdateContext);
 }
 
@@ -33,20 +33,20 @@ export function useGetDrinksTime(): number {
 
 export default function DrinksListProvider({ children }: { children: React.ReactNode }) {
   // const night = useGetNight();
-  const [drinksList, setDrinksList] = useState<Beverage[]>(
+  const [drinksList, setDrinksList] = useState<Drink[]>(
     [
       {
-        beverage: 'Beer',
-        volume: "0.5",
-        percentage: "5",
+        name: 'Beer',
+        volume: 0.5,
+        percentage: 5,
         color: "#FFFF00",
         unit: "l",
         time: '2022-01-01T00:00:00.000Z',
       },
       {
-        beverage: 'Beer',
-        volume: "0.5",
-        percentage: "5",
+        name: 'Beer',
+        volume: 0.5,
+        percentage: 5,
         color: "#FFFF00",
         unit: "l",
         time: '2022-01-01T00:00:00.000Z',

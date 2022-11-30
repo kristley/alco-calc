@@ -9,7 +9,7 @@ export default function BeverageColorInput() {
 
 	const [open, setOpen] = useState(false);
 
-	const [color, setColor] = useInputState<Color>("#447ea9", "color");
+	const [color, setColor] = useInputState<Color>("color");
 
 	// Todo: fix color can be null
 	const updateColor = (color : Color | null) => {

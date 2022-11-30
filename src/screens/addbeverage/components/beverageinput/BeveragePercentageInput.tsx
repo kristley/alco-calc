@@ -4,7 +4,7 @@ import { beverageInput } from "./BeverageInputStyles";
 import { useInputState } from "./DrinkUpdater";
 
 export default function BeveragePercentageInput() {
-	const [percentage, setPercentage] = useInputState("", "percentage");
+	const [percentage, setPercentage] = useInputState<string>("percentage");
 
 	return (
 		<View style={[styles.container, beverageInput]}>

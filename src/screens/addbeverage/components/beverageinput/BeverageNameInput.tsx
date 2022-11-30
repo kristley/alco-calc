@@ -5,7 +5,7 @@ import { useInputState } from "./DrinkUpdater";
 
 export default function BeverageNameInput() {
 
-	const [name, setName] = useInputState("", "beverage");
+	const [name, setName] = useInputState<string>("name");
 
 	return (
 		<View style={[styles.container, beverageInput]}>

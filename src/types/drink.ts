@@ -1,11 +1,18 @@
-type Drink = {
-    beverage: string,
+type Beverage = {
+    name: string,
     volume: string,
     unit: Unit,
     percentage: string,
     color: Color
 }
 
-type Beverage = Drink & { time: string}
+type Drink = {
+    name: string,
+    volume: number,
+    unit: Unit,
+    percentage: number,
+    color: Color,
+    time: string
+}
 
 type Unit = "ml" | "cl" | "dl" | "l";

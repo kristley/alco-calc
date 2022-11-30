@@ -24,9 +24,9 @@ export default function NightsProvider({ children }: { children: React.ReactNode
     date: '2022-01-01',
     drinks: [
       {
-        beverage: 'Beer',
-        volume: "0.5",
-        percentage: "5",
+        name: 'Beer',
+        volume: 0.5,
+        percentage: 5,
         color: "#FFFF00",
         unit: "l",
         time: '2022-01-01T00:00:00.000Z',

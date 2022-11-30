@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
-import { useSetDrink } from '../../Providers/DrinkProvider';
+import { useSetDrink } from '../../Providers/BeverageProvider';
 import { useSetPrefabs } from '../../Providers/PrefabsProvider';
 
 type PrefabItemProps = {
-  drink: Drink;
+  drink: Beverage;
 };
 
 export default function PrefabItem({ drink }: PrefabItemProps) {
@@ -36,7 +36,7 @@ export default function PrefabItem({ drink }: PrefabItemProps) {
       <View style={[styles.container, { borderColor: drink.color }]}>
         <View style={styles.nameContainer}>
           <Text style={styles.beverageName} adjustsFontSizeToFit={true}>
-            {drink.beverage}
+            {drink.name}
           </Text>
         </View>
         <View style={styles.volumeAndPercentageContainer}>

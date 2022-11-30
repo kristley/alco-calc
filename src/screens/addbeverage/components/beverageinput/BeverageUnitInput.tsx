@@ -18,7 +18,7 @@ export default function BeverageUnitInput(
 		{ label: "l", value: "l" },
 	];
 	// todo: fix unit can be null
-	const [unit, setUnit] = useInputState<Unit>("cl", "unit");
+	const [unit, setUnit] = useInputState<Unit>("unit");
 	const updateUnit = (value : Unit | null) => {
 		if (value) {
 			setUnit(value);

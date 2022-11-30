@@ -18,7 +18,7 @@ function getTimeArray(timeString: string) {
     });
 }
 
-export function getTime(drinksList: Beverage[]) {
+export function getTime(drinksList: Drink[]) {
     return getMinutesBetweenTimes(drinksList[0].time, drinksList[drinksList.length - 1].time);
 }
 
@@ -71,7 +71,7 @@ function getVolumeFromUnit(unit: Unit) {
  * @returns Total blood alcohol
  */
 export function getBAL(volume: number, time: number) {
-    //fomula: ml * density / (weight * r) - hours * metabolism
+    // formula: ml * density / (weight * r) - hours * metabolism
 
     const metabolism = 0.15;
     const density = 0.789;

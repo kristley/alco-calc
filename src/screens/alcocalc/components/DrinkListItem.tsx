@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import { useSetDrinksList } from "../Providers/DrinksListProvider";
 import { useGetIsTonight } from "../Providers/NightsProvider";
 
-export default function DrinkListItem({ drink }: { drink: Beverage}) {
+export default function DrinkListItem({ drink }: { drink: Drink}) {
 
   const setDrinksList = useSetDrinksList();
   const isTonight = useGetIsTonight();
@@ -36,7 +36,7 @@ export default function DrinkListItem({ drink }: { drink: Beverage}) {
       onLongPress={openDeleteWindow}
     >
       <Text style={[styles.cell, styles.time]}>{drink.time}</Text>
-      <Text style={styles.cell}>{drink.beverage}</Text>
+      <Text style={styles.cell}>{drink.name}</Text>
       <Text style={styles.cell}>{drink.volume + drink.unit}</Text>
       <Text style={styles.cell}>{drink.percentage + "%"}</Text>
       <View style={styles.cell}>

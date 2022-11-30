@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BeverageInput from './components/beverageinput/BeverageInput';
 import PrefabList from './components/prefablist/PrefabList';
-import DrinkProvider from './Providers/DrinkProvider';
+import DrinkProvider from './Providers/BeverageProvider';
 import PrefabsProvider from './Providers/PrefabsProvider';
 
 export default function AddBeverageView() {

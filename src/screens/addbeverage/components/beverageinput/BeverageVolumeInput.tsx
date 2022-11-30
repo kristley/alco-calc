@@ -5,7 +5,7 @@ import { useInputState } from "./DrinkUpdater";
 
 
 export default function BeverageVolumeInput() {
-	const [volume, setVolume] = useInputState("", "volume");
+	const [volume, setVolume] = useInputState<string>("volume");
 
 	return (
 		<View style={[styles.container, beverageVolumeInput]}>

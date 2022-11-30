@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { getTimeString } from "../../../alcocalc/calculator/calculator";
-import { useDrinkValid, useGetDrink } from "../../Providers/DrinkProvider";
+import { useDrinkValid, useGetDrink } from "../../Providers/BeverageProvider";
 
 export default function AddBeverageButton() {
 	const navigation = useNavigation();
@@ -14,7 +14,7 @@ export default function AddBeverageButton() {
 
 		const time = getTimeString(new Date());
 
-		const beverage = {...drink, time: time} as Beverage;
+		const beverage = {...drink, time: time} as Drink;
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 
