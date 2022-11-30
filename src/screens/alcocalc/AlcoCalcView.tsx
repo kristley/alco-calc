@@ -1,20 +1,22 @@
 import { View, StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
+import { useGetIsTonight } from "./Providers/NightsProvider";
 
 export default function AlcoCalcView() {
 
+	const isTonight = useGetIsTonight();
 	return (
 		<SafeAreaView style={styles.container}>
 			<TopBar/>
 			<DrinkList/>
 			<View style={styles.bottom}>
 				{
-					displayedDate == todayString && // todo get today is today from provider
+					isTonight &&
 					<AddDrinkButton/>
 				}
 

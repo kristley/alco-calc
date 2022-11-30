@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getBAL, getTime, getVol } from '../calculator/calculator';
 import { useGetNights as useGetNight } from './NightsProvider';
 
-const DrinksListContext = React.createContext<Beverage[]>({} as Beverage[]);
+const DrinksListContext = React.createContext<Beverage[]>([] as Beverage[]);
 const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Beverage[]>>>(
   () => {}
 );
@@ -11,7 +11,7 @@ const DrinksBALContext = React.createContext<number>(0);
 const DrinksVolContext = React.createContext<number>(0);
 const DrinksTimeContext = React.createContext<number>(0);
 
-export function useGetDrinksList(): Beverage[] {
+export function  useGetDrinksList(): Beverage[] {
   return useContext(DrinksListContext);
 }
 
@@ -32,16 +32,33 @@ export function useGetDrinksTime(): number {
 }
 
 export default function DrinksListProvider({ children }: { children: React.ReactNode }) {
-  const night = useGetNight();
-  const [drinksList, setDrinksList] = useState<Beverage[]>(night.drinks);
-  const [BAL, setBAL] = useState<number>(0);
-  const [vol, setVol] = useState<number>(0);
-  const [time, setTime] = useState<number>(0);
+  // const night = useGetNight();
+  const [drinksList, setDrinksList] = useState<Beverage[]>(
+    [
+      {
+        beverage: 'Beer',
+        volume: "0.5",
+        percentage: "5",
+        color: "#FFFF00",
+        unit: "l",
+        time: '2022-01-01T00:00:00.000Z',
+      },
+      {
+        beverage: 'Beer',
+        volume: "0.5",
+        percentage: "5",
+        color: "#FFFF00",
+        unit: "l",
+        time: '2022-01-01T00:00:00.000Z',
+      },
+    ]
+  );
 
-  useEffect(() => {
-    setVol(getVol(drinksList));
-    setTime(getTime(drinksList));
-    setBAL(getBAL(vol, time));
+  const [vol, time, BAL] = React.useMemo(() => {
+    const vol = getVol(drinksList);
+    const time = getTime(drinksList);
+    const BAL = getBAL(vol, time);
+    return [vol, time, BAL];
   }, [drinksList]);
 
 // Todo implement calculator providers: BAL, total volume, time elapsed

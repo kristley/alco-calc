@@ -32,11 +32,10 @@ export function useDrinkValid(): boolean {
   return useContext(DrinkValidContext);
 }
 
-export default function DrinkProvider({ children }: { children: React.ReactNode }) {
+export default function DrinkProvider({ children } : { children: React.ReactNode }) {
   const [drink, setDrink] = useState<Drink>(INITIAL_DRINK);
-  const [drinkValid, setDrinkValid] = useState<boolean>(false);
-  useEffect(() => {
-    setDrinkValid(drinkHasValidInputs(drink));
+  const drinkValid = React.useMemo(() => {
+    return drinkHasValidInputs(drink);
   }, [drink]);
   return (
     <DrinkContext.Provider value={drink}>

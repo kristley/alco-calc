@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { addDrink } from "../../../../api/apiService";
 import { getTimeString } from "../../../alcocalc/calculator/calculator";
 import { useDrinkValid, useGetDrink } from "../../Providers/DrinkProvider";
 
@@ -16,7 +15,6 @@ export default function AddBeverageButton() {
 		const time = getTimeString(new Date());
 
 		const beverage = {...drink, time: time} as Beverage;
-		await addDrink(beverage);
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 
