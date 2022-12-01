@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGetBeverage, useSetBeverage } from '../../Providers/BeverageProvider';
+import { useGetBeverage, useSetBeverage } from '../../providers/BeverageProvider';
 
 export function useInputState<T>(property: keyof Beverage) : [T, React.Dispatch<React.SetStateAction<T>>] {
   const beverageProp = useGetBeverage()[property];

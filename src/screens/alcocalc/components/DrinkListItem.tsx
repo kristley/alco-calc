@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
-import { useSetDrinksList } from "../Providers/DrinksListProvider";
-import { useGetIsTonight } from "../Providers/NightsProvider";
+import { useSetDrinksList } from "../providers/DrinksListProvider";
+import { useGetIsTonight } from "../providers/NightsProvider";
 
 export default function DrinkListItem({ drink }: { drink: Drink}) {
 

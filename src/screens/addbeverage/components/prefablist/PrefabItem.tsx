@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
-import { useSetBeverage } from '../../Providers/BeverageProvider';
-import { useSetPrefabs } from '../../Providers/PrefabsProvider';
+import { useSetBeverage } from '../../providers/BeverageProvider';
+import { useSetPrefabs } from '../../providers/PrefabsProvider';
 
 type PrefabItemProps = {
   beverage: Beverage;

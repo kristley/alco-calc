@@ -1,4 +1,4 @@
-import { useGetDrinksTime } from "../Providers/DrinksListProvider";
+import { useGetDrinksTime } from "../providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function TimeDisplay() {

@@ -5,7 +5,7 @@ import TopBar from "./components/TopBar";
 import DrinkList from "./components/DrinkList";
 import Calculator from "./components/Calculator";
 import AddDrinkButton from "./components/AddDrinkButton";
-import { useGetIsTonight } from "./Providers/NightsProvider";
+import { useGetIsTonight } from "./providers/NightsProvider";
 
 export default function AlcoCalcView() {
 

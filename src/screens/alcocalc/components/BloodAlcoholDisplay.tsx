@@ -1,4 +1,4 @@
-import { useGetDrinksBAL } from "../Providers/DrinksListProvider";
+import { useGetDrinksBAL } from "../providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function BloodAlcoholDisplay() {

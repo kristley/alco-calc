@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
-import { useGetIsTonight } from "../Providers/NightsProvider";
+import { useGetIsTonight } from "../providers/NightsProvider";
 import ArrowButton from "./ArrowButton";
 
 export default function TopBar() {

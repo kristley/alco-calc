@@ -1,4 +1,4 @@
-import { useGetDrinksVol } from "../Providers/DrinksListProvider";
+import { useGetDrinksVol } from "../providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function VolumeDisplay() {

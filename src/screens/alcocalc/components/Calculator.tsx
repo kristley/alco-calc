@@ -10,7 +10,7 @@ Display drinking time (time from first to last drink)
 */
 
 import { View, StyleSheet } from "react-native";
-import { useGetIsTonight } from "../Providers/NightsProvider";
+import { useGetIsTonight } from "../providers/NightsProvider";
 import BloodAlcoholDisplay from "./BloodAlcoholDisplay";
 import TimeDisplay from "./TimeDisplay";
 import VolumeDisplay from "./VolumeDisplay";

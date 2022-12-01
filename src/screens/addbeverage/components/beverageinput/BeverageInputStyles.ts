@@ -11,16 +11,10 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
   },
-  beverageVolumeInput: {
-    flex: 1,
-    height: 50
-  }
 });
 
 const beverageInputBase = styles.baseStyle;
 
 const beverageInput = [styles.baseStyle, styles.beverageInput];
 
-const beverageVolumeInput = [styles.baseStyle, styles.beverageVolumeInput];
-
-export { beverageInputBase, beverageVolumeInput, beverageInput };
+export { beverageInputBase, beverageInput };

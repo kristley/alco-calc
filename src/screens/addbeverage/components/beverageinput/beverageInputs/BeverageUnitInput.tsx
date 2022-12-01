@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
-import { beverageInputBase, beverageInput} from "./BeverageInputStyles";
-import { useInputState } from "./BeverageUpdater";
+import { beverageInputBase, beverageInput} from "../BeverageInputStyles";
+import { useInputState } from "../BeverageUpdater";
 
 type UnitDropDownItem = {
 	label: string;

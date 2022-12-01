@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
-import { useGetDrinksList } from "../Providers/DrinksListProvider";
+import { useGetDrinksList } from "../providers/DrinksListProvider";
 import DrinkListItem from "./DrinkListItem";
 
 export default function DrinkList() {
