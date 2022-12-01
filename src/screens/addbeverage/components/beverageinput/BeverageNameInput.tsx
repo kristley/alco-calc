@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import { beverageInput } from "./BeverageInputStyles";
-import { useInputState } from "./DrinkUpdater";
+import { useInputState } from "./BeverageUpdater";
 
 export default function BeverageNameInput() {
 

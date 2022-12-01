@@ -1,17 +1,17 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import { useDrinkValid, useGetDrink } from "../../Providers/BeverageProvider";
+import { useBeverageValid, useGetBeverage } from "../../Providers/BeverageProvider";
 import { useSetPrefabs } from "../../Providers/PrefabsProvider";
 
 export default function AddPrefabButton() {
 
-    const drink = useGetDrink();
-    const validDrink = useDrinkValid();
+    const beverage = useGetBeverage();
+    const validDrink = useBeverageValid();
     const setPrefabs = useSetPrefabs();
 
     const createPrefab = () => {
         if (!validDrink) return;
 
-        setPrefabs((prev) => [...prev, drink]);
+        setPrefabs((prev) => [...prev, beverage]);
     }
 
     return (

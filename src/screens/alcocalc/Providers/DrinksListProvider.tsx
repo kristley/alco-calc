@@ -1,9 +1,27 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { getBAL, getTime, getVol } from '../calculator/calculator';
-import { useGetNights as useGetNight } from './NightsProvider';
 
-const DrinksListContext = React.createContext<Drink[]>([] as Drink[]);
+const DrinksListContext = React.createContext<Drink[]>(
+    [
+      {
+        name: 'Beer',
+        volume: 0.5,
+        percentage: 5,
+        color: "#FFFF00",
+        unit: "l",
+        time: '2022-01-01T00:00:00.000Z',
+      },
+      {
+        name: 'Beer',
+        volume: 0.5,
+        percentage: 5,
+        color: "#FFFF00",
+        unit: "l",
+        time: '2022-01-01T00:00:00.000Z',
+      },
+    ]
+  );
 const DrinksListUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Drink[]>>>(
   () => {}
 );

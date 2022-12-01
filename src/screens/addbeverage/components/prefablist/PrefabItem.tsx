@@ -1,20 +1,20 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
-import { useSetDrink } from '../../Providers/BeverageProvider';
+import { useSetBeverage } from '../../Providers/BeverageProvider';
 import { useSetPrefabs } from '../../Providers/PrefabsProvider';
 
 type PrefabItemProps = {
-  drink: Beverage;
+  beverage: Beverage;
 };
 
-export default function PrefabItem({ drink }: PrefabItemProps) {
-  const setDisplayedDrink = useSetDrink();
+export default function PrefabItem({ beverage }: PrefabItemProps) {
+  const setDisplayedDrink = useSetBeverage();
   const setPrefabs = useSetPrefabs();
 
   const openDeleteWindow = () => {
     Alert.alert(
-      'Delete drink?',
-      'Are you sure you want to permanently delete this drink template?',
+      'Delete beverage?',
+      'Are you sure you want to permanently delete this beverage template?',
       [
         {
           text: 'Cancel',
@@ -22,8 +22,8 @@ export default function PrefabItem({ drink }: PrefabItemProps) {
         },
         {
           text: 'OK',
-          onPress: () => // remove drink from prefabs
-            setPrefabs((prev) => prev.filter((d) => d !== drink))
+          onPress: () => // remove beverage from prefabs
+            setPrefabs((prev) => prev.filter((d) => d !== beverage))
             
         }
       ]
@@ -32,19 +32,19 @@ export default function PrefabItem({ drink }: PrefabItemProps) {
 
 
   return (
-    <TouchableOpacity onPress={() => setDisplayedDrink(drink)} onLongPress={openDeleteWindow}>
-      <View style={[styles.container, { borderColor: drink.color }]}>
+    <TouchableOpacity onPress={() => setDisplayedDrink(beverage)} onLongPress={openDeleteWindow}>
+      <View style={[styles.container, { borderColor: beverage.color }]}>
         <View style={styles.nameContainer}>
           <Text style={styles.beverageName} adjustsFontSizeToFit={true}>
-            {drink.name}
+            {beverage.name}
           </Text>
         </View>
         <View style={styles.volumeAndPercentageContainer}>
           <Text style={styles.beveragePercentage} adjustsFontSizeToFit={true}>
-            {drink.percentage + '%'}
+            {beverage.percentage + '%'}
           </Text>
           <Text style={styles.beverageVolume} adjustsFontSizeToFit={true}>
-            {drink.volume + drink.unit}
+            {beverage.volume + beverage.unit}
           </Text>
         </View>
       </View>

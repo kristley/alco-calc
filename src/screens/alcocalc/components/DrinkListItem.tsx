@@ -8,7 +8,7 @@ export default function DrinkListItem({ drink }: { drink: Drink}) {
   const setDrinksList = useSetDrinksList();
   const isTonight = useGetIsTonight();
   const openDeleteWindow = () => {
-    if (isTonight) return;
+    if (!isTonight) return;
 
     Alert.alert(
       "Remove drink?",
@@ -30,12 +30,19 @@ export default function DrinkListItem({ drink }: { drink: Drink}) {
     )
   }
 
+  function formattedTime(): string {
+    const date = new Date(drink.time);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes < 10 ? "0" : ""}${minutes}`;
+  }
+
   return (
     <TouchableOpacity
       style={styles.container}
       onLongPress={openDeleteWindow}
     >
-      <Text style={[styles.cell, styles.time]}>{drink.time}</Text>
+      <Text style={[styles.cell, styles.time]}>{formattedTime()}</Text>
       <Text style={styles.cell}>{drink.name}</Text>
       <Text style={styles.cell}>{drink.volume + drink.unit}</Text>
       <Text style={styles.cell}>{drink.percentage + "%"}</Text>

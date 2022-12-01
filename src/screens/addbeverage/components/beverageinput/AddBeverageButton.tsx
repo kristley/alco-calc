@@ -2,19 +2,19 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { getTimeString } from "../../../alcocalc/calculator/calculator";
-import { useDrinkValid, useGetDrink } from "../../Providers/BeverageProvider";
+import { useBeverageValid, useGetBeverage } from "../../Providers/BeverageProvider";
 
 export default function AddBeverageButton() {
 	const navigation = useNavigation();
-	const validDrink = useDrinkValid();
-	const drink = useGetDrink();
+	const validDrink = useBeverageValid();
+	const beverage = useGetBeverage();
 
 	const addBeverage = async () => {
 		if (!validDrink) return;
 
 		const time = getTimeString(new Date());
 
-		const beverage = {...drink, time: time} as Drink;
+
 		navigation.navigate("AlcoCalcView", { paramPropKey: "paramPropValue" });
 	};
 

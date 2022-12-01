@@ -19,7 +19,6 @@ export default function AlcoCalcView() {
 					isTonight &&
 					<AddDrinkButton/>
 				}
-
 				<Calculator/>
 			</View>
 		</SafeAreaView>

@@ -13,7 +13,7 @@ export default function PrefabList() {
           numColumns={3}
           data={[...prefabs, true].slice(0, 9)}
           renderItem={({ item }) => {
-            return typeof item === 'boolean' ? <AddPrefabButton /> : <PrefabItem drink={item} />;
+            return typeof item === 'boolean' ? <AddPrefabButton /> : <PrefabItem beverage={item} />;
           }}
         />
     </View>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useInputState } from "./DrinkUpdater";
+import { useInputState } from "./BeverageUpdater";
 
 
 
