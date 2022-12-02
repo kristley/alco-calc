@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import { useBeverageValid, useGetBeverage } from "../../providers/BeverageProvider";
-import { useSetPrefabs } from "../../providers/PrefabsProvider";
+import { useBeverageValid, useGetBeverage } from "../../providers2/BeverageProvider";
+import { useSetPrefabs } from "../../providers2/PrefabsProvider";
 
 export default function AddPrefabButton() {
 

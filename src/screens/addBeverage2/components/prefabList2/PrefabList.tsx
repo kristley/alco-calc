@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
-import { useGetPrefabs } from '../../providers/PrefabsProvider';
+import { useGetPrefabs } from '../../providers2/PrefabsProvider';
 import AddPrefabButton from './AddPrefabButton';
 import PrefabItem from './PrefabItem';
 

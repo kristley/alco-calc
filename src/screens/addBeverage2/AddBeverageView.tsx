@@ -2,9 +2,9 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BeverageInputs from './components/beverageInput/BeverageInputs';
-import PrefabList from './components/prefabList/PrefabList';
-import BeverageProvider from './providers/BeverageProvider';
-import PrefabsProvider from './providers/PrefabsProvider';
+import PrefabList from './components/prefabList2/PrefabList';
+import BeverageProvider from './providers2/BeverageProvider';
+import PrefabsProvider from './providers2/PrefabsProvider';
 
 export default function AddBeverageView() {
   return (
