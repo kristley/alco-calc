@@ -9,7 +9,7 @@ export default function AddBeverageButton() {
 	const validDrink = useBeverageValid();
 	const beverage = useGetBeverage();
 
-	const addBeverage = async () => {
+	const addBeverage = () => {
 		if (!validDrink) return;
 
 		const time = getTimeString(new Date());

@@ -1,17 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const NightsContext = React.createContext<Night>({} as Night);
-const NightsUpdateContext = React.createContext<React.Dispatch<React.SetStateAction<Night>>>(
-  () => {}
-);
-const NightIsTonightContext = React.createContext<boolean>(true);
+const NightIsTonightContext = createContext<boolean>(true);
 
-export function useGetNights(): Night {
+export function useGetNight(): Night {
   return useContext(NightsContext);
-}
-
-export function useSetNights(): React.Dispatch<React.SetStateAction<Night>> {
-  return useContext(NightsUpdateContext);
 }
 
 export function useGetIsTonight(): boolean {
@@ -43,11 +36,9 @@ export default function NightsProvider({ children }: { children: React.ReactNode
 
   return (
     <NightsContext.Provider value={currentNight}>
-      <NightsUpdateContext.Provider value={setCurrentNight}>
         <NightIsTonightContext.Provider value={isTonight}>
           {children}
         </NightIsTonightContext.Provider>
-      </NightsUpdateContext.Provider>
     </NightsContext.Provider>
   );
 }

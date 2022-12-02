@@ -1,8 +1,8 @@
 
 
 function getMinutesBetweenTimes(fromTime: string, toTime: string) {
-    const fromTimeDate = new Date(`2020-01-01T${fromTime}`);
-    const toTimeDate = new Date(`2020-01-01T${toTime}`);
+    const fromTimeDate = new Date(fromTime);
+    const toTimeDate = new Date(toTime);
     let difference = toTimeDate.getTime() - fromTimeDate.getTime();
     if (difference < 0) {
         difference = -difference;

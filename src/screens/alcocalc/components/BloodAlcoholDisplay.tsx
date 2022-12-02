@@ -1,10 +1,10 @@
-import { useGetDrinksBAL } from "../providers/DrinksListProvider";
+import { useGetDrinksInfo } from "../providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function BloodAlcoholDisplay() {
-	const displayedBloodAlcohol = useGetDrinksBAL();
+	const {BAL} = useGetDrinksInfo();
 
 	return (
-		<Display title="Blood alcohol" value={displayedBloodAlcohol+'‰'} />
+		<Display title="Blood alcohol" value={BAL+'‰'} />
 	);
 }

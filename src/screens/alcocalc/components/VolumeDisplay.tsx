@@ -1,10 +1,10 @@
-import { useGetDrinksVol } from "../providers/DrinksListProvider";
+import { useGetDrinksInfo } from "../providers/DrinksListProvider";
 import Display from "./Display";
 
 export default function VolumeDisplay() {
 
-    const totalVolume = useGetDrinksVol();
+    const {vol} = useGetDrinksInfo();
 	return (
-        <Display title="Total vol." value={totalVolume+'ml'} />
+        <Display title="Total vol." value={vol+'ml'} />
 	);
 }
