@@ -3,7 +3,6 @@ import { StyleSheet, View, TextInput } from "react-native";
 import { beverageInput } from "../BeverageInputStyles";
 import { useInputState } from "../BeverageUpdater";
 
-
 export default function BeverageVolumeInput() {
 	const [volume, setVolume] = useInputState<string>("volume");
 

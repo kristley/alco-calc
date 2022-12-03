@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import BeverageNameInput from './beverageInputs/BeverageNameInput';
-import BeveragePercentageInput from './beverageInputs/BeveragePercentageInput';
 import AddBeverageButton from './AddBeverageButton';
 import BeverageColorInput from './beverageInputs/BeverageColorInput';
+import BeverageNameInput from './beverageInputs/BeverageNameInput';
+import BeveragePercentageInput from './beverageInputs/BeveragePercentageInput';
 import { BeverageVolumeUnitInput } from './beverageInputs/BeverageVolumeUnitInput';
 
 export default function BeverageInputs() {

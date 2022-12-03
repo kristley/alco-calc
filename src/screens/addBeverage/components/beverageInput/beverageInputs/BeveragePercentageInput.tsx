@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TextInput, Text } from "react-native";
-import { beverageInput } from "../BeverageInputStyles";
 import { useInputState } from "../BeverageUpdater";
+import {beverageInput} from "../BeverageInputStyles";
 
 export default function BeveragePercentageInput() {
 	const [percentage, setPercentage] = useInputState<string>("percentage");

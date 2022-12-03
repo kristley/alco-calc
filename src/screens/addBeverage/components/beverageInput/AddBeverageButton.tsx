@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { getTimeString } from "../../../alcocalc/calculator/calculator";
+import { getTimeString } from "../../../alcoCalc/calculator/calculator";
 import { useBeverageValid, useGetBeverage } from "../../providers/BeverageProvider";
 
 export default function AddBeverageButton() {

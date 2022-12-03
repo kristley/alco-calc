@@ -3,8 +3,6 @@ import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useInputState } from "../BeverageUpdater";
 
-
-
 export default function BeverageColorInput() {
 
 	const [open, setOpen] = useState(false);

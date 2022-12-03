@@ -2,8 +2,8 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import AlcoCalcView from './src/screens/alcocalc/AlcoCalcView';
-import AddBeverageView from './src/screens/addbeverage/AddBeverageView';
+import AlcoCalcView from "./src/screens/alcoCalc/AlcoCalcView";
+import AddBeverageView from './src/screens/addBeverage/AddBeverageView';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -25,7 +25,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import NightsProvider from './src/screens/alcocalc/providers/NightsProvider';
+import NightsProvider from "./src/screens/alcoCalc/providers/NightsProvider";
 
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
